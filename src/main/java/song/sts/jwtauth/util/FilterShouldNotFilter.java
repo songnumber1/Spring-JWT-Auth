@@ -14,7 +14,7 @@ public class FilterShouldNotFilter {
         excludeUrlPatterns.add("/css/**");
         excludeUrlPatterns.add("/assets/**");
         excludeUrlPatterns.add("/js/**");
-        excludeUrlPatterns.add("/auth/**");
+        excludeUrlPatterns.add("/auth/joinForm");
         
         return excludeUrlPatterns.stream()
                                  .anyMatch(pattern -> new AntPathMatcher().match(pattern, request.getServletPath()));

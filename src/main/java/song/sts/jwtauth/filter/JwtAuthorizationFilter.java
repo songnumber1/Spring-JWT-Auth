@@ -16,7 +16,8 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 import io.jsonwebtoken.ExpiredJwtException;
 import song.sts.jwtauth.entity.User;
-import song.sts.jwtauth.service.UserService;
+import song.sts.jwtauth.repository.UserRepository;
+import song.sts.jwtauth.security.handler.AuthLogoutWorkHandler;
 import song.sts.jwtauth.token.JwtTokenProvider;
 import song.sts.jwtauth.util.FilterShouldNotFilter;
 
@@ -25,21 +26,23 @@ import song.sts.jwtauth.util.FilterShouldNotFilter;
 // 만약에 권한이 인증이 필요한 주소가 아니라면 이 필터는 호출되지 않음
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
 
-	private UserService userService;
+	private UserRepository userRepository;
     private JwtTokenProvider jwtTokenProvider;
+    private AuthLogoutWorkHandler authLogoutWorkHandler;
 	
-	public JwtAuthorizationFilter(AuthenticationManager authenticationManager, UserService userService, JwtTokenProvider jwtTokenProvider) {
+	public JwtAuthorizationFilter(AuthenticationManager authenticationManager, UserRepository userRepository, JwtTokenProvider jwtTokenProvider, AuthLogoutWorkHandler authLogoutWorkHandler) {
 		super(authenticationManager);
 		// TODO Auto-generated constructor stub
-		
-		this.userService = userService;
+
+		this.userRepository = userRepository;
 		this.jwtTokenProvider = jwtTokenProvider;
+		this.authLogoutWorkHandler = authLogoutWorkHandler;
 	}
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		//System.out.println("doFilterInternal : " + request.getRequestURI());
+		System.out.println("doFilterInternal : " + request.getRequestURI());
 		
 		String accessToken = jwtTokenProvider.resolveCookie(request);
         String refreshToken = null;
@@ -52,14 +55,17 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
             }
             // access 토큰 만료시 refresh 토큰 가져오기
         } catch (ExpiredJwtException e) {
-            User userModel = userService.userRepository.findByUsername(e.getClaims().getSubject());
+            User userModel = userRepository.findByUsername(e.getClaims().getSubject());
             
             if (ObjectUtils.isNotEmpty(userModel)) {
                 refreshToken = userModel.getToken();
             }
+    	// Access Token이 비정상일 경우
         } catch (Exception e) {
-            SecurityContextHolder.clearContext();
-
+        	// 로그아웃을 해야한다. (logoutDataDelete)
+            //SecurityContextHolder.clearContext();
+            
+            authLogoutWorkHandler.logoutDataDelete(request, response, null);
             return;
         }
 
@@ -76,10 +82,16 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
                         jwtTokenProvider.createCookie(response, newAccessToken);
                     }
                 } catch (ExpiredJwtException e) {
-                    SecurityContextHolder.clearContext();
+                	// Logout을 해야한다.
+                    //SecurityContextHolder.clearContext();
+                	
+                    authLogoutWorkHandler.logoutDataDelete(request, response, null);
+                    return;
                 }
             } catch (Exception e) {
-                SecurityContextHolder.clearContext();
+                //SecurityContextHolder.clearContext();
+            	e.printStackTrace();
+            	authLogoutWorkHandler.logoutDataDelete(request, response, null);
                 return;
             }
         }
@@ -89,7 +101,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
 	
 	@Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-		//System.out.println("shouldNotFilter : " + request.getServletPath());
     	return FilterShouldNotFilter.shouldNotFilter(request);
     }
 }

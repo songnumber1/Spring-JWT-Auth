@@ -5,11 +5,9 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 import lombok.RequiredArgsConstructor;
@@ -34,11 +32,10 @@ public class AuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHa
 		
 		JwtModel jwtModel = jwtTokenProvider.createToken(principalDetailis.getUser().getUsername());
 		
-		userService.loginProc(principalDetailis.getUser(), jwtModel);
+		userService.setLoginProc(principalDetailis.getUser(), jwtModel);
 		
         if (StringUtils.isNotBlank(jwtModel.getAccessToken())) {
             jwtTokenProvider.createCookie(response, jwtModel.getAccessToken());
-            //jwtTokenProvider.saveToken(response, jwtModel.getAccessToken());
         }
         
 		// TODO Auto-generated method stub

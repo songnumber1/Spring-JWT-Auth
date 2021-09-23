@@ -11,12 +11,23 @@ import song.sts.jwtauth.repository.UserRepository;
 @Service
 public class UserService {
 	@Autowired
-	public UserRepository userRepository;
+	private UserRepository userRepository;
 	
 	@Transactional
-	public void loginProc(User user, JwtModel jwtModel) {
+	public void setLoginProc(User user, JwtModel jwtModel) {
 		user.setToken(jwtModel.getRefreshToken());
 		user.setTokenExpired(jwtModel.getRefreshTokenExpirationDate());
+		
+		userRepository.save(user);
+	}
+	
+	@Transactional
+	public void setRefreshTokenEmpty(User user) {
+		if(user == null)
+			return;
+		
+		user.setToken(null);
+		user.setTokenExpired(null);
 		
 		userRepository.save(user);
 	}

@@ -23,7 +23,10 @@ public class PrincipalDetailsService implements UserDetailsService {
 		
 		User userEntity = userRepository.findByUsername(username);
 		
-		return new PrincipalDetails(userEntity);
+		if(userEntity == null)
+			return new PrincipalDetails(null); 
+		else
+			return new PrincipalDetails(userEntity);
 	}
 	
 }
