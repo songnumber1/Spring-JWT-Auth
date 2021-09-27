@@ -19,7 +19,7 @@ import song.sts.jwtauth.common.StaticVariable;
 import song.sts.jwtauth.filter.JwtAuthorizationFilter;
 import song.sts.jwtauth.repository.UserRepository;
 import song.sts.jwtauth.security.handler.AuthLogoutHandler;
-import song.sts.jwtauth.security.handler.AuthLogoutWorkHandler;
+import song.sts.jwtauth.security.handler.AuthWorkHandler;
 import song.sts.jwtauth.security.handler.AuthSuccessHandler;
 import song.sts.jwtauth.service.UserService;
 import song.sts.jwtauth.token.JwtTokenProvider;
@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private AuthLogoutWorkHandler authLogoutWorkHandler;
+	private AuthWorkHandler authLogoutWorkHandler;
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -86,7 +86,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers(FinalVariable.SECURITY_PERMIT_ALL)
 	        .permitAll()
-			.antMatchers("/api/v1/user/**")
+			.antMatchers("/")
 			.access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
 			.antMatchers("/api/v1/manager/**")
 			.access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")

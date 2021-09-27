@@ -11,9 +11,9 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 public class AuthLogoutHandler extends SecurityContextLogoutHandler {
 
 	//private String[] cookies;
-	private AuthLogoutWorkHandler authLogoutWorkHandler;
+	private AuthWorkHandler authLogoutWorkHandler;
 	
-	public AuthLogoutHandler(AuthLogoutWorkHandler authLogoutWorkHandler) {
+	public AuthLogoutHandler(AuthWorkHandler authLogoutWorkHandler) {
 		this.authLogoutWorkHandler = authLogoutWorkHandler;
 	}
 

@@ -1,0 +1,4 @@
+[2021-09-27 12:58:54:1042218][http-nio-8089-exec-1] WARN  s.sts.jwtauth.advice.LoggerAdvice - /jwtauth/
+[2021-09-27 13:21:38:64328][http-nio-8089-exec-1] INFO  s.sts.jwtauth.advice.LoggerAdvice - 로그 내용 : {controller=song.sts.jwtauth.controller.PageController, http_method=GET, method=home, params={}, log_time=2021-09-27T13:21:38.542915700, request_uri=/jwtauth/}
+[2021-09-27 13:21:59:85329][http-nio-8089-exec-9] INFO  s.sts.jwtauth.advice.LoggerAdvice - 로그 내용 : {controller=song.sts.jwtauth.controller.PageController, http_method=GET, method=home, params={}, log_time=2021-09-27T13:21:59.543206100, request_uri=/jwtauth/}
+[2021-09-27 13:23:15:6124][http-nio-8089-exec-1] INFO  s.sts.jwtauth.advice.LoggerAdvice - 로그 내용 : {controller=song.sts.jwtauth.controller.PageController, http_method=GET, method=home, params={}, log_time=2021-09-27T13:23:15.854840800, request_uri=/jwtauth/}

@@ -23,7 +23,7 @@ import song.sts.jwtauth.service.UserService;
 import song.sts.jwtauth.token.JwtTokenProvider;
 
 @Component
-public class AuthLogoutWorkHandler {
+public class AuthWorkHandler {
 	@Autowired
 	private UserService userService;
 
@@ -113,5 +113,19 @@ public class AuthLogoutWorkHandler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean beforeIsLoginValication(HttpServletRequest request, HttpServletResponse response) {
+		if (request.getRequestURI().equals(StaticVariable.LOGIN_URI)) {
+			try {
+				response.sendRedirect(StaticVariable.CONTEXT_PATH);
+				return true;
+			} catch (IOException e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+		return false;
 	}
 }
