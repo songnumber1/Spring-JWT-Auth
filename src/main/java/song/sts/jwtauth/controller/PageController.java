@@ -12,6 +12,11 @@ public class PageController {
 	
 	@GetMapping("profile")
 	public String profile() {
-		return "Profile/profile";
+		return "profile/profile";
+	}
+	
+	@GetMapping("storage")
+	public String storage() {
+		return "storage/storage";
 	}
 }
