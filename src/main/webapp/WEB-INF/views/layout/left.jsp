@@ -19,7 +19,7 @@
 
 					<div class="collapse" id="collapseProfile" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="layout-static.html">
+							<a class="nav-link" href="#">
 								Detail
 							</a> 
 						</nav>
@@ -37,51 +37,68 @@
 					</a>
 					<div class="collapse" id="collapseSkills" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="layout-static.html">C#</a>
-							<a class="nav-link" href="layout-sidenav-light.html">Java</a>
-							<a class="nav-link" href="layout-sidenav-light.html">Android</a>
-							<a class="nav-link" href="layout-sidenav-light.html">Etc</a>
+							<a class="nav-link" href="#">C#</a>
+							<a class="nav-link" href="#">Java</a>
+							<a class="nav-link" href="#">Android</a>
+							<a class="nav-link" href="#">Etc</a>
 						</nav>
 					</div>
-					<hr>
+					<hr/>
 					<!-- ========================================================================================================== -->
 
 					<!-- Data -->
-					<div class="sb-sidenav-menu-heading">Data</div>					
-					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePrograms" aria-expanded="false"
-						aria-controls="collapsePrograms">
-						<div class="sb-nav-link-icon">
-							<i class="fas fa-th-list"></i>
-						</div>
-						Programs
-						<div class="sb-sidenav-collapse-arrow">
-							<i class="fas fa-angle-down"></i>
-						</div>
-					</a>
-					<div class="collapse" id="collapsePrograms" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="#">Android</a>
-							<a class="nav-link" href="#">C#</a>
-							<a class="nav-link" href="#">Account</a>
-							<a class="nav-link" href="#">Etc</a>
-							<a class="nav-link" href="#">Java</a>
-							<a class="nav-link" href="#">Java script</a>
-							<a class="nav-link" href="#">Git</a>
-							<a class="nav-link" href="#">MFC</a>
-							<a class="nav-link" href="#">MS-SQL</a>
-							<a class="nav-link" href="#">Oracle</a>
-							<a class="nav-link" href="#">Postgre</a>
-							<a class="nav-link" href="#">React</a>
-							<a class="nav-link" href="#">VB.net</a>
-							<a class="nav-link" href="#">Vue.js</a>
-							<a class="nav-link" href="#">Windows</a>
-							<a class="nav-link" href="#">WPF</a>
-							<a class="nav-link" href="#">Xamarin</a>
-							<a class="nav-link" href="#">Etc</a>
-						</nav>
-					</div>
+					<div class="sb-sidenav-menu-heading">Data</div>	
 					
-					<a class="nav-link" href="charts.html">
+					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePrograms" aria-expanded="false" aria-controls="collapsePrograms">
+                        <div class="sb-nav-link-icon"><i class="fas fa-th-list"></i></div>
+                        Programs
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapsePrograms" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#programsCollapseDB" aria-expanded="false" aria-controls="programsCollapseDB">
+                                Database
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="programsCollapseDB" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="#">MS-Sql</a>
+                                    <a class="nav-link" href="#">Oracle</a>
+                                    <a class="nav-link" href="#">Postgre</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#programsCollapseSoftware" aria-expanded="false" aria-controls="programsCollapseSoftware">
+                                Software
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="programsCollapseSoftware" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="#">Android</a>
+                                    <a class="nav-link" href="#">C#</a>
+                                    <a class="nav-link" href="#">Java</a>
+									<a class="nav-link" href="#">Java Script</a>
+									<a class="nav-link" href="#">MFC</a>
+									<a class="nav-link" href="#">React</a>
+									<a class="nav-link" href="#">Vue.js</a>
+									<a class="nav-link" href="#">WPF</a>
+									<a class="nav-link" href="#">Xamarin</a>
+                                </nav>
+                            </div>
+                        </nav>
+                    </div>
+                            
+                            
+                            
+                            					
+					
+					
+					
+					
+					
+					
+					
+					
+					<a class="nav-link" href="#">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-database"></i>
 						</div> 
@@ -89,6 +106,28 @@
 						Storage
 					</a>
 
+					<hr/>
+
+					<!-- ========================================================================================================== -->
+					
+					<!-- Odds and Ends -->
+					<div class="sb-sidenav-menu-heading">Etc</div>
+					<a class="nav-link" href="#">
+						<div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+						Account
+					</a>
+					<a class="nav-link" href="#">
+						<div class="sb-nav-link-icon"><i class="fa fa-bars"></i></div>
+						Oddments
+					</a>
+					<a class="nav-link" href="#">
+						<div class="sb-nav-link-icon"><i class="fa fa-code"></i></div>
+						Git
+					</a>
+					<a class="nav-link" href="#">
+						<div class="sb-nav-link-icon"><i class="fas fa-desktop"></i></div>
+						Windows
+					</a>
 
 
 
