@@ -23,6 +23,9 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
 	crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <link href="/jwtauth/css/index.css" rel="stylesheet" />
 </head>
 <body class="sb-nav-fixed">
