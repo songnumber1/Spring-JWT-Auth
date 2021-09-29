@@ -25,24 +25,6 @@
 						</nav>
 					</div>
 					
-					<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSkills" aria-expanded="false"
-						aria-controls="collapseSkills">
-						<div class="sb-nav-link-icon">
-							<i class="fas fa-th-list"></i>
-						</div> 
-						Skills
-						<div class="sb-sidenav-collapse-arrow">
-							<i class="fas fa-angle-down"></i>
-						</div>
-					</a>
-					<div class="collapse" id="collapseSkills" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="#">C#</a>
-							<a class="nav-link" href="#">Java</a>
-							<a class="nav-link" href="#">Android</a>
-							<a class="nav-link" href="#">Etc</a>
-						</nav>
-					</div>
 					<hr/>
 					<!-- ========================================================================================================== -->
 
@@ -74,7 +56,7 @@
                             <div class="collapse" id="programsCollapseSoftware" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#">Android</a>
-                                    <a class="nav-link" href="#">C#</a>
+                                    <a class="nav-link" href="/jwtauth/csharp">C#</a>
                                     <a class="nav-link" href="#">Java</a>
 									<a class="nav-link" href="#">Java Script</a>
 									<a class="nav-link" href="#">MFC</a>
@@ -87,22 +69,10 @@
                         </nav>
                     </div>
                             
-                            
-                            
-                            					
-					
-					
-					
-					
-					
-					
-					
-					
-					<a class="nav-link" href="#">
+					<a class="nav-link" href="/jwtauth/storage">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-database"></i>
 						</div> 
-						
 						Storage
 					</a>
 

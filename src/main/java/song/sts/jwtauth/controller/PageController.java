@@ -19,4 +19,9 @@ public class PageController {
 	public String storage() {
 		return "storage/storage";
 	}
+	
+	@GetMapping("csharp")
+	public String csharp() {
+		return "skill/csharp";
+	}
 }
