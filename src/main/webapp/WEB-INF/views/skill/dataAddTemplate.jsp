@@ -3,7 +3,11 @@
 
 <%@include file="../layout/left.jsp"%>
 
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">    
+    
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
@@ -11,10 +15,7 @@
 				<h1 class="mt-4">Skills</h1>
 				
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item active" style="padding-top: 5px;">C#</li> &nbsp;&nbsp;&nbsp;
-					<form action="/jwtauth/skill/add" method="get">
-						<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
-					</form>
+					<li class="breadcrumb-item active" style="padding-top: 5px;">Write</li>
 				</ol>
 				
 			</div>
@@ -23,36 +24,18 @@
 			<div class="row">
 				<div class="col-xl-12">
 					<div class="card mb-4">
-				
 						<div class="card-body">
-							<table id="datatablesSimple">
-								<thead>
-									<tr>
-										<th class="col-3">Title</th>
-										<th class="col-5">Content</th>
-										<th class="col-3">WriteDate</th>
-										<th class="col-1 text-center">Detail</th>
-									</tr>
-								</thead>
-								<tfoot>
-									<tr>
-										<th class="col-3">Title</th>
-										<th class="col-5">Content</th>
-										<th class="col-4">WriteDate</th>
-										<th class="col-3 text-center">Detail</th>
-									</tr>
-								</tfoot>
-								<tbody>
-									<c:forEach var="item" items="${items}">
-										<tr>
-											<td>${item.title}</td>
-											<td>${item.content}</td>
-											<td>${item.writeDate}</td>
-											<td class="text-center"><button type="button" class="btn btn-primary btn-circle"><i class="fas fa-info"></i></button></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+							<form action="/action_page.php">
+							    <div class="form-group">
+							      <label for="email">Title</label>
+							      <input type="email" class="form-control" id="title" placeholder="Enter title" name="email">
+							    </div>
+							    <div class="form-group">
+							      <label for="pwd">Content</label>
+							      <div id="summernote"></div>
+							    </div>
+							    <button type="submit" class="btn btn-primary">Submit</button>
+							  </form>
 						</div>
 					</div>
 				</div>
@@ -63,7 +46,13 @@
 	<%@include file="../layout/footer.jsp"%>
 </div>
 
-
+<script>
+  $('#summernote').summernote({
+    placeholder: '',
+    tabsize: 2,
+    height: 100
+  });
+</script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
 	crossorigin="anonymous"></script>
@@ -75,7 +64,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="/jwtauth/js/datatables-simple-demo.js"></script>
-
 </body>
 </html>
 

@@ -31,6 +31,7 @@
 	crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="/jwtauth/css/index.css" />
+<link rel="stylesheet" href="/jwtauth/css/button.css" />
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">

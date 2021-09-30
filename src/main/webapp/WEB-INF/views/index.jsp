@@ -87,6 +87,67 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="card mb-4">
+				<div class="card-header">
+					<i class="fas fa-table me-1"></i> Buttons
+				</div>
+				<div class="card-body">
+					<div class="panel panel-default">
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <h5>Normal Circle Buttons</h5>
+                            <hr/>
+                            <button type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-circle"><i class="fa fa-list"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-circle"><i class="fa fa-link"></i>
+                            </button>
+                            <button type="button" class="btn btn-info btn-circle"><i class="fa fa-check"></i>
+                            </button>
+                            <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-circle"><i class="fa fa-heart"></i>
+                            </button>
+                            <br>
+                            <br>
+                            <h5>Normal Circle Buttons</h5>
+                            <hr/>
+                            <button type="button" class="btn btn-default btn-circle btn-lg"><i class="fa fa-check"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-circle btn-lg"><i class="fa fa-list"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-circle btn-lg"><i class="fa fa-link"></i>
+                            </button>
+                            <button type="button" class="btn btn-info btn-circle btn-lg"><i class="fa fa-check"></i>
+                            </button>
+                            <button type="button" class="btn btn-warning btn-circle btn-lg"><i class="fa fa-times"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-heart"></i>
+                            </button>
+                            <br>
+                            <br>
+                            <h5>Normal Circle Buttons</h5>
+                            <hr/>
+                            <button type="button" class="btn btn-default btn-circle btn-xl"><i class="fa fa-check"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-circle btn-xl"><i class="fa fa-list"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-circle btn-xl"><i class="fa fa-link"></i>
+                            </button>
+                            <button type="button" class="btn btn-info btn-circle btn-xl"><i class="fa fa-check"></i>
+                            </button>
+                            <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="fa fa-times"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="fa fa-heart"></i>
+                            </button>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+				</div>
+			</div>
+			
 			<div class="card mb-4">
 				<div class="card-header">
 					<i class="fas fa-table me-1"></i> Log Data
