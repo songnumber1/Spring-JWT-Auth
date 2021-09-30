@@ -4,6 +4,7 @@
 <%@include file="../layout/left.jsp"%>
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
+
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
@@ -76,11 +77,10 @@
 					</div>
 				</div>
 			</div>
+		</div>
 	</main>
 
 	<%@include file="../layout/footer.jsp"%>
-</div>
-
 </div>
 
 <script

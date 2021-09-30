@@ -90,6 +90,15 @@
 			
 			<div class="card mb-4">
 				<div class="card-header">
+					<i class="fas fa-table me-1"></i> Storage Json Data
+				</div>
+				<div class="card-body">
+					${reponseData}
+				</div>
+			</div>
+			
+			<div class="card mb-4">
+				<div class="card-header">
 					<i class="fas fa-table me-1"></i> Buttons
 				</div>
 				<div class="card-body">
@@ -635,6 +644,8 @@
 					</table>
 				</div>
 			</div>
+			
+			
 		</div>
 	</main>
 
@@ -656,5 +667,8 @@
 	crossorigin="anonymous"></script>
 
 <script src="/jwtauth/js/datatables-simple-demo.js"></script>
+
+
+
 </body>
 </html>

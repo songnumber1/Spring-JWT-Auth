@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 	$('#treeview1').treeview({
 		backColor: "#FFFFFF",
 		color: "#428bca",
@@ -7,10 +7,42 @@ $(document).ready(function () {
 	});
 	$('#treeview2').treeview({
 		color: "#428bca",
-		expandIcon: 'fas fa-plus',
-		collapseIcon: 'fas fa-minus',
+		expandIcon: 'fa fa-plus',
+		collapseIcon: 'fa fa-minus',
+		//expandIcon: 'glyphicon glyphicon-chevron-right',
+		//collapseIcon: 'glyphicon glyphicon-chevron-down',
 		data: getTree()
+	})
+
+	// https://openbase.com/js/bootstrap-treeview/documentation - List of Events
+	.on('nodeExpanded', function(event, node) {
+		console.log("nodeExpanded", node);
+		var childrenNodes = _getChildren(node);
+		console.log("nodeExpanded - childrenNodes", childrenNodes);
+	    
+	})
+	.on('nodeCollapsed', function(event, node) {
+		console.log("nodeCollapsed", node);
+		var childrenNodes = _getChildren(node);
+		console.log("nodeCollapsed - childrenNodes", childrenNodes);
+	    
+	})
+	.on('nodeSelected', function(event, node) {
+		console.log("nodeSelected", node);
+		var childrenNodes = _getChildren(node);
+		console.log("nodeSelected - childrenNodes", childrenNodes);
 	});
+
+	function _getChildren(node) {
+		if (node.nodes === undefined) return [];
+		var childrenNodes = node.nodes;
+		node.nodes.forEach(function(n) {
+			childrenNodes = childrenNodes.concat(_getChildren(n));
+		});
+		return childrenNodes;
+	}
+
+
 	$('#treeview3').treeview({
 		expandIcon: "glyphicon glyphicon-stop",
 		collapseIcon: "glyphicon glyphicon-unchecked",

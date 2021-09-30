@@ -72,6 +72,7 @@
 					<a class="nav-link" href="/jwtauth/storage">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-database"></i>
+							
 						</div> 
 						Storage
 					</a>
