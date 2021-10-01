@@ -32,6 +32,8 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
 	crossorigin="anonymous"></script>
+	
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
 
 <link rel="stylesheet" href="/jwtauth/css/index.css" />
 <link rel="stylesheet" href="/jwtauth/css/button.css" />

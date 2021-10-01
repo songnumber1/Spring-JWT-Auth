@@ -25,8 +25,6 @@
 					</div>
 				</div>
 
-
-
 				<div class="col-xl-9">
 					<div class="card mb-4">
 						<div class="card-header">
@@ -77,6 +75,18 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="row">
+				<div class="card mb-4">
+					<div class="card-header">
+						<i class="fas fa-table me-1"></i> Storage Json Data
+					</div>
+					<div class="card-body">
+						${reponseData}
+					</div>
+				</div>
+			</div>
+			
 		</div>
 	</main>
 

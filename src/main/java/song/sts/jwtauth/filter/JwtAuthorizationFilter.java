@@ -15,7 +15,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import io.jsonwebtoken.ExpiredJwtException;
-import song.sts.jwtauth.common.StaticVariable;
 import song.sts.jwtauth.entity.User;
 import song.sts.jwtauth.repository.UserRepository;
 import song.sts.jwtauth.security.handler.AuthWorkHandler;

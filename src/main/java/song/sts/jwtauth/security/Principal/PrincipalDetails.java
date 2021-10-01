@@ -11,6 +11,8 @@ import song.sts.jwtauth.entity.User;
 
 @Data
 public class PrincipalDetails implements UserDetails {
+	private static final long serialVersionUID = 1L;
+	
 	private User user;
 	
 	public PrincipalDetails(User user) {

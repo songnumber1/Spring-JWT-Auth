@@ -7,10 +7,10 @@ $(document).ready(function() {
 	});
 	$('#treeview2').treeview({
 		color: "#428bca",
-		expandIcon: 'fa fa-plus',
-		collapseIcon: 'fa fa-minus',
-		//expandIcon: 'glyphicon glyphicon-chevron-right',
-		//collapseIcon: 'glyphicon glyphicon-chevron-down',
+		//expandIcon: 'fa fa-plus',
+		//collapseIcon: 'fa fa-minus',
+		expandIcon: 'glyphicon glyphicon-chevron-right',
+		collapseIcon: 'glyphicon glyphicon-chevron-down',
 		data: getTree()
 	})
 
