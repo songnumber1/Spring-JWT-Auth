@@ -1,4 +1,4 @@
-package song.sts.jwtauth.controller;
+package song.sts.jwtauth.restcontroller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

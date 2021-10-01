@@ -1,10 +1,4 @@
 $(document).ready(function() {
-	$('#treeview1').treeview({
-		backColor: "#FFFFFF",
-		color: "#428bca",
-		enableLinks: true,
-		data: getTree()
-	});
 	$('#treeview2').treeview({
 		color: "#428bca",
 		//expandIcon: 'fa fa-plus',
@@ -42,27 +36,10 @@ $(document).ready(function() {
 		return childrenNodes;
 	}
 
-
-	$('#treeview3').treeview({
-		expandIcon: "glyphicon glyphicon-stop",
-		collapseIcon: "glyphicon glyphicon-unchecked",
-		nodeIcon: "glyphicon glyphicon-user",
-		color: "yellow",
-		backColor: "purple",
-		onhoverColor: "orange",
-		borderColor: "red",
-		showBorder: false,
-		showTags: true,
-		highlightSelected: true,
-		selectedColor: "yellow",
-		selectedBackColor: "darkorange",
-		data: getTree()
-	});
-
 	function getTree() {
 		//document.getElementById("storageData").val('1');
 		
-		return document.getElementById("storageData").innerHTML;
+		return JSON.parse(document.getElementById("storageData").innerHTML);
 		
 		/*
 		var data = [

@@ -71,10 +71,12 @@ public class PageController {
 			JSONObject jsonObjDrive = new JSONObject();
 			
 			jsonObjDrive.put("id", id);
+			jsonObjDrive.put("parentId", "");
 	        jsonObjDrive.put("text", drive);
 	        jsonObjDrive.put("totalSize", totalSize);
 	        jsonObjDrive.put("useSize", useSize);
 	        jsonObjDrive.put("freeSize", freeSize);
+	        
 	        //List<StorageItemModel> storageItemModels = getDirInfo(id, drive);
 	        jsonObjDrive.put("nodes", new ArrayList<StorageItemModel>());
 	        jsonArrDrive.put(jsonObjDrive);
