@@ -12,12 +12,12 @@
 			<ol class="breadcrumb mb-4">
 				<li class="breadcrumb-item active">C#</li>
 			</ol>
+			
+			<hr/>
+			
 			<div class="row">
 				<div class="col-xl-3">
 					<div class="card mb-4">
-						<div class="card-header">
-							<i class="fas fa-chart-area me-1"></i>Title List
-						</div>
 						<div class="card-body" style="overflow-y: auto;height: 300px;">
 							<div id="treeview2">
 							</div>
@@ -27,9 +27,6 @@
 
 				<div class="col-xl-9">
 					<div class="card mb-4">
-						<div class="card-header">
-							<i class="fas fa-table me-1"></i> Log Data
-						</div>
 						<div class="card-body">
 							<table id="datatablesSimple">
 								<thead>
@@ -76,12 +73,10 @@
 				</div>
 			</div>
 			
+			<!-- <div class="row" style="display:none;"> -->
 			<div class="row">
 				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table me-1"></i> Storage Json Data
-					</div>
-					<div class="card-body">
+					<div id="storageData">
 						${reponseData}
 					</div>
 				</div>

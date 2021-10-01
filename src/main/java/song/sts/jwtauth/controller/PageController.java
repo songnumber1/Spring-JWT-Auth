@@ -31,7 +31,7 @@ public class PageController {
 			if (file.isDirectory()) {
 				if (file.exists()) {
 					StorageItemModel storageItemModel = StorageItemModel.builder().id(UUID.randomUUID().toString())
-							.parendId(parentId).name(file.getName()).isDiretory(file.isDirectory())
+							.parendId(parentId).text(file.getName()).isDiretory(file.isDirectory())
 							.lastModified(file.lastModified()).iscanRead(file.canRead()).iscanWrite(file.canWrite())
 							.isHidden(file.isHidden()).length(file.length()).path(file.getPath())
 							.absolutePath(file.getAbsolutePath()).parent(file.getParent()).build();
@@ -59,7 +59,7 @@ public class PageController {
 
 		File[] roots = File.listRoots();
 
-		JSONArray jsonArr1 = new JSONArray();
+		JSONArray jsonArrDrive = new JSONArray();
 		
 		for (File root : roots) {
 			id = UUID.randomUUID().toString();
@@ -68,22 +68,22 @@ public class PageController {
 			useSize = root.getUsableSpace() / Math.pow(1024, 3);
 			freeSize = totalSize - useSize;
 			
-			JSONObject jsonObj1 = new JSONObject();
+			JSONObject jsonObjDrive = new JSONObject();
 			
-	        jsonObj1.put("id", id);
-	        jsonObj1.put("drive", drive);
-	        jsonObj1.put("totalSize", totalSize);
-	        jsonObj1.put("useSize", useSize);
-	        jsonObj1.put("freeSize", freeSize);
-	        List<StorageItemModel> storageItemModels = getDirInfo(id, drive);
-	        jsonObj1.put("node", storageItemModels);
-	        jsonArr1.put(jsonObj1);
+			jsonObjDrive.put("id", id);
+	        jsonObjDrive.put("text", drive);
+	        jsonObjDrive.put("totalSize", totalSize);
+	        jsonObjDrive.put("useSize", useSize);
+	        jsonObjDrive.put("freeSize", freeSize);
+	        //List<StorageItemModel> storageItemModels = getDirInfo(id, drive);
+	        jsonObjDrive.put("nodes", new ArrayList<StorageItemModel>());
+	        jsonArrDrive.put(jsonObjDrive);
 		}
 		
 		ArrayList<JSONObject> arrayJson = new ArrayList<JSONObject>();
 	    
-	    for (int k = 0; k < jsonArr1.length(); k++) {
-	        JSONObject tempJson = jsonArr1.getJSONObject(k);
+	    for (int k = 0; k < jsonArrDrive.length(); k++) {
+	        JSONObject tempJson = jsonArrDrive.getJSONObject(k);
 	        arrayJson.add(tempJson);
 	    }
 	    

@@ -60,11 +60,17 @@ $(document).ready(function() {
 	});
 
 	function getTree() {
+		//document.getElementById("storageData").val('1');
+		
+		return document.getElementById("storageData").innerHTML;
+		
+		/*
 		var data = [
 			{
 				text: 'Parent 1',
 				href: '#parent1',
 				tags: ['4'],
+				id: '1234',
 				nodes: [
 					{
 						text: 'Child 1',
@@ -75,122 +81,7 @@ $(document).ready(function() {
 								text: 'Grandchild 1',
 								href: '#grandchild1',
 								tags: ['0']
-							},
-							{
-								text: 'Grandchild 2',
-								href: '#grandchild2',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 3',
-								href: '#grandchild3',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 4',
-								href: '#grandchild4',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 5',
-								href: '#grandchild5',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 6',
-								href: '#grandchild6',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 1',
-								href: '#grandchild1',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 2',
-								href: '#grandchild2',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 3',
-								href: '#grandchild3',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 4',
-								href: '#grandchild4',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 5',
-								href: '#grandchild5',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 6',
-								href: '#grandchild6',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 1',
-								href: '#grandchild1',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 2',
-								href: '#grandchild2',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 3',
-								href: '#grandchild3',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 4',
-								href: '#grandchild4',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 5',
-								href: '#grandchild5',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 6',
-								href: '#grandchild6',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 1',
-								href: '#grandchild1',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 2',
-								href: '#grandchild2',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 3',
-								href: '#grandchild3',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 4',
-								href: '#grandchild4',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 5',
-								href: '#grandchild5',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 6',
-								href: '#grandchild6',
-								tags: ['0']
-							}
+							}							
 						]
 					},
 					{
@@ -222,5 +113,6 @@ $(document).ready(function() {
 			}
 		];
 		return data;
+		*/
 	}
 });

@@ -17,7 +17,7 @@ public class StorageItemModel {
 	private String parendId;
 
 	// 이름
-	private String name;
+	private String text;
 
 	// 디렉토리 / 파일
 	private boolean isDiretory;
