@@ -12,7 +12,7 @@
 			</ol>
 			<hr/>
 			<div class="row">
-				<div class="col-xl-3 col-md-6">
+				<div class="col-xl-3 col-md-3">
 					<div class="card bg-primary text-white mb-4">
 						<div class="card-body">C#</div>
 						<div
@@ -25,7 +25,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-3 col-md-6">
+				<div class="col-xl-3 col-md-3">
 					<div class="card bg-warning text-white mb-4">
 						<div class="card-body">Java</div>
 						<div
@@ -38,7 +38,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-3 col-md-6">
+				<div class="col-xl-3 col-md-3">
 					<div class="card bg-success text-white mb-4">
 						<div class="card-body">Android</div>
 						<div
@@ -51,7 +51,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-3 col-md-6">
+				<div class="col-xl-3 col-md-3">
 					<div class="card bg-danger text-white mb-4">
 						<div class="card-body">Storage</div>
 						<div
@@ -96,52 +96,26 @@
 					<div class="panel panel-default">
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <h5>Normal Circle Buttons</h5>
-                            <hr/>
-                            <button type="button" class="btn btn-default btn-circle"><i class="fa fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-primary btn-circle"><i class="fa fa-list"></i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-circle"><i class="fa fa-link"></i>
-                            </button>
-                            <button type="button" class="btn btn-info btn-circle"><i class="fa fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-circle"><i class="fa fa-heart"></i>
-                            </button>
-                            <br>
-                            <br>
-                            <h5>Normal Circle Buttons</h5>
-                            <hr/>
-                            <button type="button" class="btn btn-default btn-circle btn-lg"><i class="fa fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-primary btn-circle btn-lg"><i class="fa fa-list"></i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-circle btn-lg"><i class="fa fa-link"></i>
-                            </button>
-                            <button type="button" class="btn btn-info btn-circle btn-lg"><i class="fa fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-circle btn-lg"><i class="fa fa-times"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-heart"></i>
-                            </button>
-                            <br>
-                            <br>
-                            <h5>Normal Circle Buttons</h5>
-                            <hr/>
-                            <button type="button" class="btn btn-default btn-circle btn-xl"><i class="fa fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-primary btn-circle btn-xl"><i class="fa fa-list"></i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-circle btn-xl"><i class="fa fa-link"></i>
-                            </button>
-                            <button type="button" class="btn btn-info btn-circle btn-xl"><i class="fa fa-check"></i>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="fa fa-times"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="fa fa-heart"></i>
-                            </button>
+                            <h1>GeeksforGeeks</h1> 
+							<br/>
+							<h4>Normal Circle Buttons</h4> 
+							<button type="button" class="btn btn-primary btn-circle btn-sm">Blue</button> 
+							<button type="button" class="btn btn-secondary btn-circle btn-sm">Gray</button> 
+							<button type="button" class="btn btn-success btn-circle btn-sm">Green</button> 
+							<button type="button" class="btn btn-danger btn-circle btn-sm">Red</button> 
+							<button type="button" class="btn btn-warning btn-circle btn-sm">Yellow</button> 
+							<button type="button" class="btn btn-light btn-circle btn-sm">White</button> 
+							<button type="button" class="btn btn-dark btn-circle btn-sm">Black</button> 
+						
+							<br/><br/>
+							<h4>Large Circle Buttons</h4> 
+							<button type="button" class="btn btn-primary btn-circle btn-xl">Blue</button> 
+							<button type="button" class="btn btn-secondary btn-circle btn-xl">Gray</button> 
+							<button type="button" class="btn btn-success btn-circle btn-xl">Green</button> 
+							<button type="button" class="btn btn-danger btn-circle btn-xl">Red</button> 
+							<button type="button" class="btn btn-warning btn-circle btn-xl">Yellow</button> 
+							<button type="button" class="btn btn-light btn-circle btn-xl">White</button> 
+							<button type="button" class="btn btn-dark btn-circle btn-xl">Black</button> 
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -658,7 +632,6 @@
 	crossorigin="anonymous"></script>
 
 <script src="/jwtauth/js/datatables-simple-demo.js"></script>
-
 
 
 </body>

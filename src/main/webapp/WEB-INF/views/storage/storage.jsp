@@ -32,39 +32,39 @@
 								<thead>
 									<tr>
 										<th>Name</th>
-										<th>Position</th>
-										<th>Office</th>
-										<th>Age</th>
-										<th>Start date</th>
-										<th>Salary</th>
+										<th>Date</th>
+										<th>Type</th>
+										<th style="text-align: center;">Work</th>
 									</tr>
 								</thead>
 								<tfoot>
 									<tr>
 										<th>Name</th>
-										<th>Position</th>
-										<th>Office</th>
-										<th>Age</th>
-										<th>Start date</th>
-										<th>Salary</th>
+										<th>Date</th>
+										<th>Type</th>
+										<th style="text-align: center;">Work</th>
 									</tr>
 								</tfoot>
 								<tbody>
 									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td>61</td>
-										<td>2011/04/25</td>
-										<td>$320,800</td>
+										<td style="vertical-align : middle;"><a href="#">News <span class="badge">5</span></a><br></td>
+										<td style="vertical-align : middle;">System Architect</td>
+										<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fa fa-file" aria-hidden="true"></i></td>
+										<td style="text-align: center;">
+											<button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download" aria-hidden="true"></i></button>
+											<button type="button" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-eye" aria-hidden="true"></i></button>
+											<button type="button" class="btn btn-success btn-circle btn-sm"><i class="fas fa-star" aria-hidden="true"></i></button> 
+										</td>
 									</tr>
 									<tr>
-										<td>Garrett Winters</td>
-										<td>Accountant</td>
-										<td>Tokyo</td>
-										<td>63</td>
-										<td>2011/07/25</td>
-										<td>$170,750</td>
+										<td style="vertical-align : middle;"><a href="#">Garrett Winters <span class="badge">5</span></a><br></td>
+										<td style="vertical-align : middle;">Accountant</td>
+										<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-folder" aria-hidden="true"></i></td>
+										<td style="text-align: center;">
+											<button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download" aria-hidden="true"></i></button>
+											<button type="button" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-eye" aria-hidden="true"></i></button>
+											<button type="button" class="btn btn-success btn-circle btn-sm"><i class="fas fa-star" aria-hidden="true"></i></button> 
+										</td>
 									</tr>
 								</tbody>
 							</table>

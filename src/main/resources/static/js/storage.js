@@ -1,195 +1,44 @@
-$(document).ready(function () {
-	$('#treeview1').treeview({
-		backColor: "#FFFFFF",
-		color: "#428bca",
-		enableLinks: true,
-		data: getTree()
-	});
-	$('#treeview2').treeview({
-		color: "#428bca",
-		expandIcon: 'glyphicon glyphicon-chevron-right',
-		collapseIcon: 'glyphicon glyphicon-chevron-down',
-		nodeIcon: 'glyphicon glyphicon-bookmark',
-		data: getTree()
-	});
-	$('#treeview3').treeview({
-		expandIcon: "glyphicon glyphicon-stop",
-		collapseIcon: "glyphicon glyphicon-unchecked",
-		nodeIcon: "glyphicon glyphicon-user",
-		color: "yellow",
-		backColor: "purple",
-		onhoverColor: "orange",
-		borderColor: "red",
-		showBorder: false,
-		showTags: true,
-		highlightSelected: true,
-		selectedColor: "yellow",
-		selectedBackColor: "darkorange",
-		data: getTree()
+$(document).ready(function() {
+	$("#data_list").DataTable({
+
+		columns: [
+			{ data: "id" },
+			{ data: "name" },
+			{ data: "location" }
+		],
+
+		// 표시 건수기능 숨기기
+		lengthChange: true,
+		// 검색 기능 숨기기
+		searching: true,
+		// 정렬 기능 숨기기
+		ordering: true,
+		// 정보 표시 숨기기
+		info: true,
+		// 페이징 기능 숨기기
+		paging: true
 	});
 
-	function getTree() {
-		var data = [
-			{
-				text: 'Parent 1',
-				href: '#parent1',
-				tags: ['4'],
-				nodes: [
-					{
-						text: 'Child 1',
-						href: '#child1',
-						tags: ['2'],
-						nodes: [
-							{
-								text: 'Grandchild 1',
-								href: '#grandchild1',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 2',
-								href: '#grandchild2',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 3',
-								href: '#grandchild3',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 4',
-								href: '#grandchild4',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 5',
-								href: '#grandchild5',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 6',
-								href: '#grandchild6',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 1',
-								href: '#grandchild1',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 2',
-								href: '#grandchild2',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 3',
-								href: '#grandchild3',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 4',
-								href: '#grandchild4',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 5',
-								href: '#grandchild5',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 6',
-								href: '#grandchild6',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 1',
-								href: '#grandchild1',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 2',
-								href: '#grandchild2',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 3',
-								href: '#grandchild3',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 4',
-								href: '#grandchild4',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 5',
-								href: '#grandchild5',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 6',
-								href: '#grandchild6',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 1',
-								href: '#grandchild1',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 2',
-								href: '#grandchild2',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 3',
-								href: '#grandchild3',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 4',
-								href: '#grandchild4',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 5',
-								href: '#grandchild5',
-								tags: ['0']
-							},
-							{
-								text: 'Grandchild 6',
-								href: '#grandchild6',
-								tags: ['0']
-							}
-						]
-					},
-					{
-						text: 'Child 2',
-						href: '#child2',
-						tags: ['0']
-					}
-				]
-			},
-			{
-				text: 'Parent 2',
-				href: '#parent2',
-				tags: ['0']
-			},
-			{
-				text: 'Parent 3',
-				href: '#parent3',
-				tags: ['0']
-			},
-			{
-				text: 'Parent 4',
-				href: '#parent4',
-				tags: ['0']
-			},
-			{
-				text: 'Parent 5',
-				href: '#parent5',
-				tags: ['0']
+	function folderOpen() {
+		$.ajax({
+			url: "selectUserList.do",
+			type: "POST",
+			data: { dept_id: dept_id },
+			success: function(data) {
+				$("#userList").dataTable({
+					data: data,
+					columns: [
+						{ data: 'user_nm_ko' },
+						{ data: 'user_id' },
+						{ data: 'email' },
+						{ data: 'enable' },
+						{ data: 'pos_nm' }
+					]
+				});
+
+			}, error: function(request, status, error) {
+				console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
 			}
-		];
-		return data;
+		});
 	}
 });
