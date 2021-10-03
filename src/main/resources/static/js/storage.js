@@ -1,13 +1,15 @@
+var datatable;
+
 window.addEventListener('DOMContentLoaded', event => {
 	// Simple-DataTables
 	// https://github.com/fiduswriter/Simple-DataTables/wiki
-
 	const storageTable = document.getElementById('storage-table');
-	if (storageTable) {
-		new simpleDatatables.DataTable(storageTable);
-	}
-});
 
+	if (storageTable) {
+		datatable = new simpleDatatables.DataTable(storageTable);
+	}
+
+});
 
 $(document).on("click", "#path", function() {
 	// 현재 클릭된 Row(<tr>)
@@ -37,6 +39,7 @@ $(document).on("click", "#path", function() {
 		success: function(res) {
 			if (res.status === 200) {
 				console.log(res.data);
+				datatable.destroy();
 
 				var html = `<thead>
 					<tr>
@@ -71,6 +74,7 @@ $(document).on("click", "#path", function() {
 				$("#storage-table").empty();
 				$("#storage-table").append(html);
 
+				datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'));
 			}
 		}, error: function(error) {
 			console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
