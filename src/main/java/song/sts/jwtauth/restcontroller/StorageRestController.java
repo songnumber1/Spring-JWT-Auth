@@ -23,24 +23,19 @@ public class StorageRestController {
 		File[] files = new File(path).listFiles();
 
 		for (File file : files) {
-			if (file.isDirectory()) {
-				if (file.exists()) {
-					StorageItemModel storageItemModel = StorageItemModel.builder().id(UUID.randomUUID().toString())
-							.parendId(parentId).text(file.getName()).isDiretory(file.isDirectory())
-							.lastModified(file.lastModified()).iscanRead(file.canRead()).iscanWrite(file.canWrite())
-							.isHidden(file.isHidden()).length(file.length()).path(file.getPath())
-							.absolutePath(file.getAbsolutePath()).parent(file.getParent()).build();
+			if (file.exists()) {
+				StorageItemModel storageItemModel = StorageItemModel.builder().id(UUID.randomUUID().toString())
+						.parendId(parentId).text(file.getName()).isDirectory(file.isDirectory())
+						.lastModified(file.lastModified()).iscanRead(file.canRead()).iscanWrite(file.canWrite())
+						.isHidden(file.isHidden()).length(file.length()).path(file.getPath())
+						.absolutePath(file.getAbsolutePath()).parent(file.getParent()).build();
 
-					storageItemModels.add(storageItemModel);
-				} else {
-					System.out.println("존재하지 않는 폴더입니다.");
-				}
+				storageItemModels.add(storageItemModel);
 			}
 		}
 		
-//		JSONObject jsonObjDrive = new JSONObject();
-//		
-//        jsonObjDrive.put("nodes", storageItemModels);
+//		JSONObject jsonObjDrive = new JSONObject();		
+//      jsonObjDrive.put("nodes", storageItemModels);
         
         return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", storageItemModels, null);
 	}

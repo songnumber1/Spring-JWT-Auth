@@ -31,7 +31,7 @@ public class PageController {
 			if (file.isDirectory()) {
 				if (file.exists()) {
 					StorageItemModel storageItemModel = StorageItemModel.builder().id(UUID.randomUUID().toString())
-							.parendId(parentId).text(file.getName()).isDiretory(file.isDirectory())
+							.parendId(parentId).text(file.getName()).isDirectory(file.isDirectory())
 							.lastModified(file.lastModified()).iscanRead(file.canRead()).iscanWrite(file.canWrite())
 							.isHidden(file.isHidden()).length(file.length()).path(file.getPath())
 							.absolutePath(file.getAbsolutePath()).parent(file.getParent()).build();

@@ -46,23 +46,20 @@ $(document).on("click", "#path", function() {
 						<th>Type</th>
 						<th style="text-align: center;">Work</th>
 					</tr>
-				</thead>
-				<tfoot>
-					<tr>
-						<th style="display:none;">AbsolutePath</th>
-						<th>Name</th>
-						<th>Size</th>
-						<th>Type</th>
-						<th style="text-align: center;">Work</th>
-					</tr>
-				</tfoot>`;
+				</thead>`;
 
 				for (key in res.data) {
 					html += '<tr>';
 					html += '<td style="display:none;">' + res.data[key].absolutePath + '</td>';
-					html += '<td><a id="path" href="javascript:void(0);">' + res.data[key].text + '</a></td>';
-					html += '<td>' + res.data[key].useSize + ' / ' + res.data[key].totalSize + '</td>';
-					html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-database" aria-hidden="true"></i></td>';
+					html += '<td style="vertical-align : middle;"><a id="path" href="javascript:void(0);">' + res.data[key].text + '</a></td>';
+					html += '<td style="vertical-align : middle;">' + res.data[key].length + 'K</td>';
+					if (res.data[key].directory === true) {
+						html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-folder" aria-hidden="true"></i></td>';
+					}
+					else {
+						html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-file" aria-hidden="true"></i></td>';
+					}
+
 					html += `<td style="text-align: center;">
 					<button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download" aria-hidden="true"></i></button>
 					<button type="button" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-eye" aria-hidden="true"></i></button>
@@ -90,30 +87,15 @@ function createTable() {
 			<th>Name</th>
 			<th>Size</th>
 			<th>Type</th>
-			<th style="text-align: center;">Work</th>
 		</tr>
-	</thead>
-	<tfoot>
-		<tr>
-			<th style="display:none;">AbsolutePath</th>
-			<th>Name</th>
-			<th>Size</th>
-			<th>Type</th>
-			<th style="text-align: center;">Work</th>
-		</tr>
-	</tfoot>`;
+	</thead>`;
 
 	for (key in tc) {
 		html += '<tr>';
 		html += '<td style="display:none;">' + tc[key].absolutePath + '</td>';
-		html += '<td><a id="path" href="javascript:void(0);">' + tc[key].text + '</a></td>';
-		html += '<td>' + tc[key].useSize + ' / ' + tc[key].totalSize + '</td>';
+		html += '<td><a id="path" href="javascript:void(0); style="vertical-align : middle; ">' + tc[key].text + '</a></td>';
+		html += '<td style="vertical-align : middle;">' + tc[key].useSize + ' / ' + tc[key].totalSize + '</td>';
 		html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-database" aria-hidden="true"></i></td>';
-		html += `<td style="text-align: center;">
-					<button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download" aria-hidden="true"></i></button>
-					<button type="button" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-eye" aria-hidden="true"></i></button>
-					<button type="button" class="btn btn-success btn-circle btn-sm"><i class="fas fa-star" aria-hidden="true"></i></button> 
-				</td>`;
 		html += '</tr>';
 	}
 

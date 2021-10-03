@@ -20,7 +20,7 @@ public class StorageItemModel {
 	private String text;
 
 	// 디렉토리 / 파일
-	private boolean isDiretory;
+	private boolean isDirectory;
 
 	// 최종 수정일자
 	private long lastModified;
