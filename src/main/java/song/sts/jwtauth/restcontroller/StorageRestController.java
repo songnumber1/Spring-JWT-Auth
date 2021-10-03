@@ -38,10 +38,10 @@ public class StorageRestController {
 			}
 		}
 		
-		JSONObject jsonObjDrive = new JSONObject();
-		
-        jsonObjDrive.put("nodes", storageItemModels);
+//		JSONObject jsonObjDrive = new JSONObject();
+//		
+//        jsonObjDrive.put("nodes", storageItemModels);
         
-        return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", jsonObjDrive.toString(), null);
+        return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", storageItemModels, null);
 	}
 }

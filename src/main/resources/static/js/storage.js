@@ -1,44 +1,126 @@
-$(document).ready(function() {
-	$("#data_list").DataTable({
+window.addEventListener('DOMContentLoaded', event => {
+	// Simple-DataTables
+	// https://github.com/fiduswriter/Simple-DataTables/wiki
 
-		columns: [
-			{ data: "id" },
-			{ data: "name" },
-			{ data: "location" }
-		],
-
-		// 표시 건수기능 숨기기
-		lengthChange: true,
-		// 검색 기능 숨기기
-		searching: true,
-		// 정렬 기능 숨기기
-		ordering: true,
-		// 정보 표시 숨기기
-		info: true,
-		// 페이징 기능 숨기기
-		paging: true
-	});
-
-	function folderOpen() {
-		$.ajax({
-			url: "selectUserList.do",
-			type: "POST",
-			data: { dept_id: dept_id },
-			success: function(data) {
-				$("#userList").dataTable({
-					data: data,
-					columns: [
-						{ data: 'user_nm_ko' },
-						{ data: 'user_id' },
-						{ data: 'email' },
-						{ data: 'enable' },
-						{ data: 'pos_nm' }
-					]
-				});
-
-			}, error: function(request, status, error) {
-				console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-			}
-		});
+	const storageTable = document.getElementById('storage-table');
+	if (storageTable) {
+		new simpleDatatables.DataTable(storageTable);
 	}
+});
+
+
+$(document).on("click", "#path", function() {
+	// 현재 클릭된 Row(<tr>)
+	var tr = $(this).parent().parent()
+	var td = tr.children();
+
+	// tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
+	console.log("클릭한 Row의 모든 데이터 : " + tr.text());
+
+	// td.eq(index)를 통해 값을 가져올 수도 있다.
+	var absolutePath = td.eq(0).text();
+
+	console.log(absolutePath);
+
+	let path = $(this).text();
+
+	if (path === undefined ||
+		path === null ||
+		path === "") {
+		return;
+	}
+
+	$.ajax({
+		url: "/jwtauth/storage/getdirinfo",
+		type: "POST",
+		data: { parentId: path, path: absolutePath },
+		success: function(res) {
+			if (res.status === 200) {
+				console.log(res.data);
+
+				var html = `<thead>
+					<tr>
+						<th style="display:none;">AbsolutePath</th>
+						<th>Name</th>
+						<th>Size</th>
+						<th>Type</th>
+						<th style="text-align: center;">Work</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th style="display:none;">AbsolutePath</th>
+						<th>Name</th>
+						<th>Size</th>
+						<th>Type</th>
+						<th style="text-align: center;">Work</th>
+					</tr>
+				</tfoot>`;
+
+				for (key in res.data) {
+					html += '<tr>';
+					html += '<td style="display:none;">' + res.data[key].absolutePath + '</td>';
+					html += '<td><a id="path" href="javascript:void(0);">' + res.data[key].text + '</a></td>';
+					html += '<td>' + res.data[key].useSize + ' / ' + res.data[key].totalSize + '</td>';
+					html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-database" aria-hidden="true"></i></td>';
+					html += `<td style="text-align: center;">
+					<button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download" aria-hidden="true"></i></button>
+					<button type="button" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-eye" aria-hidden="true"></i></button>
+					<button type="button" class="btn btn-success btn-circle btn-sm"><i class="fas fa-star" aria-hidden="true"></i></button> 
+				</td>`;
+					html += '</tr>';
+				}
+
+				$("#storage-table").empty();
+				$("#storage-table").append(html);
+
+			}
+		}, error: function(error) {
+			console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+		}
+	});
+});
+
+function createTable() {
+	let tc = JSON.parse(document.getElementById("storageData").innerHTML);
+
+	var html = `<thead>
+		<tr>
+			<th style="display:none;">AbsolutePath</th>
+			<th>Name</th>
+			<th>Size</th>
+			<th>Type</th>
+			<th style="text-align: center;">Work</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th style="display:none;">AbsolutePath</th>
+			<th>Name</th>
+			<th>Size</th>
+			<th>Type</th>
+			<th style="text-align: center;">Work</th>
+		</tr>
+	</tfoot>`;
+
+	for (key in tc) {
+		html += '<tr>';
+		html += '<td style="display:none;">' + tc[key].absolutePath + '</td>';
+		html += '<td><a id="path" href="javascript:void(0);">' + tc[key].text + '</a></td>';
+		html += '<td>' + tc[key].useSize + ' / ' + tc[key].totalSize + '</td>';
+		html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-database" aria-hidden="true"></i></td>';
+		html += `<td style="text-align: center;">
+					<button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download" aria-hidden="true"></i></button>
+					<button type="button" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-eye" aria-hidden="true"></i></button>
+					<button type="button" class="btn btn-success btn-circle btn-sm"><i class="fas fa-star" aria-hidden="true"></i></button> 
+				</td>`;
+		html += '</tr>';
+	}
+
+	$("#storage-table").empty();
+	$("#storage-table").append(html);
+}
+
+$(document).ready(function() {
+	createTable();
 });

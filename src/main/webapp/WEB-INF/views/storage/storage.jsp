@@ -28,9 +28,10 @@
 				<div class="col-xl-9">
 					<div class="card mb-4">
 						<div class="card-body">
-							<table id="datatablesSimple">
+							<table id="storage-table">
 								<thead>
 									<tr>
+										<th style="display:none;">AbsolutePath</th>
 										<th>Name</th>
 										<th>Date</th>
 										<th>Type</th>
@@ -39,6 +40,7 @@
 								</thead>
 								<tfoot>
 									<tr>
+										<th style="display:none;">AbsolutePath</th>
 										<th>Name</th>
 										<th>Date</th>
 										<th>Type</th>
@@ -47,6 +49,7 @@
 								</tfoot>
 								<tbody>
 									<tr>
+										<td style="display:none;">absolutePath</td>
 										<td style="vertical-align : middle;"><a href="#">News <span class="badge">5</span></a><br></td>
 										<td style="vertical-align : middle;">System Architect</td>
 										<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fa fa-file" aria-hidden="true"></i></td>
@@ -57,6 +60,7 @@
 										</td>
 									</tr>
 									<tr>
+										<td style="display:none;">absolutePath</td>
 										<td style="vertical-align : middle;"><a href="#">Garrett Winters <span class="badge">5</span></a><br></td>
 										<td style="vertical-align : middle;">Accountant</td>
 										<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-folder" aria-hidden="true"></i></td>
@@ -96,9 +100,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
 <script type="text/javascript" src="/jwtauth/js/treeview.js"></script>
+<script type="text/javascript" src="/jwtauth/js/storage.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-<script src="/jwtauth/js/datatables-simple-demo.js"></script>
 
 </body>
 </html>

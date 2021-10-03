@@ -53,7 +53,7 @@ public class PageController {
 
 	@GetMapping("storage")
 	public String storage(Model model) {
-		String drive, id;
+		String drive, id, absolutePath;
 
 		double totalSize, freeSize, useSize;
 
@@ -64,6 +64,7 @@ public class PageController {
 		for (File root : roots) {
 			id = UUID.randomUUID().toString();
 			drive = root.getAbsolutePath();
+			absolutePath = root.getAbsolutePath();
 			totalSize = root.getTotalSpace() / Math.pow(1024, 3);
 			useSize = root.getUsableSpace() / Math.pow(1024, 3);
 			freeSize = totalSize - useSize;
@@ -73,6 +74,7 @@ public class PageController {
 			jsonObjDrive.put("id", id);
 			jsonObjDrive.put("parentId", "");
 	        jsonObjDrive.put("text", drive);
+	        jsonObjDrive.put("absolutePath", absolutePath);
 	        jsonObjDrive.put("totalSize", totalSize);
 	        jsonObjDrive.put("useSize", useSize);
 	        jsonObjDrive.put("freeSize", freeSize);
