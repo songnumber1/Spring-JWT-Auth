@@ -1,4 +1,5 @@
 var datatable;
+let path;
 
 window.addEventListener('DOMContentLoaded', event => {
 	// Simple-DataTables
@@ -9,8 +10,6 @@ window.addEventListener('DOMContentLoaded', event => {
 		datatable = new simpleDatatables.DataTable(storageTable);
 	}
 });
-
-var isDrive = false;
 
 $(document).on("click", "#path", function() {
 	// 현재 클릭된 Row(<tr>)
@@ -59,11 +58,9 @@ $(document).on("click", "#path", function() {
 					html += '<td style="vertical-align : middle;">' + res.data[key].length + 'K</td>';
 					if (res.data[key].directory === true) {
 						html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-folder" aria-hidden="true"></i></td>';
-						isDrive = true;
 					}
 					else {
 						html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-file" aria-hidden="true"></i></td>';
-						isDrive = false;
 					}
 
 					html += `<td style="text-align: center;">
@@ -78,6 +75,7 @@ $(document).on("click", "#path", function() {
 				$("#storage-table").append(html);
 
 				datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'));
+				document.getElementById('btn-path-up').disabled = false;
 			}
 		}, error: function(error) {
 			console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -111,11 +109,11 @@ function createTable() {
 }
 
 $(document).ready(function() {
-	isDrive = true;
+	document.getElementById('btn-path-up').disabled = true;
 
 	createTable();
 
 	$('#btn-path-up').click(function() {
-		alert(isDrive);
+		
 	});
 });
