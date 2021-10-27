@@ -22,7 +22,7 @@ public class StorageRestController {
 		
 		File[] files = new File(path).listFiles();
 
-		for (File file : files) {
+		for (File file : files) { 
 			if (file.exists()) {
 				StorageItemModel storageItemModel = StorageItemModel.builder().id(UUID.randomUUID().toString())
 						.parendId(parentId).text(file.getName()).isDirectory(file.isDirectory())
