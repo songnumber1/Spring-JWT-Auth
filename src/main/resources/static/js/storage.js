@@ -8,8 +8,9 @@ window.addEventListener('DOMContentLoaded', event => {
 	if (storageTable) {
 		datatable = new simpleDatatables.DataTable(storageTable);
 	}
-
 });
+
+var isDrive = false;
 
 $(document).on("click", "#path", function() {
 	// 현재 클릭된 Row(<tr>)
@@ -58,9 +59,11 @@ $(document).on("click", "#path", function() {
 					html += '<td style="vertical-align : middle;">' + res.data[key].length + 'K</td>';
 					if (res.data[key].directory === true) {
 						html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-folder" aria-hidden="true"></i></td>';
+						isDrive = true;
 					}
 					else {
 						html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-file" aria-hidden="true"></i></td>';
+						isDrive = false;
 					}
 
 					html += `<td style="text-align: center;">
@@ -108,5 +111,11 @@ function createTable() {
 }
 
 $(document).ready(function() {
+	isDrive = true;
+
 	createTable();
+
+	$('#btn-path-up').click(function() {
+		alert(isDrive);
+	});
 });

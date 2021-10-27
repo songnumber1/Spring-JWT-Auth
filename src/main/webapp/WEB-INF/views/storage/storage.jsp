@@ -4,6 +4,7 @@
 <%@include file="../layout/left.jsp"%>
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
+<link rel="stylesheet" href="/jwtauth/css/storage.css" />
 
 <div id="layoutSidenav_content">
 	<main>
@@ -28,6 +29,12 @@
 				<div class="col-xl-9">
 					<div class="card mb-4">
 						<div class="card-body">
+							<div class="path-container">
+								<button type="button" id="btn-path-up" class="btn btn-primary btn-circle btn btn-path-control"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+								<button type="button" id="btn-path-back" class="btn btn-secondary btn-circle btn btn-path-control"><i class="fas fa-arrow-left" aria-hidden="true"></i></button>
+								<button type="button" id="btn-path-refresh" class="btn btn-success btn-circle btn"><i class="fas fa-sync-alt" aria-hidden="true"></i></button> 
+							</div>
+
 							<table id="storage-table">
 								<thead>
 									<tr>

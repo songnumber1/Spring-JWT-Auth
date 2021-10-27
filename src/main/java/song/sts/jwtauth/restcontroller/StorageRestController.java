@@ -28,6 +28,7 @@ public class StorageRestController {
 						.parendId(parentId).text(file.getName()).isDirectory(file.isDirectory())
 						.lastModified(file.lastModified()).iscanRead(file.canRead()).iscanWrite(file.canWrite())
 						.isHidden(file.isHidden()).length(file.length()).path(file.getPath())
+						.isDrive(false)
 						.absolutePath(file.getAbsolutePath()).parent(file.getParent()).build();
 
 				storageItemModels.add(storageItemModel);

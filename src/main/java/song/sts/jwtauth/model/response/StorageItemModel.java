@@ -45,4 +45,7 @@ public class StorageItemModel {
 
 	// 부모 경로
 	private String parent;
+	
+	// 드라이브
+	private boolean isDrive;
 }
