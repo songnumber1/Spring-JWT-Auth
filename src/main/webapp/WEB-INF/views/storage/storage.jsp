@@ -31,7 +31,7 @@
 						<div class="card-body">
 							<div>
 								<div style="float: left;">
-									<h4> Path : <span class = "label label-default">My computer</span></h4>
+									<h4> Path : <span class = "label label-default lbl-path">My computer</span></h4>
 								</div>
 
 								<div class="path-container">

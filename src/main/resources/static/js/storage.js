@@ -1,5 +1,6 @@
 var datatable;
-let path;
+const rootPath = "My Computer"
+let explorerPath = rootPath;
 
 window.addEventListener('DOMContentLoaded', event => {
 	// Simple-DataTables
@@ -10,6 +11,11 @@ window.addEventListener('DOMContentLoaded', event => {
 		datatable = new simpleDatatables.DataTable(storageTable);
 	}
 });
+
+let setPathFun = function setPath(path) {
+	explorerPath = path;
+	$('.lbl-path').html(explorerPath);
+}
 
 $(document).on("click", "#path", function() {
 	// 현재 클릭된 Row(<tr>)
@@ -55,11 +61,13 @@ $(document).on("click", "#path", function() {
 					html += '<tr>';
 					html += '<td style="display:none;">' + res.data[key].absolutePath + '</td>';
 					html += '<td style="vertical-align : middle;"><a id="path" href="javascript:void(0);">' + res.data[key].text + '</a></td>';
-					html += '<td style="vertical-align : middle;">' + res.data[key].length + 'K</td>';
+					
 					if (res.data[key].directory === true) {
+						html += '<td style="vertical-align : middle;"></td>';
 						html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-folder" aria-hidden="true"></i></td>';
 					}
 					else {
+						html += '<td style="vertical-align : middle;text-align: right">' + res.data[key].length + ' K</td>';
 						html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-file" aria-hidden="true"></i></td>';
 					}
 
@@ -76,15 +84,20 @@ $(document).on("click", "#path", function() {
 
 				datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'));
 				document.getElementById('btn-path-up').disabled = false;
+				
+				setPathFun(absolutePath);
 			}
 		}, error: function(error) {
 			console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
 		}
 	});
+	
+	
 });
 
 function createTable() {
 	let tc = JSON.parse(document.getElementById("storageData").innerHTML);
+	setPathFun(rootPath);
 
 	var html = `<thead>
 		<tr>
@@ -107,13 +120,41 @@ function createTable() {
 	$("#storage-table").empty();
 	$("#storage-table").append(html);
 }
-
+	
 $(document).ready(function() {
 	document.getElementById('btn-path-up').disabled = true;
 
 	createTable();
-
+	
 	$('#btn-path-up').click(function() {
+		/*
+		let paths = explorerPath.split('\\');
+		
+		if(paths.length === 1) {
+			createTable();
+			setPath = rootPath;
+			return;
+		}
+		*/
+		
+		
+		console.clear();
+		console.log(explorerPath);
+		let pathLastIndexOf = explorerPath.lastIndexOf('\\');
+		console.log(pathLastIndexOf);
+		
+		if(pathLastIndexOf < 0) {
+			return;
+		}
+		
+		if(pathLastIndexOf === 2) {
+			createTable();
+			setPath = rootPath;
+			return;
+		}
+		
+		
+		console.log(explorerPath.substring(0, pathLastIndexOf));
 		
 	});
 });
