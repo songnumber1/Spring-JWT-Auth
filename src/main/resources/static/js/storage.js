@@ -2,37 +2,38 @@ var datatable;
 const rootPath = "My Computer"
 let explorerPath = rootPath;
 let pathHistory = [];
-let pathHistoryIndex = -1;
+let pathHistoryIndex = 0;
 
 window.addEventListener('DOMContentLoaded', event => {
 	// Simple-DataTables
 	// https://github.com/fiduswriter/Simple-DataTables/wiki
-	const storageTable = document.getElementById('storage-table');
+	// 옵션 관련 : https://datatables.net/manual/options
 
-	if (storageTable) {
-		datatable = new simpleDatatables.DataTable(storageTable);
+	if (document.getElementById('storage-table')) {
+		datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'), { 
+			paging: false, // 페이징 숨김 
+			perPage: 1 // 보여줄 페이지 수 
+		});
 	}
 });
 
-let setPathFun = function setPath(path, isMoveAction = false) {
+let setPathFunc = function setPath(path, isMoveAction = false) {
 	explorerPath = path;
 	$('.lbl-path').html(explorerPath);
-	
-	if(!isMoveAction){
+
+	if (!isMoveAction) {
 		pathHistory.push(path);
 	}
-	
-	pathHistoryIndex = pathHistory.length - 1;
 }
 
-let pathMoveFun = function pathMove(path, absolutePath, isMoveAction = false) {
+let pathMoveFunc = function pathMove(path, absolutePath, isMoveAction = false) {
 	$.ajax({
 		url: "/jwtauth/storage/getdirinfo",
 		type: "POST",
 		data: { parentId: path, path: absolutePath },
 		success: function(res) {
 			if (res.status === 200) {
-				console.log(res.data);
+				//console.log(res.data);
 				datatable.destroy();
 
 				var html = `<thead>
@@ -49,7 +50,7 @@ let pathMoveFun = function pathMove(path, absolutePath, isMoveAction = false) {
 					html += '<tr>';
 					html += '<td style="display:none;">' + res.data[key].absolutePath + '</td>';
 					html += '<td style="vertical-align : middle;"><a id="path" href="javascript:void(0);">' + res.data[key].text + '</a></td>';
-					
+
 					if (res.data[key].directory === true) {
 						html += '<td style="vertical-align : middle;"></td>';
 						html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-folder" aria-hidden="true"></i></td>';
@@ -73,9 +74,15 @@ let pathMoveFun = function pathMove(path, absolutePath, isMoveAction = false) {
 				datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'));
 				document.getElementById('btn-path-up').disabled = false;
 				document.getElementById('btn-path-back').disabled = false;
-				
-				pathHistoryIndex = pathHistoryIndex - 1;
-				setPathFun(absolutePath, isMoveAction);
+
+				setPathFunc(absolutePath, isMoveAction);
+
+				if (!isMoveAction) {
+					pathHistoryIndex = pathHistoryIndex + 1;
+				}
+				else {
+					pathBeforeMoveFunc();
+				}
 			}
 		}, error: function(error) {
 			console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -89,12 +96,12 @@ $(document).on("click", "#path", function() {
 	var td = tr.children();
 
 	// tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
-	console.log("클릭한 Row의 모든 데이터 : " + tr.text());
+	//console.log("클릭한 Row의 모든 데이터 : " + tr.text());
 
 	// td.eq(index)를 통해 값을 가져올 수도 있다.
 	var absolutePath = td.eq(0).text();
 
-	console.log(absolutePath);
+	//console.log(absolutePath);
 
 	let path = $(this).text();
 
@@ -103,15 +110,32 @@ $(document).on("click", "#path", function() {
 		path === "") {
 		return;
 	}
-	
-	pathMoveFun(path, absolutePath, false);
+
+	console.log(path, absolutePath);
+
+	pathMoveFunc(path, absolutePath, false);
 });
 
 
+function createTable(isMoveAction = false) {
+	/*	
+	document.getElementById('btn-path-up').disabled = true;
+	
+	if(pathHistoryIndex <= 0) {
+		document.getElementById('btn-path-back').disabled = true;
+	}
+*/
 
-function createTable() {
+	if (datatable !== undefined && datatable !== null) {
+		datatable.destroy();
+		datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'), { 
+			paging: false, // 페이징 숨김 
+			perPage: 1 // 보여줄 페이지 수 
+		});
+	}
+	
 	let tc = JSON.parse(document.getElementById("storageData").innerHTML);
-	setPathFun(rootPath);
+	setPathFunc(rootPath, isMoveAction);
 
 	var html = `<thead>
 		<tr>
@@ -130,52 +154,60 @@ function createTable() {
 		html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-database" aria-hidden="true"></i></td>';
 		html += '</tr>';
 	}
-
+    
 	$("#storage-table").empty();
 	$("#storage-table").append(html);
 }
-	
+
 $(document).ready(function() {
-	document.getElementById('btn-path-up').disabled = true;
-	document.getElementById('btn-path-back').disabled = true;
-	
 	createTable();
-	
+
 	$('#btn-path-up').click(function() {
-		if(explorerPath.length <= 0) {
+		if (explorerPath.length <= 0) {
 			return;
 		}
-		
-		if(explorerPath.length === 3) {
-			createTable();
+
+		if (explorerPath.length === 3) {
+			pathBeforeMoveFunc();
+			createTable(true);
 			setPath = rootPath;
 			return;
 		}
-		
+
 		let pathLastIndexOf = explorerPath.lastIndexOf('\\');
 		let path = explorerPath.substring(0, pathLastIndexOf + 1);
-		pathMoveFun(path, path, true);
+
+		pathMoveFunc(path, path, true);
+	});
+
+	$('#btn-path-back').click(function() {
+		if (pathHistory.length === 0) {
+			return;
+		}
+
+		if (pathHistoryIndex - 1 === 0) {
+			pathBeforeMoveFunc();
+			createTable(true);
+			return;
+		}
+
+		if (pathHistory[pathHistoryIndex - 1] === undefined ||
+			pathHistory[pathHistoryIndex - 1] === null) {
+			pathHistory.length = 0;
+			pathHistoryIndex = 0;
+			return;
+		}
+
+		pathMoveFunc(pathHistory[pathHistoryIndex - 1], pathHistory[pathHistoryIndex - 1], true);
 	});
 	
-	$('#btn-path-back').click(function() {
-		console.log(pathHistory, pathHistoryIndex - 1);
-		
-		if(pathHistory.length === 0) {
-			return;
-		}
-		
-		if(pathHistoryIndex - 1 === 0 || pathHistory[pathHistoryIndex - 1] === rootPath) {
-			createTable();
-			pathHistoryIndex = pathHistoryIndex - 1;
-			return;
-		}
-		
-		if(pathHistory[pathHistoryIndex - 1] === undefined ||
-			pathHistory[pathHistoryIndex - 1] === null) {
-			pathHistoryIndex = pathHistoryIndex - 1;
-			return;
-		}
-		
-		pathMoveFun(pathHistory[pathHistoryIndex - 1], pathHistory[pathHistoryIndex - 1], true);
+	$('#btn-path-refresh').click(function() {
+		createTable();
 	});
 });
+
+let pathBeforeMoveFunc = function pathBeforeMove() {
+	if (pathHistoryIndex >= 1) {
+		pathHistoryIndex = pathHistoryIndex - 1;
+	}
+}
