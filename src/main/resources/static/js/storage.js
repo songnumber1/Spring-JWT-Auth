@@ -2,6 +2,7 @@ var datatable;
 const rootPath = "My Computer"
 let explorerPath = rootPath;
 let pathHistory = [];
+let pathHistoryIndex = -1;
 
 window.addEventListener('DOMContentLoaded', event => {
 	// Simple-DataTables
@@ -13,13 +14,18 @@ window.addEventListener('DOMContentLoaded', event => {
 	}
 });
 
-let setPathFun = function setPath(path) {
+let setPathFun = function setPath(path, isMoveAction = false) {
 	explorerPath = path;
 	$('.lbl-path').html(explorerPath);
-	pathHistory.push(path);
+	
+	if(!isMoveAction){
+		pathHistory.push(path);
+	}
+	
+	pathHistoryIndex = pathHistory.length - 1;
 }
 
-let pathMoveFun = function pathMove(path, absolutePath) {
+let pathMoveFun = function pathMove(path, absolutePath, isMoveAction = false) {
 	$.ajax({
 		url: "/jwtauth/storage/getdirinfo",
 		type: "POST",
@@ -66,8 +72,10 @@ let pathMoveFun = function pathMove(path, absolutePath) {
 
 				datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'));
 				document.getElementById('btn-path-up').disabled = false;
+				document.getElementById('btn-path-back').disabled = false;
 				
-				setPathFun(absolutePath);
+				pathHistoryIndex = pathHistoryIndex - 1;
+				setPathFun(absolutePath, isMoveAction);
 			}
 		}, error: function(error) {
 			console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -96,7 +104,7 @@ $(document).on("click", "#path", function() {
 		return;
 	}
 	
-	pathMoveFun(path, absolutePath);
+	pathMoveFun(path, absolutePath, false);
 });
 
 
@@ -129,20 +137,11 @@ function createTable() {
 	
 $(document).ready(function() {
 	document.getElementById('btn-path-up').disabled = true;
-
+	document.getElementById('btn-path-back').disabled = true;
+	
 	createTable();
 	
 	$('#btn-path-up').click(function() {
-		/*
-		let paths = explorerPath.split('\\');
-		
-		if(paths.length === 1) {
-			createTable();
-			setPath = rootPath;
-			return;
-		}
-		*/
-
 		if(explorerPath.length <= 0) {
 			return;
 		}
@@ -155,6 +154,28 @@ $(document).ready(function() {
 		
 		let pathLastIndexOf = explorerPath.lastIndexOf('\\');
 		let path = explorerPath.substring(0, pathLastIndexOf + 1);
-		pathMoveFun(path, path);
+		pathMoveFun(path, path, true);
+	});
+	
+	$('#btn-path-back').click(function() {
+		console.log(pathHistory, pathHistoryIndex - 1);
+		
+		if(pathHistory.length === 0) {
+			return;
+		}
+		
+		if(pathHistoryIndex - 1 === 0 || pathHistory[pathHistoryIndex - 1] === rootPath) {
+			createTable();
+			pathHistoryIndex = pathHistoryIndex - 1;
+			return;
+		}
+		
+		if(pathHistory[pathHistoryIndex - 1] === undefined ||
+			pathHistory[pathHistoryIndex - 1] === null) {
+			pathHistoryIndex = pathHistoryIndex - 1;
+			return;
+		}
+		
+		pathMoveFun(pathHistory[pathHistoryIndex - 1], pathHistory[pathHistoryIndex - 1], true);
 	});
 });
