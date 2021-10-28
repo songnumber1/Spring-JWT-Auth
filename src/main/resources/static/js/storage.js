@@ -1,6 +1,7 @@
 var datatable;
 const rootPath = "My Computer"
 let explorerPath = rootPath;
+let pathHistory = [];
 
 window.addEventListener('DOMContentLoaded', event => {
 	// Simple-DataTables
@@ -15,29 +16,10 @@ window.addEventListener('DOMContentLoaded', event => {
 let setPathFun = function setPath(path) {
 	explorerPath = path;
 	$('.lbl-path').html(explorerPath);
+	pathHistory.push(path);
 }
 
-$(document).on("click", "#path", function() {
-	// 현재 클릭된 Row(<tr>)
-	var tr = $(this).parent().parent()
-	var td = tr.children();
-
-	// tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
-	console.log("클릭한 Row의 모든 데이터 : " + tr.text());
-
-	// td.eq(index)를 통해 값을 가져올 수도 있다.
-	var absolutePath = td.eq(0).text();
-
-	console.log(absolutePath);
-
-	let path = $(this).text();
-
-	if (path === undefined ||
-		path === null ||
-		path === "") {
-		return;
-	}
-
+let pathMoveFun = function pathMove(path, absolutePath) {
 	$.ajax({
 		url: "/jwtauth/storage/getdirinfo",
 		type: "POST",
@@ -72,10 +54,10 @@ $(document).on("click", "#path", function() {
 					}
 
 					html += `<td style="text-align: center;">
-					<button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download" aria-hidden="true"></i></button>
-					<button type="button" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-eye" aria-hidden="true"></i></button>
-					<button type="button" class="btn btn-success btn-circle btn-sm"><i class="fas fa-star" aria-hidden="true"></i></button> 
-				</td>`;
+						<button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download" aria-hidden="true"></i></button>
+						<button type="button" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-eye" aria-hidden="true"></i></button>
+						<button type="button" class="btn btn-success btn-circle btn-sm"><i class="fas fa-star" aria-hidden="true"></i></button> 
+					</td>`;
 					html += '</tr>';
 				}
 
@@ -91,9 +73,33 @@ $(document).on("click", "#path", function() {
 			console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
 		}
 	});
+}
+
+$(document).on("click", "#path", function() {
+	// 현재 클릭된 Row(<tr>)
+	var tr = $(this).parent().parent()
+	var td = tr.children();
+
+	// tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
+	console.log("클릭한 Row의 모든 데이터 : " + tr.text());
+
+	// td.eq(index)를 통해 값을 가져올 수도 있다.
+	var absolutePath = td.eq(0).text();
+
+	console.log(absolutePath);
+
+	let path = $(this).text();
+
+	if (path === undefined ||
+		path === null ||
+		path === "") {
+		return;
+	}
 	
-	
+	pathMoveFun(path, absolutePath);
 });
+
+
 
 function createTable() {
 	let tc = JSON.parse(document.getElementById("storageData").innerHTML);
@@ -136,25 +142,19 @@ $(document).ready(function() {
 			return;
 		}
 		*/
-		
-		
-		console.clear();
-		console.log(explorerPath);
-		let pathLastIndexOf = explorerPath.lastIndexOf('\\');
-		console.log(pathLastIndexOf);
-		
-		if(pathLastIndexOf < 0) {
+
+		if(explorerPath.length <= 0) {
 			return;
 		}
 		
-		if(pathLastIndexOf === 2) {
+		if(explorerPath.length === 3) {
 			createTable();
 			setPath = rootPath;
 			return;
 		}
 		
-		
-		console.log(explorerPath.substring(0, pathLastIndexOf));
-		
+		let pathLastIndexOf = explorerPath.lastIndexOf('\\');
+		let path = explorerPath.substring(0, pathLastIndexOf + 1);
+		pathMoveFun(path, path);
 	});
 });
