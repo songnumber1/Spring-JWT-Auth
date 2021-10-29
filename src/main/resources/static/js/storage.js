@@ -26,7 +26,7 @@ let setPathFunc = function setPath(path, isMoveAction = false) {
 	}
 }
 
-let pathMoveFunc = function pathMove(path, absolutePath, isMoveAction = false) {
+let pathMoveFunc = function pathMove(path, absolutePath, isMoveAction = false, isFowardPath = false) {
 	$.ajax({
 		url: "/jwtauth/storage/getdirinfo",
 		type: "POST",
@@ -73,15 +73,24 @@ let pathMoveFunc = function pathMove(path, absolutePath, isMoveAction = false) {
 
 				datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'));
 				document.getElementById('btn-path-up').disabled = false;
-				document.getElementById('btn-path-back').disabled = false;
+				//document.getElementById('btn-path-back').disabled = false;
+				//document.getElementById('btn-path-foward').disabled = false;
 
 				setPathFunc(absolutePath, isMoveAction);
 
 				if (!isMoveAction) {
 					pathHistoryIndex = pathHistoryIndex + 1;
+					
+					document.getElementById('btn-path-foward').disabled = (pathHistory.length >= pathHistoryIndex + 1);
+					document.getElementById('btn-path-back').disabled = pathHistoryIndex === 0;
 				}
 				else {
-					pathBeforeMoveFunc();
+					if(isFowardPath) {
+						pathFowardMoveFunc();
+					}
+					else {
+						pathBeforeMoveFunc();
+					}
 				}
 			}
 		}, error: function(error) {
@@ -118,13 +127,9 @@ $(document).on("click", "#path", function() {
 
 
 function createTable(isMoveAction = false) {
-	/*	
-	document.getElementById('btn-path-up').disabled = true;
-	
-	if(pathHistoryIndex <= 0) {
-		document.getElementById('btn-path-back').disabled = true;
-	}
-*/
+	document.getElementById('btn-path-up').disabled = true;	
+	document.getElementById('btn-path-back').disabled = pathHistoryIndex <= 0;
+	document.getElementById('btn-path-foward').disabled = pathHistoryIndex > pathHistory.length - 1;
 
 	if (datatable !== undefined && datatable !== null) {
 		datatable.destroy();
@@ -201,13 +206,43 @@ $(document).ready(function() {
 		pathMoveFunc(pathHistory[pathHistoryIndex - 1], pathHistory[pathHistoryIndex - 1], true);
 	});
 	
+	$('#btn-path-foward').click(function() {		
+		if (pathHistory.length - 1 === pathHistoryIndex) {
+			return;
+		}
+		
+		if (pathHistory[pathHistoryIndex + 1] === undefined ||
+			pathHistory[pathHistoryIndex + 1] === null) {
+			pathHistoryIndex = pathHistory.length - 1;
+			return;
+		}
+
+		pathMoveFunc(pathHistory[pathHistoryIndex + 1], pathHistory[pathHistoryIndex + 1], true, true);
+	});
+	
 	$('#btn-path-refresh').click(function() {
 		createTable();
-	});
+	});	
 });
 
 let pathBeforeMoveFunc = function pathBeforeMove() {
 	if (pathHistoryIndex >= 1) {
 		pathHistoryIndex = pathHistoryIndex - 1;
 	}
+	
+	document.getElementById('btn-path-foward').disabled = !(pathHistory.length > pathHistoryIndex + 1);
+	document.getElementById('btn-path-back').disabled = pathHistoryIndex === 0;
+	
+	console.log(pathHistory.length, pathHistoryIndex);
+}
+
+let pathFowardMoveFunc = function pathFowardMove() {
+	if (pathHistoryIndex - 1 <= pathHistory.length) {
+		pathHistoryIndex = pathHistoryIndex + 1;
+	}
+	
+	document.getElementById('btn-path-foward').disabled = !(pathHistory.length > pathHistoryIndex + 1);
+	document.getElementById('btn-path-back').disabled = pathHistoryIndex === 0;
+	
+	console.log(pathHistory.length, pathHistoryIndex);
 }
