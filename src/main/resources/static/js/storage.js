@@ -3,6 +3,7 @@ const rootPath = "My Computer"
 let explorerPath = rootPath;
 let pathHistory = [];
 let pathHistoryIndex = 0;
+let pathAction = Object.freeze({ MOVE: 0, BACK: 1, FOWARD: 2, UP: 3, REFRESH: 4 });
 
 window.addEventListener('DOMContentLoaded', event => {
 	// Simple-DataTables
@@ -10,23 +11,23 @@ window.addEventListener('DOMContentLoaded', event => {
 	// 옵션 관련 : https://datatables.net/manual/options
 
 	if (document.getElementById('storage-table')) {
-		datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'), { 
+		datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'), {
 			paging: false, // 페이징 숨김 
 			perPage: 1 // 보여줄 페이지 수 
 		});
 	}
 });
 
-let setPathFunc = function setPath(path, isMoveAction = false) {
+let setPathFunc = function setPath(path, action) {
 	explorerPath = path;
 	$('.lbl-path').html(explorerPath);
 
-	if (!isMoveAction) {
+	if (action == pathAction.MOVE) {
 		pathHistory.push(path);
 	}
 }
 
-let pathMoveFunc = function pathMove(path, absolutePath, isMoveAction = false, isFowardPath = false) {
+let pathMoveFunc = function pathMove(path, absolutePath, action) {
 	$.ajax({
 		url: "/jwtauth/storage/getdirinfo",
 		type: "POST",
@@ -73,25 +74,45 @@ let pathMoveFunc = function pathMove(path, absolutePath, isMoveAction = false, i
 
 				datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'));
 				document.getElementById('btn-path-up').disabled = false;
-				//document.getElementById('btn-path-back').disabled = false;
-				//document.getElementById('btn-path-foward').disabled = false;
 
-				setPathFunc(absolutePath, isMoveAction);
+				setPathFunc(absolutePath, action);
 
-				if (!isMoveAction) {
+				switch (action) {
+					case pathAction.MOVE:
+						pathHistoryIndex = pathHistoryIndex + 1;
+
+						document.getElementById('btn-path-foward').disabled = pathHistory.length - 1 === pathHistoryIndex;
+						document.getElementById('btn-path-back').disabled = pathHistoryIndex === 0;
+						break;
+
+					case pathAction.BACK:
+						pathBeforeMoveFunc();
+						break;
+
+					case pathAction.FOWARD:
+						pathFowardMoveFunc();
+						break;
+				}
+
+/*
+				if (isPathHistorySave) {
 					pathHistoryIndex = pathHistoryIndex + 1;
-					
-					document.getElementById('btn-path-foward').disabled = (pathHistory.length >= pathHistoryIndex + 1);
+
+					document.getElementById('btn-path-foward').disabled = pathHistory.length - 1 === pathHistoryIndex;
 					document.getElementById('btn-path-back').disabled = pathHistoryIndex === 0;
 				}
 				else {
-					if(isFowardPath) {
+					console.log(isFowardPath);
+
+					if (isFowardPath) {
 						pathFowardMoveFunc();
 					}
 					else {
 						pathBeforeMoveFunc();
 					}
 				}
+*/
+				logFunc('setPath');
 			}
 		}, error: function(error) {
 			console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -122,25 +143,25 @@ $(document).on("click", "#path", function() {
 
 	console.log(path, absolutePath);
 
-	pathMoveFunc(path, absolutePath, false);
+	pathMoveFunc(path, absolutePath, pathAction.MOVE);
 });
 
 
-function createTable(isMoveAction = false) {
-	document.getElementById('btn-path-up').disabled = true;	
+function createTable(action) {
+	document.getElementById('btn-path-up').disabled = true;
 	document.getElementById('btn-path-back').disabled = pathHistoryIndex <= 0;
 	document.getElementById('btn-path-foward').disabled = pathHistoryIndex > pathHistory.length - 1;
 
 	if (datatable !== undefined && datatable !== null) {
 		datatable.destroy();
-		datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'), { 
+		datatable = new simpleDatatables.DataTable(document.getElementById('storage-table'), {
 			paging: false, // 페이징 숨김 
 			perPage: 1 // 보여줄 페이지 수 
 		});
 	}
-	
+
 	let tc = JSON.parse(document.getElementById("storageData").innerHTML);
-	setPathFunc(rootPath, isMoveAction);
+	setPathFunc(rootPath, action);
 
 	var html = `<thead>
 		<tr>
@@ -159,22 +180,23 @@ function createTable(isMoveAction = false) {
 		html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-database" aria-hidden="true"></i></td>';
 		html += '</tr>';
 	}
-    
+
 	$("#storage-table").empty();
 	$("#storage-table").append(html);
 }
 
 $(document).ready(function() {
-	createTable();
+	createTable(pathAction.MOVE);
 
 	$('#btn-path-up').click(function() {
+		logFunc('up');
 		if (explorerPath.length <= 0) {
 			return;
 		}
 
 		if (explorerPath.length === 3) {
 			pathBeforeMoveFunc();
-			createTable(true);
+			createTable(pathAction.REFRESH);
 			setPath = rootPath;
 			return;
 		}
@@ -182,17 +204,19 @@ $(document).ready(function() {
 		let pathLastIndexOf = explorerPath.lastIndexOf('\\');
 		let path = explorerPath.substring(0, pathLastIndexOf + 1);
 
-		pathMoveFunc(path, path, true);
+		pathMoveFunc(path, path, pathAction.UP);
 	});
 
 	$('#btn-path-back').click(function() {
+		logFunc('back');
+
 		if (pathHistory.length === 0) {
 			return;
 		}
 
 		if (pathHistoryIndex - 1 === 0) {
 			pathBeforeMoveFunc();
-			createTable(true);
+			createTable(pathAction.BACK);
 			return;
 		}
 
@@ -203,46 +227,61 @@ $(document).ready(function() {
 			return;
 		}
 
-		pathMoveFunc(pathHistory[pathHistoryIndex - 1], pathHistory[pathHistoryIndex - 1], true);
+		pathMoveFunc(pathHistory[pathHistoryIndex - 1], pathHistory[pathHistoryIndex - 1], pathAction.BACK);
 	});
-	
-	$('#btn-path-foward').click(function() {		
+
+	$('#btn-path-foward').click(function() {
+		logFunc('foward');
+
 		if (pathHistory.length - 1 === pathHistoryIndex) {
 			return;
 		}
-		
+
 		if (pathHistory[pathHistoryIndex + 1] === undefined ||
 			pathHistory[pathHistoryIndex + 1] === null) {
+			console.log('foward-2', pathHistory.length, pathHistoryIndex);
 			pathHistoryIndex = pathHistory.length - 1;
 			return;
 		}
 
-		pathMoveFunc(pathHistory[pathHistoryIndex + 1], pathHistory[pathHistoryIndex + 1], true, true);
+		if (pathHistory[pathHistoryIndex + 1] === rootPath) {
+			createTable(pathAction.FOWARD);
+			pathFowardMoveFunc();
+			return;
+		}
+
+		pathMoveFunc(pathHistory[pathHistoryIndex + 1], pathHistory[pathHistoryIndex + 1], pathAction.FOWARD);
 	});
-	
+
 	$('#btn-path-refresh').click(function() {
-		createTable();
-	});	
+		if (explorerPath === rootPath) {
+			createTable(pathAction.REFRESH);
+			return;
+		}
+
+		pathMoveFunc(explorerPath, explorerPath, pathAction.REFRESH);
+	});
 });
 
 let pathBeforeMoveFunc = function pathBeforeMove() {
 	if (pathHistoryIndex >= 1) {
 		pathHistoryIndex = pathHistoryIndex - 1;
 	}
-	
+
 	document.getElementById('btn-path-foward').disabled = !(pathHistory.length > pathHistoryIndex + 1);
 	document.getElementById('btn-path-back').disabled = pathHistoryIndex === 0;
-	
-	console.log(pathHistory.length, pathHistoryIndex);
 }
 
 let pathFowardMoveFunc = function pathFowardMove() {
 	if (pathHistoryIndex - 1 <= pathHistory.length) {
 		pathHistoryIndex = pathHistoryIndex + 1;
 	}
-	
+
 	document.getElementById('btn-path-foward').disabled = !(pathHistory.length > pathHistoryIndex + 1);
 	document.getElementById('btn-path-back').disabled = pathHistoryIndex === 0;
-	
-	console.log(pathHistory.length, pathHistoryIndex);
+}
+
+let logFunc = function log(functionName) {
+	let logData = 'Function : ' + functionName + ' / pathHistory : ' + pathHistory + ' / pathHistory.Length : ' + pathHistory.length + ' / pathHistoryIndex : ' + pathHistoryIndex;
+	console.log(logData);
 }
