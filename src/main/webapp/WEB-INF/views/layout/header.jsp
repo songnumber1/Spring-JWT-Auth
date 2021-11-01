@@ -79,9 +79,13 @@
 					class="fas fa-user fa-fw"></i></a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="#!">Settings</a></li>
-					<li><a class="dropdown-item" href="#!">Activity Log</a></li>
-					<li><hr class="dropdown-divider" /></li>
+					
+					<sec:authorize access="hasRole('ADMIN')">
+						<li><a class="dropdown-item" href="/jwtauth/setting">Settings</a></li>
+						<li><a class="dropdown-item" href="#!">Activity Log</a></li>
+						<li><hr class="dropdown-divider" /></li>
+					</sec:authorize>
+
 					<c:choose>
 						<c:when test="${empty principal}">
 							<li><a class="dropdown-item" href="/jwtauth/auth/loginForm">Login</a></li>

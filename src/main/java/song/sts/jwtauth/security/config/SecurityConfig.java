@@ -47,8 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private AuthWorkHandler authLogoutWorkHandler;
-	
+	private AuthWorkHandler authLogoutWorkHandler;	
+		
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();

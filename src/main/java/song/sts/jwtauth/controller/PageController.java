@@ -1,22 +1,35 @@
 package song.sts.jwtauth.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import song.sts.jwtauth.common.FinalVariable;
 import song.sts.jwtauth.model.testModel;
 import song.sts.jwtauth.model.response.StorageItemModel;
+import song.sts.jwtauth.security.handler.AuthWorkHandler;
 
 @Controller
 public class PageController {
 
+	@Autowired
+	private AuthWorkHandler authWorkHandler;
+	
 	@GetMapping({ "", "/", "home", "index", "main" })
 	public String home() {
 		return "index";
@@ -118,5 +131,23 @@ public class PageController {
 	@GetMapping("skill/add")
 	public String skillAdd() {
 		return "skill/dataAddTemplate";
+	}
+	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping("setting")
+	public String setting(HttpServletRequest request, HttpServletResponse response) {
+		if(!request.isUserInRole("ROLE_ADMIN")) {
+			authWorkHandler.logoutDataDelete(request, response);
+			return null;
+		}
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+		UserDetails userDetails = (UserDetails)principal;
+		
+		if(userDetails == null) {
+			authWorkHandler.logoutDataDelete(request, response);
+		}
+		
+		return "setting/setting";
 	}
 }

@@ -24,7 +24,7 @@ public class PrincipalDetailsService implements UserDetailsService {
 		User userEntity = userRepository.findByUsername(username);
 		
 		if(userEntity == null)
-			return new PrincipalDetails(null); 
+			return null;
 		else
 			return new PrincipalDetails(userEntity);
 	}
