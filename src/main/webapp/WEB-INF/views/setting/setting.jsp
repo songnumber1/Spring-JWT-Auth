@@ -3,147 +3,240 @@
 
 <%@include file="../layout/left.jsp"%>
 
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
+<link rel="stylesheet"
+	href="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
 
-<div id="layoutSidenav_content">
-	<main>
-		<div class="container-fluid px-4">
-			<h1 class="mt-4">Storage</h1>
-			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item active">C#</li>
-			</ol>
+<link rel="stylesheet" href="/jwtauth/css/setting.css" />
+<script>
+	function openCity(evt, cityName) {
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className
+					.replace(" active", "");
+		}
+		document.getElementById(cityName).style.display = "block";
+		evt.currentTarget.className += " active";
+	}
+</script>
 
-			<hr />
+<div class="container">
+	<div class="row justify-content-center">
 
-			<div class="row">
-				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link active"
-						data-toggle="tab" href="#home">Home</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#favorites">Favorites</a></li>
+		<div class="col-12 col-lg-10 col-xl-8 mx-auto">
+			<h2 class="h3 mb-4page-title">Settings</h2>
+			<div class="my-4">
+				<ul class="nav nav-tabs mb-4" id="myTab" role="tablist"
+					style="padding-top: 15px;">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active" id="pills-menu-tab"
+							data-bs-toggle="pill" data-bs-target="#pills-menu" type="button"
+							role="tab" aria-controls="#pills-menu" aria-selected="true">Menu</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="pills-profile-tab"
+							data-bs-toggle="pill" data-bs-target="#pills-account"
+							type="button" role="tab" aria-controls="pills-account"
+							aria-selected="false">Account</button>
+					</li>
 				</ul>
 
-				<div class="tab-content border border-top-0 rounded">
-					<div id="home" class="container-fluid tab-pane active" style="margin-top: 15px;margin-bottom: 15px;">
-						<div>
-							<div style="float: left;">
-								<h4>
-									Path : <span class="label label-default lbl-path">My
-										computer</span>
-								</h4>
+				<div class="tab-content" id="pills-tabContent">
+					<div class="tab-pane fade show active" id="pills-menu"
+						role="tabpanel" aria-labelledby="pills-menu-tab">
+						<strong class="mb-0">Navigation</strong>
+						<p></p>
+
+						<div class="list-group mb-5 shadow menu-setting">
+							<div class="list-group-item">
+								<div class="row align-items-center">
+									<div class="col">
+										<strong class="mb-0">Gategory Menu</strong>
+										
+									</div>
+
+									<div class="col-auto">
+										<div class="card-body">
+											<div class="panel panel-default">
+												<!-- /.panel-heading -->
+												<div class="panel-body">
+													<button type="button"
+														class="btn btn-primary btn-circle btn-sm">
+														<i class="fas fa-cog" aria-hidden="true"></i>
+													</button>
+												</div>
+												<!-- /.panel-body -->
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 
-							<div class="path-container">
-								<button type="button" id="btn-path-up"
-									class="btn btn-primary btn-circle btn btn-path-control">
-									<i class="fas fa-arrow-up" aria-hidden="true"></i>
-								</button>
-								<button type="button" id="btn-path-back"
-									class="btn btn-secondary btn-circle btn btn-path-control">
-									<i class="fas fa-arrow-left" aria-hidden="true"></i>
-								</button>
-								<button type="button" id="btn-path-foward"
-									class="btn btn-secondary btn-circle btn btn-path-control">
-									<i class="fas fa-arrow-right" aria-hidden="true"></i>
-								</button>
-								<button type="button" id="btn-path-refresh"
-									class="btn btn-success btn-circle btn">
-									<i class="fas fa-sync-alt" aria-hidden="true"></i>
-								</button>
+
+							<div class="list-group-item">
+								<div class="row align-items-center">
+									<div class="col">
+										<strong class="mb-0">Root Menu</strong>
+										
+									</div>
+
+									<div class="col-auto">
+										<div class="card-body">
+											<div class="panel panel-default">
+												<!-- /.panel-heading -->
+												<div class="panel-body">
+													<button type="button"
+														class="btn btn-primary btn-circle btn-sm">
+														<i class="fas fa-cog" aria-hidden="true"></i>
+													</button>
+												</div>
+												<!-- /.panel-body -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="list-group-item">
+								<div class="row align-items-center">
+									<div class="col">
+										<strong class="mb-0">Sub Menu</strong>
+									</div>
+
+									<div class="col-auto">
+										<div class="card-body">
+											<div class="panel panel-default">
+												<!-- /.panel-heading -->
+												<div class="panel-body">
+													<button type="button"
+														class="btn btn-primary btn-circle btn-sm">
+														<i class="fas fa-cog" aria-hidden="true"></i>
+													</button>
+												</div>
+												<!-- /.panel-body -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="list-group-item">
+								<div class="row align-items-center">
+									<div class="col">
+										<strong class="mb-0">Last Menu</strong>
+									</div>
+
+									<div class="col-auto">
+										<div class="card-body">
+											<div class="panel panel-default">
+												<!-- /.panel-heading -->
+												<div class="panel-body">
+													<button type="button"
+														class="btn btn-primary btn-circle btn-sm">
+														<i class="fas fa-cog" aria-hidden="true"></i>
+													</button>
+												</div>
+												<!-- /.panel-body -->
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-						<table id="storage-table">
-							<thead>
-								<tr>
-									<th style="display: none;">AbsolutePath</th>
-									<th>Name</th>
-									<th>Date</th>
-									<th>Type</th>
-									<th style="text-align: center;">Work</th>
-								</tr>
-							</thead>
-							<tfoot>
-								<tr>
-									<th style="display: none;">AbsolutePath</th>
-									<th>Name</th>
-									<th>Date</th>
-									<th>Type</th>
-									<th style="text-align: center;">Work</th>
-								</tr>
-							</tfoot>
-							<tbody>
-								<tr>
-									<td style="display: none;">absolutePath</td>
-									<td style="vertical-align: middle;"><a href="#">News <span
-											class="badge">5</span>
-									</a><br></td>
-									<td style="vertical-align: middle;">System Architect</td>
-									<td
-										style="vertical-align: middle; text-align: center; width: 5%;"><i
-										class="fa fa-file" aria-hidden="true"></i></td>
-									<td style="text-align: center;">
-										<button type="button"
-											class="btn btn-primary btn-circle btn-sm">
-											<i class="fas fa-download" aria-hidden="true"></i>
-										</button>
-										<button type="button"
-											class="btn btn-secondary btn-circle btn-sm">
-											<i class="fas fa-eye" aria-hidden="true"></i>
-										</button>
-										<button type="button"
-											class="btn btn-success btn-circle btn-sm">
-											<i class="fas fa-star" aria-hidden="true"></i>
-										</button>
-									</td>
-								</tr>
-								<tr>
-									<td style="display: none;">absolutePath</td>
-									<td style="vertical-align: middle;"><a href="#">Garrett
-											Winters <span class="badge">5</span>
-									</a><br></td>
-									<td style="vertical-align: middle;">Accountant</td>
-									<td
-										style="vertical-align: middle; text-align: center; width: 5%;"><i
-										class="fas fa-folder" aria-hidden="true"></i></td>
-									<td style="text-align: center;">
-										<button type="button"
-											class="btn btn-primary btn-circle btn-sm">
-											<i class="fas fa-download" aria-hidden="true"></i>
-										</button>
-										<button type="button"
-											class="btn btn-secondary btn-circle btn-sm">
-											<i class="fas fa-eye" aria-hidden="true"></i>
-										</button>
-										<button type="button"
-											class="btn btn-success btn-circle btn-sm">
-											<i class="fas fa-star" aria-hidden="true"></i>
-										</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
 					</div>
 
-					<div id="favorites" class="container tab-pane fade">
-						<br>
-						<h3>Menu 1</h3>
-						<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-							laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<!-- ======================================================================================================================= -->
+					
+					<div class="tab-pane fade" id="pills-account" role="tabpanel"
+						aria-labelledby="pills-account-tab">
+						<strong class="mb-0">User</strong>
+						<p></p>
+
+						<div class="list-group mb-5 shadow menu-setting">
+							<div class="list-group-item">
+								<div class="row align-items-center">
+									<div class="col">
+										<strong class="mb-0">Admin User</strong>
+										<p class="text-muted mb-0" style="padding-top: 5px;">Add an administrator account.</p>
+									</div>
+
+									<div class="col-auto">
+										<div class="card-body">
+											<div class="panel panel-default">
+												<!-- /.panel-heading -->
+												<div class="panel-body">
+													<button type="button"
+														class="btn btn-primary btn-circle btn-sm">
+														<i class="fas fa-cog" aria-hidden="true"></i>
+													</button>
+												</div>
+												<!-- /.panel-body -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="list-group-item">
+								<div class="row align-items-center">
+									<div class="col">
+										<strong class="mb-0">User</strong>
+										<p class="text-muted mb-0" style="padding-top: 5px;">Add an user account.</p>
+									</div>
+
+									<div class="col-auto">
+										<div class="card-body">
+											<div class="panel panel-default">
+												<!-- /.panel-heading -->
+												<div class="panel-body">
+													<button type="button"
+														class="btn btn-primary btn-circle btn-sm">
+														<i class="fas fa-cog" aria-hidden="true"></i>
+													</button>
+												</div>
+												<!-- /.panel-body -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
+							<div class="list-group-item">
+								<div class="row align-items-center">
+									<div class="col">
+										<strong class="mb-0">Guest</strong>
+										<p class="text-muted mb-0" style="padding-top: 5px;">Add an guest account.</p>
+									</div>
+
+									<div class="col-auto">
+										<div class="card-body">
+											<div class="panel panel-default">
+												<!-- /.panel-heading -->
+												<div class="panel-body">
+													<button type="button"
+														class="btn btn-primary btn-circle btn-sm">
+														<i class="fas fa-cog" aria-hidden="true"></i>
+													</button>
+												</div>
+												<!-- /.panel-body -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-
-			<!-- <div class="row" style="display:none;"> -->
-			<div class="row" style="display:none;">
-				<div class="card mb-4">
-					<div id="storageData">${reponseData}</div>
-				</div>
-			</div>
-
 		</div>
-	</main>
-
-	<%@include file="../layout/footer.jsp"%>
+	</div>
 </div>
 
 <script
