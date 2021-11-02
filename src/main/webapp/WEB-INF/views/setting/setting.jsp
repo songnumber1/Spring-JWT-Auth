@@ -31,6 +31,7 @@
 						<strong class="mb-0">Navigation</strong>
 						<p></p>
 
+
 						<!-- ==================================================== Category =================================================================== -->
 						<div class="list-group mb-5 shadow menu-setting">
 							<div class="list-group-item">
@@ -45,7 +46,8 @@
 												<!-- /.panel-heading -->
 												<div class="panel-body">
 													<button type="button"
-														class="btn btn-primary btn-circle btn-sm" data-toggle="modal" data-target="#categoryModal">
+														class="btn btn-primary btn-circle btn-sm"
+														data-toggle="modal" data-target="#categoryModal">
 														<i class="fas fa-cog" aria-hidden="true"></i>
 													</button>
 
@@ -77,7 +79,8 @@
 																	<button type="button" class="btn btn-primary"
 																		id="btn-category-add">Save</button>
 
-																	<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+																	<button type="button" class="btn btn-success"
+																		data-dismiss="modal">Close</button>
 																</div>
 															</div>
 														</div>
@@ -93,7 +96,6 @@
 
 
 							<!-- ==================================================== Root =================================================================== -->
-
 							<div class="list-group-item">
 								<div class="row align-items-center">
 									<div class="col">
@@ -130,28 +132,30 @@
 																			<div class="dropdown" id="dropdown-category">
 																				<button
 																					class="btn btn-secondary dropdown-toggle col-sm-12"
-																					type="button" id="dropdownMenuButton"
+																					type="button" id="btn-dropdown-category"
 																					data-toggle="dropdown" aria-expanded="false">
-																					Select Category
-																				</button>
-																																									
-																				<input id="input-hidden-select-category" type="hidden" value='-1'/>
+																					Select Category</button>
+
+																				<input id="input-hidden-select-category"
+																					type="hidden" value='-1' />
 
 																				<div id="dropdown-category-items"
 																					class="dropdown-menu col-sm-12"
-																					aria-labelledby="dropdownMenuButton">
+																					aria-labelledby="btn-dropdown-category">
 																					<!-- 
 																				  <a class="dropdown-item" href="#">Action</a>
 																				  <a class="dropdown-item" href="#">Another action</a>
 																				  <a class="dropdown-item" href="#">Something else here</a>
 																				   -->
 																				</div>
-																				
-																				<div id="category-invalid-feedback" class="invalid-feedback" style="display:block;">Please fill out this field.</div>
+
+																				<div id="category-invalid-feedback"
+																					class="invalid-feedback" style="display: block;">Please
+																					fill out this field.</div>
 																			</div>
 																		</div>
 																	</div>
-																	
+
 																	<div class="form-group was-validated">
 																		<label class="control-label col-sm-12">* Name</label>
 																		<div class="col-sm-12">
@@ -178,7 +182,8 @@
 																	<button type="button" class="btn btn-primary"
 																		id="btn-root-add">Save</button>
 
-																	<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+																	<button type="button" class="btn btn-success"
+																		data-dismiss="modal">Close</button>
 																</div>
 															</div>
 														</div>
@@ -190,6 +195,7 @@
 									</div>
 								</div>
 							</div>
+
 
 							<!-- ==================================================== Sub =================================================================== -->
 							<div class="list-group-item">
@@ -203,10 +209,83 @@
 											<div class="panel panel-default">
 												<!-- /.panel-heading -->
 												<div class="panel-body">
-													<button type="button"
-														class="btn btn-primary btn-circle btn-sm">
-														<i class="fas fa-cog" aria-hidden="true"></i>
-													</button>
+													<div class="panel-body">
+														<button type="button" id="btn-sub-setting"
+															class="btn btn-primary btn-circle btn-sm"
+															data-toggle="modal" data-target="#subModal">
+															<i class="fas fa-cog" aria-hidden="true"></i>
+														</button>
+
+														<div class="modal fade" id="subModal" role="dialog">
+															<div class="modal-dialog modal-dialog-centered">
+																<!-- Modal content-->
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h5 class="modal-title">Sub Menu</h5>
+																		<button type="button" class="close"
+																			data-dismiss="modal">&times;</button>
+																	</div>
+																	<div class="modal-body">
+																		<div class="form-group was-validated">
+																			<label class="control-label col-sm-12">*
+																				Root</label>
+
+																			<div class="col-sm-12 was-validated">
+																				<div class="dropdown" id="dropdown-root">
+																					<button
+																						class="btn btn-secondary dropdown-toggle col-sm-12"
+																						type="button" id="btn-dropdown-root"
+																						data-toggle="dropdown" aria-expanded="false">
+																						Select Root Menu</button>
+
+																					<input id="input-hidden-select-root"
+																						type="hidden" value='-1' />
+
+																					<div id="dropdown-root-items"
+																						class="dropdown-menu col-sm-12"
+																						aria-labelledby="btn-dropdown-root">
+																					</div>
+
+																					<div id="root-invalid-feedback"
+																						class="invalid-feedback" style="display: block;">Please
+																						fill out this field.</div>
+																				</div>
+																			</div>
+																		</div>
+
+																		<div class="form-group was-validated">
+																			<label class="control-label col-sm-12">* Name</label>
+																			<div class="col-sm-12">
+																				<input type="text" class="form-control"
+																					id="sub-name" placeholder="Enter sub name"
+																					name="sub-name" required>
+
+																				<div class="valid-feedback"></div>
+																				<div class="invalid-feedback">Please fill out
+																					this field.</div>
+																			</div>
+																		</div>
+
+																		<div class="form-group">
+																			<label class="control-label col-sm-12">Url</label>
+																			<div class="col-sm-12">
+																				<input type="text" class="form-control" id="sub-url"
+																					placeholder="Enter Url" name="sub-url">
+																			</div>
+																		</div>
+																	</div>
+
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-primary"
+																			id="btn-sub-add">Save</button>
+
+																		<button type="button" class="btn btn-success"
+																			data-dismiss="modal">Close</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
 												</div>
 												<!-- /.panel-body -->
 											</div>
@@ -215,6 +294,8 @@
 								</div>
 							</div>
 
+
+							<!-- ==================================================== Last =================================================================== -->
 							<div class="list-group-item">
 								<div class="row align-items-center">
 									<div class="col">
@@ -240,7 +321,7 @@
 						</div>
 					</div>
 
-					<!-- ==================================================== Last =================================================================== -->
+
 
 					<div class="tab-pane fade" id="pills-account" role="tabpanel"
 						aria-labelledby="pills-account-tab">

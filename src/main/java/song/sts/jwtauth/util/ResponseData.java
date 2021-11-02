@@ -3,12 +3,16 @@ package song.sts.jwtauth.util;
 import java.nio.charset.Charset;
 import java.util.Map;
 
+import org.json.JSONObject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import com.google.gson.Gson;
+
 import song.sts.jwtauth.responseEntity.BaseResponseMessage;
+
 
 public class ResponseData {
 	public static ResponseEntity<?> CreateReponse(int httpStatus, String message, Object data, Map<String, String> headerData) {

@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -24,6 +27,7 @@ public class MenuCategory {
 	
 	private String remark;
 	
-	@OneToMany(mappedBy = "menuCategory")
-	private List<MenuOneDept> menuOneDepts = new ArrayList();
+	@JsonManagedReference
+	@OneToMany(mappedBy = "menuCategory", fetch = FetchType.LAZY)
+	private List<MenuOneDept> menuOneDepts = new ArrayList();	
 }
