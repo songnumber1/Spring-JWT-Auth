@@ -24,9 +24,9 @@ public class MenuTwoDept {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long menuTwoDeptid;
 	
-	private String menuTwoTitle;
+	private String menuTwoDeptTitle;
 	
-	private String menuTwoUrl;
+	private String menuTwoDeptUrl;
 	
 	private boolean isActive;
 	

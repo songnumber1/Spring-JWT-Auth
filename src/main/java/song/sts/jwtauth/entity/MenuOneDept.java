@@ -25,9 +25,9 @@ public class MenuOneDept {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long menuOneDeptid;
 
-	private String menuOneTitle;
+	private String menuOneDeptTitle;
 
-	private String menuOneUrl;
+	private String menuOneDeptUrl;
 
 	private boolean isActive;
 

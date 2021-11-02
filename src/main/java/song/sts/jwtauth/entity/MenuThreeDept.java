@@ -19,9 +19,9 @@ public class MenuThreeDept {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long menuThreeDeptid;
 	
-	private String menuThreeTitle;
+	private String menuThreeDeptTitle;
 	
-	private String menuThreeUrl;
+	private String menuThreeDeptUrl;
 	
 	private boolean isActive;
 	

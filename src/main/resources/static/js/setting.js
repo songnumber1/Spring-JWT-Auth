@@ -93,8 +93,8 @@ $(document).ready(function() {
 		console.log($('#input-hidden-select-category').val());
 
 		const rootMenu = {
-			menuOneTitle: $('#root-name').val(),
-			menuOneUrl: $('#root-url').val(),
+			menuOneDeptTitle: $('#root-name').val(),
+			menuOneDeptUrl: $('#root-url').val(),
 			menuCategory: {
 				categoryId: $('#input-hidden-select-category').val()
 			}
@@ -145,6 +145,8 @@ $(document).ready(function() {
 			dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
 			// 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
 		}).done(function(res) {
+			console.log(res.data);
+			
 			if (res.status === 500) {
 				alert("카테고리 메뉴를 불러오지 못했습니다.");
 				console.log(res);
@@ -164,7 +166,7 @@ $(document).ready(function() {
 							$("#input-hidden-select-root").val($(this).attr("name"));
 							$("#root-invalid-feedback").css("display", "none");
 						'>` +
-						jsonData[key].menuOneTitle + '</a>';
+						jsonData[key].menuOneDeptTitle + '</a>';
 				}
 
 				var elm = document.getElementById('dropdown-root-items');
@@ -193,10 +195,10 @@ $(document).ready(function() {
 		console.log($('#input-hidden-select-root').val());
 
 		const subMenu = {
-			menuOneTitle: $('#sub-name').val(),
-			menuOneUrl: $('#sub-url').val(),
+			menuTwoDeptTitle: $('#sub-name').val(),
+			menuTwoDeptUrl: $('#sub-url').val(),
 			menuOneDept: {
-				oneDeptId: $('#input-hidden-select-root').val()
+				menuOneDeptid: $('#input-hidden-select-root').val()
 			}
 		};
 
