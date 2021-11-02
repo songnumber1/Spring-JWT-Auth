@@ -25,8 +25,12 @@ public class PrincipalDetailsService implements UserDetailsService {
 		
 		if(userEntity == null)
 			return null;
-		else
-			return new PrincipalDetails(userEntity);
+		else {
+			if(userEntity.isActive())
+				return new PrincipalDetails(userEntity);
+			else
+				return null;
+		}
 	}
 	
 }

@@ -22,6 +22,8 @@ public class User {
 	private String roles;
 	private String token;
 	private String tokenExpired;
+	private boolean isActive;
+	private String remark;
 
 	public List<String> GetRoleList(){
 		if(this.roles.length() > 0){
@@ -31,4 +33,3 @@ public class User {
 		return new ArrayList<>();
 	}
 }
-

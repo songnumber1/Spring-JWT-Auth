@@ -3,30 +3,10 @@
 
 <%@include file="../layout/left.jsp"%>
 
-<link rel="stylesheet"
-	href="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
-
 <link rel="stylesheet" href="/jwtauth/css/setting.css" />
-<script>
-	function openCity(evt, cityName) {
-		var i, tabcontent, tablinks;
-		tabcontent = document.getElementsByClassName("tabcontent");
-		for (i = 0; i < tabcontent.length; i++) {
-			tabcontent[i].style.display = "none";
-		}
-		tablinks = document.getElementsByClassName("tablinks");
-		for (i = 0; i < tablinks.length; i++) {
-			tablinks[i].className = tablinks[i].className
-					.replace(" active", "");
-		}
-		document.getElementById(cityName).style.display = "block";
-		evt.currentTarget.className += " active";
-	}
-</script>
 
 <div class="container">
 	<div class="row justify-content-center">
-
 		<div class="col-12 col-lg-10 col-xl-8 mx-auto">
 			<h2 class="h3 mb-4page-title">Settings</h2>
 			<div class="my-4">
@@ -51,12 +31,12 @@
 						<strong class="mb-0">Navigation</strong>
 						<p></p>
 
+						<!-- ==================================================== Category =================================================================== -->
 						<div class="list-group mb-5 shadow menu-setting">
 							<div class="list-group-item">
 								<div class="row align-items-center">
 									<div class="col">
-										<strong class="mb-0">Gategory Menu</strong>
-										
+										<strong class="mb-0">Category Menu</strong>
 									</div>
 
 									<div class="col-auto">
@@ -65,23 +45,60 @@
 												<!-- /.panel-heading -->
 												<div class="panel-body">
 													<button type="button"
-														class="btn btn-primary btn-circle btn-sm">
+														class="btn btn-primary btn-circle btn-sm" data-toggle="modal" data-target="#categoryModal">
 														<i class="fas fa-cog" aria-hidden="true"></i>
 													</button>
+
+													<div class="modal fade" id="categoryModal" role="dialog">
+														<div class="modal-dialog modal-dialog-centered">
+															<!-- Modal content-->
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h5 class="modal-title">Category Menu</h5>
+																	<button type="button" class="close"
+																		data-dismiss="modal">&times;</button>
+																</div>
+																<div class="modal-body">
+																	<div class="form-group was-validated">
+																		<label class="control-label col-sm-12">* Name</label>
+																		<div class="col-sm-12">
+																			<input type="text" class="form-control"
+																				id="category-name" placeholder="Enter category name"
+																				name="category-name" required>
+
+																			<div class="valid-feedback"></div>
+																			<div class="invalid-feedback">Please fill out
+																				this field.</div>
+																		</div>
+																	</div>
+																</div>
+
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-primary"
+																		id="btn-category-add">Save</button>
+
+																	<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+																</div>
+															</div>
+														</div>
+													</div>
+
 												</div>
-												<!-- /.panel-body -->
+
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 
+
+							<!-- ==================================================== Root =================================================================== -->
 
 							<div class="list-group-item">
 								<div class="row align-items-center">
 									<div class="col">
 										<strong class="mb-0">Root Menu</strong>
-										
+
 									</div>
 
 									<div class="col-auto">
@@ -89,10 +106,83 @@
 											<div class="panel panel-default">
 												<!-- /.panel-heading -->
 												<div class="panel-body">
-													<button type="button"
-														class="btn btn-primary btn-circle btn-sm">
+													<button type="button" id="btn-root-setting"
+														class="btn btn-primary btn-circle btn-sm"
+														data-toggle="modal" data-target="#rootModal">
 														<i class="fas fa-cog" aria-hidden="true"></i>
 													</button>
+
+													<div class="modal fade" id="rootModal" role="dialog">
+														<div class="modal-dialog modal-dialog-centered">
+															<!-- Modal content-->
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h5 class="modal-title">Root Menu</h5>
+																	<button type="button" class="close"
+																		data-dismiss="modal">&times;</button>
+																</div>
+																<div class="modal-body">
+																	<div class="form-group was-validated">
+																		<label class="control-label col-sm-12">*
+																			Category</label>
+
+																		<div class="col-sm-12 was-validated">
+																			<div class="dropdown" id="dropdown-category">
+																				<button
+																					class="btn btn-secondary dropdown-toggle col-sm-12"
+																					type="button" id="dropdownMenuButton"
+																					data-toggle="dropdown" aria-expanded="false">
+																					Select Category
+																				</button>
+																																									
+																				<input id="input-hidden-select-category" type="hidden" value='-1'/>
+
+																				<div id="dropdown-category-items"
+																					class="dropdown-menu col-sm-12"
+																					aria-labelledby="dropdownMenuButton">
+																					<!-- 
+																				  <a class="dropdown-item" href="#">Action</a>
+																				  <a class="dropdown-item" href="#">Another action</a>
+																				  <a class="dropdown-item" href="#">Something else here</a>
+																				   -->
+																				</div>
+																				
+																				<div id="category-invalid-feedback" class="invalid-feedback" style="display:block;">Please fill out this field.</div>
+																			</div>
+																		</div>
+																	</div>
+																	
+																	<div class="form-group was-validated">
+																		<label class="control-label col-sm-12">* Name</label>
+																		<div class="col-sm-12">
+																			<input type="text" class="form-control"
+																				id="root-name" placeholder="Enter root name"
+																				name="root-name" required>
+
+																			<div class="valid-feedback"></div>
+																			<div class="invalid-feedback">Please fill out
+																				this field.</div>
+																		</div>
+																	</div>
+
+																	<div class="form-group">
+																		<label class="control-label col-sm-12">Url</label>
+																		<div class="col-sm-12">
+																			<input type="text" class="form-control" id="root-url"
+																				placeholder="Enter Url" name="root-url">
+																		</div>
+																	</div>
+																</div>
+
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-primary"
+																		id="btn-root-add">Save</button>
+
+																	<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+																</div>
+															</div>
+														</div>
+													</div>
 												</div>
 												<!-- /.panel-body -->
 											</div>
@@ -101,7 +191,7 @@
 								</div>
 							</div>
 
-
+							<!-- ==================================================== Sub =================================================================== -->
 							<div class="list-group-item">
 								<div class="row align-items-center">
 									<div class="col">
@@ -150,8 +240,8 @@
 						</div>
 					</div>
 
-					<!-- ======================================================================================================================= -->
-					
+					<!-- ==================================================== Last =================================================================== -->
+
 					<div class="tab-pane fade" id="pills-account" role="tabpanel"
 						aria-labelledby="pills-account-tab">
 						<strong class="mb-0">User</strong>
@@ -162,7 +252,8 @@
 								<div class="row align-items-center">
 									<div class="col">
 										<strong class="mb-0">Admin User</strong>
-										<p class="text-muted mb-0" style="padding-top: 5px;">Add an administrator account.</p>
+										<p class="text-muted mb-0" style="padding-top: 5px;">Add
+											an administrator account.</p>
 									</div>
 
 									<div class="col-auto">
@@ -187,7 +278,8 @@
 								<div class="row align-items-center">
 									<div class="col">
 										<strong class="mb-0">User</strong>
-										<p class="text-muted mb-0" style="padding-top: 5px;">Add an user account.</p>
+										<p class="text-muted mb-0" style="padding-top: 5px;">Add
+											an user account.</p>
 									</div>
 
 									<div class="col-auto">
@@ -206,13 +298,14 @@
 									</div>
 								</div>
 							</div>
-							
-							
+
+
 							<div class="list-group-item">
 								<div class="row align-items-center">
 									<div class="col">
 										<strong class="mb-0">Guest</strong>
-										<p class="text-muted mb-0" style="padding-top: 5px;">Add an guest account.</p>
+										<p class="text-muted mb-0" style="padding-top: 5px;">Add
+											an guest account.</p>
 									</div>
 
 									<div class="col-auto">
@@ -252,6 +345,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 	crossorigin="anonymous"></script>
+
+<script src="/jwtauth/js/setting.js"></script>
 
 </body>
 </html>

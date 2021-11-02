@@ -24,6 +24,10 @@ public class MenuOneDept {
 	
 	private String menuOneUrl;
 	
+	private boolean isActive;
+	
+	private String remark;
+	
 	@ManyToOne
 	@JoinColumn(name="categoryId")
 	private MenuCategory menuCategory;

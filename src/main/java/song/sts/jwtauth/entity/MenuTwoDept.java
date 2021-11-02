@@ -24,6 +24,10 @@ public class MenuTwoDept {
 	
 	private String menuTwoUrl;
 	
+	private boolean isActive;
+	
+	private String remark;
+	
 	@ManyToOne
 	@JoinColumn(name="menuOneDeptid")
 	private MenuOneDept menuOneDept;

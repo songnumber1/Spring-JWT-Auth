@@ -20,6 +20,10 @@ public class MenuCategory {
 	
 	private String categoryTitle;
 	
+	private boolean isActive;
+	
+	private String remark;
+	
 	@OneToMany(mappedBy = "menuCategory")
 	private List<MenuOneDept> menuOneDepts = new ArrayList();
 }

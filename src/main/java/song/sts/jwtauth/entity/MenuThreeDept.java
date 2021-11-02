@@ -20,6 +20,10 @@ public class MenuThreeDept {
 	
 	private String menuThreeUrl;
 	
+	private boolean isActive;
+	
+	private String remark;
+	
 	@ManyToOne
 	@JoinColumn(name="menuTwoDeptid")
 	private MenuTwoDept menuTwoDept;

@@ -66,4 +66,8 @@ public class PrincipalDetails implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	public boolean isActive() {
+		return user.isActive();
+	}
 }
