@@ -2,7 +2,6 @@ package song.sts.jwtauth.exception;
 
 import lombok.Getter;
 
-@SuppressWarnings("serial")
 public class AccountException extends RuntimeException {
 	@Getter
     private BaseExceptionType exceptionType;

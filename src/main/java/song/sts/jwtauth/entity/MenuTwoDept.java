@@ -39,5 +39,5 @@ public class MenuTwoDept {
 	
 	@JsonManagedReference
 	@OneToMany(mappedBy = "menuTwoDept", fetch = FetchType.LAZY)
-	private List<MenuThreeDept> menuThreeDepts = new ArrayList();	
+	private List<MenuThreeDept> menuThreeDepts = new ArrayList<>();	
 }

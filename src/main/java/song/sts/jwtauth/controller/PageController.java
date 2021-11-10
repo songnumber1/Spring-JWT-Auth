@@ -1,7 +1,6 @@
 package song.sts.jwtauth.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import song.sts.jwtauth.common.FinalVariable;
 import song.sts.jwtauth.model.testModel;
 import song.sts.jwtauth.model.response.StorageItemModel;
 import song.sts.jwtauth.security.handler.AuthWorkHandler;
@@ -29,35 +27,10 @@ public class PageController {
 
 	@Autowired
 	private AuthWorkHandler authWorkHandler;
-	
+
 	@GetMapping({ "", "/", "home", "index", "main" })
 	public String home() {
 		return "index";
-	}
-
-	private List<StorageItemModel> getDirInfo(String parentId, String path) {
-		List<StorageItemModel> storageItemModels = new ArrayList<StorageItemModel>();
-		
-		File[] files = new File(path).listFiles();
-
-		for (File file : files) {
-			if (file.isDirectory()) {
-				if (file.exists()) {
-					StorageItemModel storageItemModel = StorageItemModel.builder().id(UUID.randomUUID().toString())
-							.parendId(parentId).text(file.getName()).isDirectory(file.isDirectory())
-							.lastModified(file.lastModified()).iscanRead(file.canRead()).iscanWrite(file.canWrite())
-							.isHidden(file.isHidden()).length(file.length()).path(file.getPath())
-							.isDrive(false)
-							.absolutePath(file.getAbsolutePath()).parent(file.getParent()).build();
-
-					storageItemModels.add(storageItemModel);
-				} else {
-					System.out.println("존재하지 않는 폴더입니다.");
-				}
-			}
-		}
-		
-		return storageItemModels;
 	}
 
 	@GetMapping("profile")
@@ -74,7 +47,7 @@ public class PageController {
 		File[] roots = File.listRoots();
 
 		JSONArray jsonArrDrive = new JSONArray();
-		
+
 		for (File root : roots) {
 			id = UUID.randomUUID().toString();
 			drive = root.getAbsolutePath();
@@ -82,32 +55,32 @@ public class PageController {
 			totalSize = root.getTotalSpace() / Math.pow(1024, 3);
 			useSize = root.getUsableSpace() / Math.pow(1024, 3);
 			freeSize = totalSize - useSize;
-			
+
 			JSONObject jsonObjDrive = new JSONObject();
-			
+
 			jsonObjDrive.put("id", id);
 			jsonObjDrive.put("parentId", "");
-	        jsonObjDrive.put("text", drive);
-	        jsonObjDrive.put("absolutePath", absolutePath);
-	        jsonObjDrive.put("totalSize", totalSize);
-	        jsonObjDrive.put("useSize", useSize);
-	        jsonObjDrive.put("freeSize", freeSize);
-	        jsonObjDrive.put("isDrive", true);
-	        
-	        //List<StorageItemModel> storageItemModels = getDirInfo(id, drive);
-	        jsonObjDrive.put("nodes", new ArrayList<StorageItemModel>());
-	        jsonArrDrive.put(jsonObjDrive);
+			jsonObjDrive.put("text", drive);
+			jsonObjDrive.put("absolutePath", absolutePath);
+			jsonObjDrive.put("totalSize", totalSize);
+			jsonObjDrive.put("useSize", useSize);
+			jsonObjDrive.put("freeSize", freeSize);
+			jsonObjDrive.put("isDrive", true);
+
+			// List<StorageItemModel> storageItemModels = getDirInfo(id, drive);
+			jsonObjDrive.put("nodes", new ArrayList<StorageItemModel>());
+			jsonArrDrive.put(jsonObjDrive);
 		}
-		
+
 		ArrayList<JSONObject> arrayJson = new ArrayList<JSONObject>();
-	    
-	    for (int k = 0; k < jsonArrDrive.length(); k++) {
-	        JSONObject tempJson = jsonArrDrive.getJSONObject(k);
-	        arrayJson.add(tempJson);
-	    }
-	    
-	    model.addAttribute("reponseData", arrayJson);
-		
+
+		for (int k = 0; k < jsonArrDrive.length(); k++) {
+			JSONObject tempJson = jsonArrDrive.getJSONObject(k);
+			arrayJson.add(tempJson);
+		}
+
+		model.addAttribute("reponseData", arrayJson);
+
 		return "storage/storage";
 	}
 
@@ -132,25 +105,25 @@ public class PageController {
 	public String skillAdd() {
 		return "skill/dataAddTemplate";
 	}
-	
+
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("setting")
 	public String setting(HttpServletRequest request, HttpServletResponse response) {
-		if(!request.isUserInRole("ROLE_ADMIN")) {
+		if (!request.isUserInRole("ROLE_ADMIN")) {
 			authWorkHandler.logoutDataDelete(request, response);
 			return null;
 		}
-		
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
-		UserDetails userDetails = (UserDetails)principal;
-		
-		if(userDetails == null) {
+
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails) principal;
+
+		if (userDetails == null) {
 			authWorkHandler.logoutDataDelete(request, response);
 		}
-		
+
 		return "setting/setting";
 	}
-	
+
 	@GetMapping("movie")
 	public String movielist() {
 		return "movie/list";

@@ -38,7 +38,6 @@ public class AuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHa
             jwtTokenProvider.createCookie(response, jwtModel.getAccessToken());
         }
         
-		// TODO Auto-generated method stub
 		super.onAuthenticationSuccess(request, response, authentication);
 	}
 }

@@ -55,7 +55,6 @@ public class AuthWorkHandler {
 		try {
 			response.sendRedirect(StaticVariable.CONTEXT_PATH);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -107,7 +106,6 @@ public class AuthWorkHandler {
 		{
 			response.sendRedirect(StaticVariable.CONTEXT_PATH);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

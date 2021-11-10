@@ -3,11 +3,8 @@ package song.sts.jwtauth.restcontroller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -25,8 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import song.sts.jwtauth.entity.MenuCategory;
 import song.sts.jwtauth.entity.MenuOneDept;
@@ -118,13 +113,10 @@ public class MenuRestController {
 			mapper.writeValue(sw, result);
 			resultToString = sw.toString();
 		} catch (JsonGenerationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -157,13 +149,10 @@ public class MenuRestController {
 			mapper.writeValue(sw, result);
 			resultToString = sw.toString();
 		} catch (JsonGenerationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -196,13 +185,11 @@ public class MenuRestController {
 			mapper.writeValue(sw, result);
 			resultToString = sw.toString();
 		} catch (JsonGenerationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 

@@ -33,8 +33,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 	public JwtAuthorizationFilter(AuthenticationManager authenticationManager, UserRepository userRepository,
 			JwtTokenProvider jwtTokenProvider, AuthWorkHandler authLogoutWorkHandler) {
 		super(authenticationManager);
-		// TODO Auto-generated constructor stub
-
 		this.userRepository = userRepository;
 		this.jwtTokenProvider = jwtTokenProvider;
 		this.authWorkHandler = authLogoutWorkHandler;
