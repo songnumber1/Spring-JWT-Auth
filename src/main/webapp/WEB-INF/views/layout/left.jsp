@@ -98,6 +98,10 @@
 						<div class="sb-nav-link-icon"><i class="fas fa-desktop"></i></div>
 						Windows
 					</a>
+					<a class="nav-link" href="#">
+						<div class="sb-nav-link-icon"><i class="fas fa-film"></i></div>
+						Movies
+					</a>
 
 
 

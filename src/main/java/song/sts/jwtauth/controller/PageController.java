@@ -150,4 +150,9 @@ public class PageController {
 		
 		return "setting/setting";
 	}
+	
+	@GetMapping("movie")
+	public String movielist() {
+		return "movie/list";
+	}
 }
