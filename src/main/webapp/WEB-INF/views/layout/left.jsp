@@ -98,7 +98,7 @@
 						<div class="sb-nav-link-icon"><i class="fas fa-desktop"></i></div>
 						Windows
 					</a>
-					<a class="nav-link" href="#">
+					<a class="nav-link" href="/jwtauth/movie">
 						<div class="sb-nav-link-icon"><i class="fas fa-film"></i></div>
 						Movies
 					</a>

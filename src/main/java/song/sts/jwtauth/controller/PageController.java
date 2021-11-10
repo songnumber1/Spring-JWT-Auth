@@ -103,7 +103,7 @@ public class PageController {
 
 	@GetMapping("skill/add")
 	public String skillAdd() {
-		return "skill/dataAddTemplate";
+		return "skill/addTemplate";
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -127,5 +127,10 @@ public class PageController {
 	@GetMapping("movie")
 	public String movielist() {
 		return "movie/list";
+	}
+
+	@GetMapping("movie/add")
+	public String movieAdd() {
+		return "movie/addTemplate";
 	}
 }

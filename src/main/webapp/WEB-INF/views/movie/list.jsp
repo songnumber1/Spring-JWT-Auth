@@ -3,8 +3,6 @@
 
 <%@include file="../layout/left.jsp"%>
 
-<link rel="stylesheet"
-	href="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css">
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
@@ -83,7 +81,6 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 	crossorigin="anonymous"></script>
 <script src="/jwtauth/js/datatables-simple-demo.js"></script>
-
 </body>
 </html>
 
