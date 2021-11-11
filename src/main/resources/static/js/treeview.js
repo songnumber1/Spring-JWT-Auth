@@ -39,9 +39,9 @@ $(document).ready(function() {
 	function getTree() {
 		//document.getElementById("storageData").val('1');
 		
-		return JSON.parse(document.getElementById("storageData").innerHTML);
+		//return JSON.parse(document.getElementById("storageData").innerHTML);
 		
-		/*
+		
 		var data = [
 			{
 				text: 'Parent 1',
@@ -90,6 +90,5 @@ $(document).ready(function() {
 			}
 		];
 		return data;
-		*/
 	}
 });

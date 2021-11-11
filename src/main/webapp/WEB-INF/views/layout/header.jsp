@@ -50,7 +50,7 @@
 
 </head>
 <body class="sb-nav-fixed">
-	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" id="navbar-main">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="/jwtauth/">Minwoo Dashboard</a>
 		<!-- Sidebar Toggle-->

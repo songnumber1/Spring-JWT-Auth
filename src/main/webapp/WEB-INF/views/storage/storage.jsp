@@ -17,16 +17,7 @@
 
 			<hr />
 
-			<div class="row">
-				<!-- 
-				<div class="col-xl-3">
-					<div class="card mb-4">
-						<div class="card-body" style="overflow-y: auto; height: 300px;">
-							<div id="treeview2"></div>
-						</div>
-					</div>
-				</div>
- 			-->
+			<div class="row"> 			
 				<ul class="nav nav-tabs">
 					<li class="nav-item"><a class="nav-link active"
 						data-toggle="tab" href="#home">Home</a></li>
@@ -145,7 +136,7 @@
 			</div>
 
 			<!-- <div class="row" style="display:none;"> -->
-			<div class="row" style="display:none;">
+			<div class="row">
 				<div class="card mb-4">
 					<div id="storageData">${reponseData}</div>
 				</div>
@@ -165,9 +156,6 @@
 	src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-<script
-	src="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-<script type="text/javascript" src="/jwtauth/js/treeview.js"></script>
 <script type="text/javascript" src="/jwtauth/js/storage.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
