@@ -5,22 +5,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/auth")
 public class AuthController {
-	
-	@GetMapping("/account/login")
+
+	@GetMapping("/login")
 	public String loginForm1() {
-		return "/account/login";
+		return "/auth/login";
 	}
 
-	@GetMapping("/auth/loginForm")
+	@GetMapping("/loginForm")
 	public String loginForm(HttpServletRequest request, HttpServletResponse response) {
-		return "/user/loginForm";
+		return "/auth/loginForm";
 	}
 
-	@GetMapping("/auth/joinForm")
+	@GetMapping("/joinForm")
 	public String joinForm() {
-		return "/user/joinForm";
+		return "/auth/joinForm";
 	}
 }

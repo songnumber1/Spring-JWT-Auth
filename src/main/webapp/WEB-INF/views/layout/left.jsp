@@ -56,7 +56,7 @@
                             <div class="collapse" id="programsCollapseSoftware" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#">Android</a>
-                                    <a class="nav-link" href="/jwtauth/csharp">C#</a>
+                                    <a class="nav-link" href="/jwtauth/skill/csharp">C#</a>
                                     <a class="nav-link" href="#">Java</a>
 									<a class="nav-link" href="#">Java Script</a>
 									<a class="nav-link" href="#">MFC</a>
@@ -69,7 +69,7 @@
                         </nav>
                     </div>
                             
-					<a class="nav-link" href="/jwtauth/storage">
+					<a class="nav-link" href="/jwtauth/storage/">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-database"></i>
 						</div> 
@@ -98,7 +98,7 @@
 						<div class="sb-nav-link-icon"><i class="fas fa-desktop"></i></div>
 						Windows
 					</a>
-					<a class="nav-link" href="/jwtauth/movie">
+					<a class="nav-link" href="/jwtauth/movie/">
 						<div class="sb-nav-link-icon"><i class="fas fa-film"></i></div>
 						Movies
 					</a>

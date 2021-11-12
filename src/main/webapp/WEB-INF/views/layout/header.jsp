@@ -81,7 +81,7 @@
 					aria-labelledby="navbarDropdown">
 					
 					<sec:authorize access="hasRole('ADMIN')">
-						<li><a class="dropdown-item" href="/jwtauth/setting">Settings</a></li>
+						<li><a class="dropdown-item" href="/jwtauth/setting/">Settings</a></li>
 						<li><a class="dropdown-item" href="#!">Activity Log</a></li>
 						<li><hr class="dropdown-divider" /></li>
 					</sec:authorize>
