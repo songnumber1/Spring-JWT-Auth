@@ -1,7 +1,5 @@
 package song.sts.jwtauth.controller;
 
-import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
