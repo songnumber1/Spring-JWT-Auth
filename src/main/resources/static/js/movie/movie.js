@@ -147,12 +147,12 @@ let pathMoveFunc = function pathMove(absolutePath) {
 
 					if (res.data[key].dir !== true) {
 						html += `<td style="text-align: center;">
-							<button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download" aria-hidden="true"></i></button>
+							<button type="button" id="btn-download" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download" aria-hidden="true"></i></button>
 							<button type="button" id="btn-view" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-eye" aria-hidden="true"></i></button>
 						</td>`;
 					} else {
 						html += `<td style="text-align: center;">
-							<button type="button" class="btn btn-info btn-circle btn-sm"><i class="fas fa-folder-open" aria-hidden="true"></i></button>
+							<button type="button" id="btn-dir" class="btn btn-info btn-circle btn-sm"><i class="fas fa-folder-open" aria-hidden="true"></i></button>
 						</td>`;
 					}
 					
@@ -188,4 +188,33 @@ $(document).on("click", "#btn-view", function() {
 
 	location.href = "/jwtauth/movie/player?absolutePath=" + encodeURI(absolutePath);
 });
-  
+
+$(document).on("click", "#btn-download", function() {
+	// 현재 클릭된 Row(<tr>)
+	var tr = $(this).parent().parent()
+	var td = tr.children();
+
+	var absolutePath = td.eq(tableAbsolutePathTdIndex).text();
+
+	if(absolutePath === null || absolutePath === undefined || absolutePath === ""){
+		alert('파일 경로를 확인할 수 없습니다.');
+		return;
+	}
+
+	location.href = "/jwtauth/file/fileDownload?absolutePath=" + encodeURI(absolutePath);
+});
+
+$(document).on("click", "#btn-dir", function() {
+	// 현재 클릭된 Row(<tr>)
+	var tr = $(this).parent().parent()
+	var td = tr.children();
+
+	var absolutePath = td.eq(tableAbsolutePathTdIndex).text();
+
+	if(absolutePath === null || absolutePath === undefined || absolutePath === ""){
+		alert('파일 경로를 확인할 수 없습니다.');
+		return;
+	}
+
+	pathMoveFunc(absolutePath);
+});

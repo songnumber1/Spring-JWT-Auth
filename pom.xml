@@ -106,8 +106,8 @@
 		<dependency>
 		    <groupId>com.google.code.gson</groupId>
 		    <artifactId>gson</artifactId>
-		    </dependency>
-
+		</dependency>
+		
 		<!-- springfox-swagger2 -->
 		<dependency>
 			<groupId>io.springfox</groupId>

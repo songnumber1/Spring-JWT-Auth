@@ -28,11 +28,24 @@ public class MovieRestController {
         File[] files = new File(absolutePath).listFiles();
 
         for (File file : files) {
-            MovieTableItemModel movieTableItemModel = MovieTableItemModel.builder().id(UUID.randomUUID().toString())
-                    .absolutePath(file.getAbsolutePath()).name(file.getName()).isDir(file.isDirectory())
-                    .writeDate(fileCreatedInfo(file.getAbsolutePath())).build();
+            if (file.isFile()) {
+                int pos = file.getName().lastIndexOf(".");
+                String ext = file.getName().substring(pos + 1);
 
-            movieTableItemModels.add(movieTableItemModel);
+                if (ext.toLowerCase().equals("mp4")) {
+                    MovieTableItemModel movieTableItemModel = MovieTableItemModel.builder()
+                            .id(UUID.randomUUID().toString()).absolutePath(file.getAbsolutePath()).name(file.getName())
+                            .isDir(file.isDirectory()).writeDate(fileCreatedInfo(file.getAbsolutePath())).build();
+
+                    movieTableItemModels.add(movieTableItemModel);
+                }
+            } else {
+                MovieTableItemModel movieTableItemModel = MovieTableItemModel.builder().id(UUID.randomUUID().toString())
+                        .absolutePath(file.getAbsolutePath()).name(file.getName()).isDir(file.isDirectory())
+                        .writeDate(fileCreatedInfo(file.getAbsolutePath())).build();
+
+                movieTableItemModels.add(movieTableItemModel);
+            }
         }
 
         return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", movieTableItemModels, null);
