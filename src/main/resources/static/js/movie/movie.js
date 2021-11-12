@@ -1,5 +1,7 @@
 var datatable;
 const tableId ='movie-table';
+const tableAbsolutePathTdIndex = 0;
+const tableNameTdIndex = 1;
 
 window.addEventListener('DOMContentLoaded', event => {
 	// Simple-DataTables
@@ -146,7 +148,7 @@ let pathMoveFunc = function pathMove(absolutePath) {
 					if (res.data[key].dir !== true) {
 						html += `<td style="text-align: center;">
 							<button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fas fa-download" aria-hidden="true"></i></button>
-							<button type="button" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-eye" aria-hidden="true"></i></button>
+							<button type="button" id="btn-view" class="btn btn-secondary btn-circle btn-sm"><i class="fas fa-eye" aria-hidden="true"></i></button>
 						</td>`;
 					} else {
 						html += `<td style="text-align: center;">
@@ -171,4 +173,19 @@ let pathMoveFunc = function pathMove(absolutePath) {
 		}
 	});
 }
+
+$(document).on("click", "#btn-view", function() {
+	// 현재 클릭된 Row(<tr>)
+	var tr = $(this).parent().parent()
+	var td = tr.children();
+
+	var absolutePath = td.eq(tableAbsolutePathTdIndex).text();
+
+	if(absolutePath === null || absolutePath === undefined || absolutePath === ""){
+		alert('파일 경로를 확인할 수 없습니다.');
+		return;
+	}
+
+	location.href = "/jwtauth/movie/player?absolutePath=" + encodeURI(absolutePath);
+});
   

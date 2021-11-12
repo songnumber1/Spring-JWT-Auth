@@ -73,7 +73,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 <script
 	src="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-<script type="text/javascript" src="/jwtauth/js/movie.js"></script>
+<script type="text/javascript" src="/jwtauth/js/movie/movie.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 	crossorigin="anonymous"></script>
 <script src="/jwtauth/js/datatables-simple-demo.js"></script>
