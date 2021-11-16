@@ -51,6 +51,7 @@
 
 			<!-- <div class="row" style="display: none;"> -->
 			<div class="row">
+				<button class="btn btn-primary" id="btn-node-add">Node Add</button>
 				<div class="card mb-4">
 					<div id="movieTreeData">${reponseTreeData}</div>
 				</div>
@@ -73,7 +74,11 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 <script
 	src="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+	
 <script type="text/javascript" src="/jwtauth/js/movie/movie.js"></script>
+
+<script type="text/javascript" src="/jwtauth/js/file/download.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 	crossorigin="anonymous"></script>
 <script src="/jwtauth/js/datatables-simple-demo.js"></script>

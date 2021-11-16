@@ -1,7 +1,10 @@
 var datatable;
+var tree;
 const tableId ='movie-table';
 const tableAbsolutePathTdIndex = 0;
 const tableNameTdIndex = 1;
+
+var selectNode;
 
 window.addEventListener('DOMContentLoaded', event => {
 	// Simple-DataTables
@@ -28,10 +31,10 @@ function createTable() {
 	var html = `<thead>
 		<tr>
 			<th style="display:none;">AbsolutePath</th>
-			<th class="col-5">Title</th>
-			<th class="col-3">Type</th>
+			<th class="col-7">Title</th>
+			<th class="col-1">Type</th>
 			<th class="col-2">WriteDate</th>
-			<th class="col-2" style="text-align: center;">View</th>
+			<th class="col-2" style="text-align: center;">Work</th>
 		</tr>
 	</thead>`;
 
@@ -58,7 +61,7 @@ $(document).ready(function() {
 		lineMarginBottom - 
 		lineMarginTop - 20);
 
-  	$('#movietree').treeview({
+	tree = $('#movietree').treeview({
 		color: "#428bca",
 		//expandIcon: 'fa fa-plus',
 		//collapseIcon: 'fa fa-minus',
@@ -89,8 +92,10 @@ $(document).ready(function() {
 		// var childrenNodes = _getChildren(node);
 		// console.log("nodeSelected - childrenNodes", childrenNodes);
 
+		selectNode = node;
+
+		console.log(selectNode);
 		pathMoveFunc(node.tags[0]);
-		
 	});
 
 	function _getChildren(node) {
@@ -124,10 +129,10 @@ let pathMoveFunc = function pathMove(absolutePath) {
 				var html = `<thead>
 					<tr>
 						<th style="display:none;">AbsolutePath</th>
-						<th class="col-5">Title</th>
-						<th class="col-3">Type</th>
+						<th class="col-7">Title</th>
+						<th class="col-1">Type</th>
 						<th class="col-2">WriteDate</th>
-						<th class="col-2" style="text-align: center;">View</th>
+						<th class="col-2" style="text-align: center;">Work</th>
 					</tr>
 				</thead>`;
 
@@ -217,4 +222,26 @@ $(document).on("click", "#btn-dir", function() {
 	}
 
 	pathMoveFunc(absolutePath);
+});
+
+$(document).on("click", "#btn-node-add", function() {
+	var newItem = 
+		{
+			text: 'Grandchild 1',
+			href: '#grandchild1',
+			tags: ['0']
+		}							
+	;
+
+	// node = tree.selectedNode;
+	// console.log(tree, node);
+	console.log(selectNode.nodes);
+	selectNode.nodes.push(newItem);
+	console.log(selectNode.nodes);
+
+	// var addNodes = new Array();
+	// addNodes[0] = selectNodeID;
+	// addNodes[1] = {node: {text: "New menu", href: "001005" }};
+
+	//$('#movietree').treeview("addNode", addNodes);
 });

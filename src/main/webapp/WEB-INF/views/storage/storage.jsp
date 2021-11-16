@@ -135,8 +135,7 @@
 				</div>
 			</div>
 
-			<!-- <div class="row" style="display:none;"> -->
-			<div class="row">
+			<div class="row" style="display:none;">
 				<div class="card mb-4">
 					<div id="storageData">${reponseData}</div>
 				</div>
@@ -156,7 +155,9 @@
 	src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/jwtauth/js/storage.js"></script>
+<script type="text/javascript" src="/jwtauth/js/storage/storage.js"></script>
+<script type="text/javascript" src="/jwtauth/js/storage/work.js"></script>
+<script type="text/javascript" src="/jwtauth/js/file/download.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 	crossorigin="anonymous"></script>
