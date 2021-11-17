@@ -27,7 +27,7 @@ import song.sts.jwtauth.service.MultipartFileService;
 @RequestMapping("/movie")
 public class MovieController {
     @GetMapping({ "/", "" })
-    public String movie(Model model) {
+    public String movie(Model menuModel, Model model) {
         File[] files = new File(FinalVariable.MOVIE_PATH).listFiles();
 
         List<File> fileList = Arrays.asList(files);

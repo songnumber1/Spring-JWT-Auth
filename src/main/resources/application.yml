@@ -6,7 +6,7 @@ server:
       charset: UTF-8
       enabled: true
       force: true
-      
+
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
@@ -15,7 +15,7 @@ spring:
     password: Apassword!1
   output:
     ansi:
-      enable: NAVER 
+      enable: NAVER
   mvc:
     view:
       prefix: /WEB-INF/views/
@@ -35,9 +35,9 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
-      
+
 jwt:
   secret-key: retunbliss-key
-  access-token-expire-length : 3600000
+  access-token-expire-length: 3600000
   refresh-token-expire-length: 604800000
-  header-name: 'returnbliss-bearer'
+  header-name: "returnbliss-bearer"

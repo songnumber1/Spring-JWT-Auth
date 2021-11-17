@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import lombok.Data;
 
 @Data
@@ -18,17 +20,22 @@ public class MenuThreeDept {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long menuThreeDeptid;
-	
+
 	private String menuThreeDeptTitle;
-	
+
 	private String menuThreeDeptUrl;
-	
+
 	private boolean isActive;
-	
+
+	private String menuThreeDeptIcon;
+
+	@ColumnDefault("1")
+	private int menuThreeDeptSort;
+
 	private String remark;
-	
+
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="menuTwoDeptid")
+	@JoinColumn(name = "menuTwoDeptid")
 	private MenuTwoDept menuTwoDept;
 }

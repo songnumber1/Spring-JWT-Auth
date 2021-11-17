@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,7 +22,7 @@ public class SettingController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/")
-    public String setting(HttpServletRequest request, HttpServletResponse response) {
+    public String setting(HttpServletRequest request, HttpServletResponse response, Model menuModel) {
         if (!request.isUserInRole("ROLE_ADMIN")) {
             authWorkHandler.logoutDataDelete(request, response);
             return null;

@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import lombok.Data;
 
 @Data
@@ -23,21 +25,26 @@ public class MenuTwoDept {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long menuTwoDeptid;
-	
+
 	private String menuTwoDeptTitle;
-	
+
 	private String menuTwoDeptUrl;
-	
+
 	private boolean isActive;
-	
+
+	private String menuTwoDeptIcon;
+
+	@ColumnDefault("1")
+	private int menuTwoDeptSort;
+
 	private String remark;
-	
+
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="menuOneDeptid")
+	@JoinColumn(name = "menuOneDeptid")
 	private MenuOneDept menuOneDept;
-	
+
 	@JsonManagedReference
 	@OneToMany(mappedBy = "menuTwoDept", fetch = FetchType.LAZY)
-	private List<MenuThreeDept> menuThreeDepts = new ArrayList<>();	
+	private List<MenuThreeDept> menuThreeDepts = new ArrayList<>();
 }

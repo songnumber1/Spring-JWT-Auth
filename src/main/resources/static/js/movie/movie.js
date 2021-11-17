@@ -95,6 +95,7 @@ $(document).ready(function() {
 		selectNode = node;
 
 		console.log(selectNode);
+		
 		pathMoveFunc(node.tags[0]);
 	});
 
@@ -225,23 +226,5 @@ $(document).on("click", "#btn-dir", function() {
 });
 
 $(document).on("click", "#btn-node-add", function() {
-	var newItem = 
-		{
-			text: 'Grandchild 1',
-			href: '#grandchild1',
-			tags: ['0']
-		}							
-	;
-
-	// node = tree.selectedNode;
-	// console.log(tree, node);
-	console.log(selectNode.nodes);
-	selectNode.nodes.push(newItem);
-	console.log(selectNode.nodes);
-
-	// var addNodes = new Array();
-	// addNodes[0] = selectNodeID;
-	// addNodes[1] = {node: {text: "New menu", href: "001005" }};
-
-	//$('#movietree').treeview("addNode", addNodes);
+	selectNode.refresh();
 });

@@ -17,7 +17,7 @@ import song.sts.jwtauth.model.response.StorageItemModel;
 @RequestMapping("/storage")
 public class StorageControll {
     @GetMapping("/")
-    public String storage(Model model) {
+    public String storage(Model menuModel, Model model) {
         String drive, id, absolutePath;
 
         double totalSize, freeSize, useSize;

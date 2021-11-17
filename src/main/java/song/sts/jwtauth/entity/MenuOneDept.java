@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import lombok.Data;
 
 @Data
@@ -29,6 +31,11 @@ public class MenuOneDept {
 	private String menuOneDeptUrl;
 
 	private boolean isActive;
+
+	private String menuOneDeptIcon;
+
+	@ColumnDefault("1")
+	private int menuOneDeptSort;
 
 	private String remark;
 
