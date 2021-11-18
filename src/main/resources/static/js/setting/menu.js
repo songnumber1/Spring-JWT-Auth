@@ -1,4 +1,18 @@
 $(document).ready(function() {
+    $('#btn-category-switch').click(function() {
+        $(this).find('.btn').toggleClass('active');  
+        
+        if ($(this).find('.btn-primary').length > 0) {
+            $(this).find('.btn').toggleClass('btn-primary');
+        }
+    });
+    
+    $('form').submit(function(){
+        alert($(this["options"]).val());
+        return false;
+    });
+
+
     /* Category */
     $('#categoryModal').on('hidden.bs.modal', function() {
         $(this).find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');

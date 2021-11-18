@@ -21,6 +21,12 @@
 														<i class="fas fa-cog" aria-hidden="true"></i>
 													</button>
 
+													<button type="button"
+														class="btn btn-info btn-circle btn-sm"
+														data-toggle="collapse" data-target="#collapse-categorymenu">
+														<i class="fas fas fa-arrow-down" aria-hidden="true"></i>
+													</button>
+
 													<div class="modal fade" id="categoryModal" role="dialog">
 														<div class="modal-dialog modal-dialog-centered">
 															<!-- Modal content-->
@@ -58,6 +64,46 @@
 
 												</div>
 
+											</div>
+										</div>
+									</div>
+
+									<div class="container-fluid">
+										<div id="collapse-categorymenu" class="collapse">
+											<hr>
+														
+											<div class="card-body">
+												<div class="container">
+
+													<ul class="list-group">
+														<li class="list-group-item">
+															First item 
+
+															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;"> 
+																<button class="btn btn-sm btn-default">ON</button>
+																<button class="btn btn-sm btn-primary active">OFF</button>
+															</div>
+														</li>
+														
+														<li class="list-group-item">
+															Second item
+
+															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;"> 
+																<button class="btn btn-sm btn-default">ON</button>
+																<button class="btn btn-sm btn-primary active">OFF</button>
+															</div>
+														</li>
+														
+														<li class="list-group-item">
+															Third item
+
+															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;"> 
+																<button class="btn btn-sm btn-default">ON</button>
+																<button class="btn btn-sm btn-primary active">OFF</button>
+															</div>
+														</li>
+													  </ul>
+												</div>
 											</div>
 										</div>
 									</div>
