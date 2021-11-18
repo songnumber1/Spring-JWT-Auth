@@ -11,8 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import org.hibernate.annotations.ColumnDefault;
@@ -47,4 +49,9 @@ public class MenuTwoDept {
 	@JsonManagedReference
 	@OneToMany(mappedBy = "menuTwoDept", fetch = FetchType.LAZY)
 	private List<MenuThreeDept> menuThreeDepts = new ArrayList<>();
+
+	@OneToOne
+	@JsonIgnore
+	@JoinColumn(name = "userRoleid", nullable = false)
+	private UserRole userRole;
 }

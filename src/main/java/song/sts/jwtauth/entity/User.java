@@ -25,11 +25,11 @@ public class User {
 	private boolean isActive;
 	private String remark;
 
-	public List<String> GetRoleList(){
-		if(this.roles.length() > 0){
+	public List<String> GetRoleList() {
+		if (this.roles.length() > 0) {
 			return Arrays.asList(this.roles.split(","));
 		}
-		
+
 		return new ArrayList<>();
 	}
 }

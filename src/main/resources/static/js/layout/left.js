@@ -18,8 +18,6 @@ $(document).ready(function() {
             var oneDeptMenuIcon = oneDeptMenus[oneDeptkey].menuOneDeptIcon;
             var oneDeptMenuTitle = oneDeptMenus[oneDeptkey].menuOneDeptTitle;
             var oneDeptMenuAria = oneDeptMenuTitle + '_' + oneDeptMenuId;
-            
-            //console.log(replaceAllFunc(uuidFunc(), '-', ''));
            
             if(twoDeptMenus.length === 0) {
                 html = html + 
@@ -52,7 +50,6 @@ $(document).ready(function() {
                 var twoDeptMenuUrl = twoDeptMenus[twoDeptkey].menuTwoDeptUrl;
                 var twoDeptMenuTitle = twoDeptMenus[twoDeptkey].menuTwoDeptTitle;
                 var twoDeptMenuAria = twoDeptMenuTitle + '_' + twoDeptMenuId;
-                console.log(twoDeptMenuTitle, twoDeptMenuAria);
 
                 if(threeDeptMenus.length === 0) {
                     html = html + 

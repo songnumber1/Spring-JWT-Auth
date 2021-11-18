@@ -7,8 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.hibernate.annotations.ColumnDefault;
 
@@ -38,4 +40,9 @@ public class MenuThreeDept {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "menuTwoDeptid")
 	private MenuTwoDept menuTwoDept;
+
+	@OneToOne
+	@JsonIgnore
+	@JoinColumn(name = "userRoleid", nullable = false)
+	private UserRole userRole;
 }

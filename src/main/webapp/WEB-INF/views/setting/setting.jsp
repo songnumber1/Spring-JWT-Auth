@@ -134,7 +134,7 @@
 																					class="btn btn-secondary dropdown-toggle col-sm-12"
 																					type="button" id="btn-dropdown-category"
 																					data-toggle="dropdown" aria-expanded="false">
-																					Select Category</button>
+																					Select category</button>
 
 																				<input id="input-hidden-select-category"
 																					type="hidden" value='-1' />
@@ -236,7 +236,7 @@
 																						class="btn btn-secondary dropdown-toggle col-sm-12"
 																						type="button" id="btn-dropdown-root"
 																						data-toggle="dropdown" aria-expanded="false">
-																						Select Root Menu</button>
+																						Select root menu</button>
 
 																					<input id="input-hidden-select-root"
 																						type="hidden" value='-1' />
@@ -307,10 +307,87 @@
 											<div class="panel panel-default">
 												<!-- /.panel-heading -->
 												<div class="panel-body">
-													<button type="button"
-														class="btn btn-primary btn-circle btn-sm">
-														<i class="fas fa-cog" aria-hidden="true"></i>
-													</button>
+													<div class="panel-body">
+														<button type="button" id="btn-last-setting"
+															class="btn btn-primary btn-circle btn-sm"
+															data-toggle="modal" data-target="#lastModal">
+															<i class="fas fa-cog" aria-hidden="true"></i>
+														</button>
+
+														<div class="modal fade" id="lastModal" role="dialog">
+															<div class="modal-dialog modal-dialog-centered">
+																<!-- Modal content-->
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h5 class="modal-title">Last Menu</h5>
+																		<button type="button" class="close"
+																			data-dismiss="modal">&times;</button>
+																	</div>
+																	<div class="modal-body">
+																		<div class="form-group was-validated">
+																			<label class="control-label col-sm-12">*
+																				Sub</label>
+
+																			<div class="col-sm-12 was-validated">
+																				<div class="dropdown" id="dropdown-sub">
+																					<button
+																						class="btn btn-secondary dropdown-toggle col-sm-12"
+																						type="button" id="btn-dropdown-sub"
+																						data-toggle="dropdown" aria-expanded="false">
+																						Select sub menu</button>
+
+																					<input id="input-hidden-select-sub"
+																						type="hidden" value='-1' />
+
+																					<div id="dropdown-sub-items"
+																						class="dropdown-menu col-sm-12"
+																						aria-labelledby="btn-dropdown-sub">
+																					</div>
+
+																					<div id="sub-invalid-feedback"
+																						class="invalid-feedback" style="display: block;">Please
+																						fill out this field.</div>
+																				</div>
+																			</div>
+																		</div>
+
+																		<div class="form-group was-validated">
+																			<label class="control-label col-sm-12">* Name</label>
+																			<div class="col-sm-12">
+																				<input type="text" class="form-control"
+																					id="last-name" placeholder="Enter last name"
+																					name="last-name" required>
+
+																				<div class="valid-feedback"></div>
+																				<div class="invalid-feedback">Please fill out
+																					this field.</div>
+																			</div>
+																		</div>
+
+																		<div class="form-group was-validated">
+																			<label class="control-label col-sm-12">* Url</label>
+																			<div class="col-sm-12">
+																				<input type="text" class="form-control" id="last-url"
+																					placeholder="Enter Url" name="last-url" required>
+
+																				<div class="valid-feedback"></div>
+																				<div class="invalid-feedback">Please fill out
+																					this field.</div>
+																			</div>
+																		</div>
+																	</div>
+
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-primary"
+																			id="btn-last-add">Save</button>
+
+																		<button type="button" class="btn btn-success"
+																			data-dismiss="modal">Close</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
 												</div>
 												<!-- /.panel-body -->
 											</div>
@@ -427,7 +504,7 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 	crossorigin="anonymous"></script>
 
-<script src="/jwtauth/js/setting.js"></script>
+<script src="/jwtauth/js/setting/menu.js"></script>
 
 </body>
 </html>

@@ -31,6 +31,7 @@ import song.sts.jwtauth.repository.MenuCategoryRepository;
 import song.sts.jwtauth.repository.MenuOneDeptRepository;
 import song.sts.jwtauth.repository.MenuThreeDeptRepository;
 import song.sts.jwtauth.repository.MenuTwoDeptRepository;
+import song.sts.jwtauth.repository.UserRoleRepository;
 import song.sts.jwtauth.security.handler.AuthWorkHandler;
 import song.sts.jwtauth.util.ResponseData;
 
@@ -49,10 +50,14 @@ public class MenuRestController {
 	private MenuThreeDeptRepository menuThreeDeptRepository;
 
 	@Autowired
+	private UserRoleRepository userRoleRepository;
+
+	@Autowired
 	private AuthWorkHandler authWorkHandler;
 
 	@PostMapping("/menu/category/add")
 	public ResponseEntity<?> CategorySave(@RequestBody MenuCategory menuCategory) {
+		menuCategory.setUserRole(userRoleRepository.findAdmin());
 		menuCategoryRepository.save(menuCategory);
 
 		return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", null, null);
@@ -66,6 +71,7 @@ public class MenuRestController {
 		if (menuCategory == null)
 			return null;
 
+		menuOneDept.setUserRole(userRoleRepository.findAdmin());
 		menuOneDept.setMenuCategory(menuCategory);
 
 		menuOneDeptRepository.save(menuOneDept);
@@ -75,6 +81,13 @@ public class MenuRestController {
 
 	@PostMapping("/menu/twodept/add")
 	public ResponseEntity<?> MenuTwoDeptSave(@RequestBody MenuTwoDept menuTwoDept) {
+		MenuOneDept menuOneDept = menuOneDeptRepository.findById(menuTwoDept.getMenuOneDept().getMenuOneDeptid())
+				.orElseThrow(() -> new NoSuchElementException());
+
+		if (menuOneDept == null)
+			return null;
+
+		menuTwoDept.setUserRole(userRoleRepository.findAdmin());
 		menuTwoDeptRepository.save(menuTwoDept);
 
 		return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", null, null);
@@ -82,6 +95,14 @@ public class MenuRestController {
 
 	@PostMapping("/menu/threedept/add")
 	public ResponseEntity<?> save(@RequestBody MenuThreeDept menuThreeDept) {
+		MenuTwoDept menuTwoDept = menuTwoDeptRepository.findById(menuThreeDept.getMenuTwoDept().getMenuTwoDeptid())
+				.orElseThrow(() -> new NoSuchElementException());
+
+		if (menuTwoDept == null)
+			return null;
+
+		menuThreeDept.setUserRole(userRoleRepository.findAdmin());
+
 		menuThreeDeptRepository.save(menuThreeDept);
 
 		return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", null, null);
@@ -90,15 +111,15 @@ public class MenuRestController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/menu/category/select")
 	public ResponseEntity<?> categorySelect(HttpServletRequest request, HttpServletResponse response) {
-		if(!request.isUserInRole("ROLE_ADMIN")) {
+		if (!request.isUserInRole("ROLE_ADMIN")) {
 			authWorkHandler.logoutDataDelete(request, response);
 			return null;
 		}
-		
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
-		UserDetails userDetails = (UserDetails)principal;
-		
-		if(userDetails == null) {
+
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails) principal;
+
+		if (userDetails == null) {
 			authWorkHandler.logoutDataDelete(request, response);
 			return null;
 		}
