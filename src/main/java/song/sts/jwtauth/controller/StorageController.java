@@ -15,7 +15,7 @@ import song.sts.jwtauth.model.response.StorageItemModel;
 
 @Controller
 @RequestMapping("/storage")
-public class StorageControll {
+public class StorageController {
     @GetMapping("/")
     public String storage(Model menuModel, Model model) {
         String drive, id, absolutePath;

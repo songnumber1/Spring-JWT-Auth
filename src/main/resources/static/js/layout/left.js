@@ -12,7 +12,6 @@ $(document).ready(function() {
         var oneDeptMenus = menulist[category].menuOneDepts;
 
         for(oneDeptkey in oneDeptMenus) {
-            console.log(oneDeptMenus[oneDeptkey]);
             var twoDeptMenus = oneDeptMenus[oneDeptkey].menuTwoDepts;
             var oneDeptMenuId = oneDeptMenus[oneDeptkey].menuOneDeptid;
             var oneDeptMenuUrl = oneDeptMenus[oneDeptkey].menuOneDeptUrl;
@@ -44,13 +43,16 @@ $(document).ready(function() {
                     </a>`;
             }
 
+            var isInsertThreeDeptMenu = false;
+            var isThreeDeptMenuExist = false;
+
             for(twoDeptkey in twoDeptMenus) {
                 var threeDeptMenus = twoDeptMenus[twoDeptkey].menuThreeDepts;
                 var twoDeptMenuId = twoDeptMenus[twoDeptkey].menuTwoDeptid;
                 var twoDeptMenuUrl = twoDeptMenus[twoDeptkey].menuTwoDeptUrl;
                 var twoDeptMenuTitle = twoDeptMenus[twoDeptkey].menuTwoDeptTitle;
                 var twoDeptMenuAria = twoDeptMenuTitle + '_' + twoDeptMenuId;
-                var isInsertThreeDeptMenu = false;
+                console.log(twoDeptMenuTitle, twoDeptMenuAria);
 
                 if(threeDeptMenus.length === 0) {
                     html = html + 
@@ -64,6 +66,7 @@ $(document).ready(function() {
                 }
                 else {
                     var threeHtml = '';
+                    isThreeDeptMenuExist = true;
 
                     for(threeDeptkey in threeDeptMenus) {                        
                         threeHtml = threeHtml + 
@@ -75,43 +78,33 @@ $(document).ready(function() {
                     if(!isInsertThreeDeptMenu) {
                         html = html + `
                             <div class="collapse" id="` +  oneDeptMenuAria + `" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#` + twoDeptMenuAria + 
-                                    `" aria-expanded="false" aria-controls="` + twoDeptMenuAria + `">
-                                        ` + twoDeptMenuTitle + `
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="` + twoDeptMenuAria+ `" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                        ` + threeHtml + `
-                                        </nav>
-                                    </div>
-                                </nav>
-                            </div>
-                        `;
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">`;
 
                         isInsertThreeDeptMenu = true;
                     } 
-                    else {
-                        html = html + `
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#` + twoDeptMenuAria + 
-                            `" aria-expanded="false" aria-controls="` + twoDeptMenuAria + `">
-                                ` + twoDeptMenuTitle + `
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="` + twoDeptMenuAria+ `" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                ` + threeHtml + `
-                                </nav>
-                            </div>
-                        `;
-                    }
                     
                     html = html + `
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#` + twoDeptMenuAria + 
+                        `" aria-expanded="false" aria-controls="` + twoDeptMenuAria + `">
+                            ` + twoDeptMenuTitle + `
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="` + twoDeptMenuAria+ `" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                            <nav class="sb-sidenav-menu-nested nav">
+                            ` + threeHtml + `
                             </nav>
                         </div>
                     `;
                 }
+            }
+
+            if(isThreeDeptMenuExist) {
+                html = html + `
+                        </nav>
+                    </div>
+                `;
+
+                isInsertThreeDeptMenu = false;
             }
         }
 	}
