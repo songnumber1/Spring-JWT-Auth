@@ -77,29 +77,53 @@
 
 													<ul class="list-group">
 														<li class="list-group-item">
-															First item 
+															First item
 
-															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;"> 
+															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;margin-left: 10px;"> 
 																<button class="btn btn-sm btn-default">ON</button>
-																<button class="btn btn-sm btn-primary active">OFF</button>
+																<button class="btn btn-sm btn-info active">OFF</button>
+															</div>
+
+															<div style="float: right;"> 
+																<button type="button"
+																	class="btn btn-info btn-circle btn-sm"
+																	data-toggle="modal" data-target="#categoryModal">
+																	<i class="fas fa-user" aria-hidden="true"></i>
+																</button>
 															</div>
 														</li>
-														
+
 														<li class="list-group-item">
 															Second item
 
-															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;"> 
+															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;margin-left: 10px;"> 
 																<button class="btn btn-sm btn-default">ON</button>
-																<button class="btn btn-sm btn-primary active">OFF</button>
+																<button class="btn btn-sm btn-info active">OFF</button>
+															</div>
+
+															<div style="float: right;"> 
+																<button type="button"
+																	class="btn btn-info btn-circle btn-sm"
+																	data-toggle="modal" data-target="#categoryModal">
+																	<i class="fas fa-user" aria-hidden="true"></i>
+																</button>
 															</div>
 														</li>
 														
 														<li class="list-group-item">
 															Third item
-
-															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;"> 
+															
+															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;margin-left: 10px;"> 
 																<button class="btn btn-sm btn-default">ON</button>
-																<button class="btn btn-sm btn-primary active">OFF</button>
+																<button class="btn btn-sm btn-info active">OFF</button>
+															</div>
+
+															<div style="float: right;"> 
+																<button type="button"
+																	class="btn btn-info btn-circle btn-sm"
+																	data-toggle="modal" data-target="#categoryModal">
+																	<i class="fas fa-user" aria-hidden="true"></i>
+																</button>
 															</div>
 														</li>
 													  </ul>

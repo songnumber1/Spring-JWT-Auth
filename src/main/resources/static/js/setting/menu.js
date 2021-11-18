@@ -2,8 +2,8 @@ $(document).ready(function() {
     $('#btn-category-switch').click(function() {
         $(this).find('.btn').toggleClass('active');  
         
-        if ($(this).find('.btn-primary').length > 0) {
-            $(this).find('.btn').toggleClass('btn-primary');
+        if ($(this).find('.btn-info').length > 0) {
+            $(this).find('.btn').toggleClass('btn-info');
         }
     });
     
