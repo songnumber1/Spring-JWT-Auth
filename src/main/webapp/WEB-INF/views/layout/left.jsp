@@ -123,8 +123,12 @@
 			</div>
 			
 			<div class="sb-sidenav-footer">
-				<div class="small">Logged in as:</div>
-				Start Bootstrap
+				<div class="small">Logged in as</div>
+
+				<hr style="margin: 5px;">
+
+				<span id="span-username" style="visibility:hidden;">${principal.user.username} </span> <span id="span-userrole" style="visibility:hidden;">${principal.user.roles}</span>
+				
 			</div>
 		</nav>
 	</div>

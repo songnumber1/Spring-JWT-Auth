@@ -1,4 +1,12 @@
 $(document).ready(function() {
+
+    var userrole = $('#span-userrole').text();
+    var rolename = userrole.toLowerCase().replace('role_', '');
+    
+    $('#span-userrole').text(" / " + rolename[0].toUpperCase() + rolename.slice(1));
+    $("#span-userrole").css("visibility","visible");
+    $("#span-username").css("visibility","visible");
+
     let menulist = JSON.parse(document.getElementById("menulist").innerHTML);
 
     $("#container-menulist").empty();
