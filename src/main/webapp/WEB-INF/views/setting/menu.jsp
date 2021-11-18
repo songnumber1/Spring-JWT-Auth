@@ -1,3 +1,5 @@
+
+
 <strong class="mb-0">Navigation</strong>
 						<p></p>
 
@@ -85,11 +87,19 @@
 															</div>
 
 															<div style="float: right;"> 
-																<button type="button"
-																	class="btn btn-info btn-circle btn-sm"
-																	data-toggle="modal" data-target="#categoryModal">
-																	<i class="fas fa-user" aria-hidden="true"></i>
-																</button>
+																<button
+																	class="btn btn-sm btn-danger dropdown-toggle"
+																	type="button"
+																	data-toggle="dropdown" aria-expanded="false">
+																	Role</button>
+
+																<div id="dropdown-category-items"
+																	class="dropdown-menu"
+																	aria-labelledby="btn-dropdown-category">
+																	<a class="dropdown-item" href="#">Action</a>
+																	<a class="dropdown-item" href="#">Another action</a>
+																	<a class="dropdown-item" href="#">Something else here</a>
+																</div>
 															</div>
 														</li>
 
@@ -102,11 +112,19 @@
 															</div>
 
 															<div style="float: right;"> 
-																<button type="button"
-																	class="btn btn-info btn-circle btn-sm"
-																	data-toggle="modal" data-target="#categoryModal">
-																	<i class="fas fa-user" aria-hidden="true"></i>
-																</button>
+																<button
+																	class="btn btn-sm btn-danger dropdown-toggle"
+																	type="button"
+																	data-toggle="dropdown" aria-expanded="false">
+																	Role</button>
+
+																<div id="dropdown-category-items"
+																	class="dropdown-menu"
+																	aria-labelledby="btn-dropdown-category">
+																	<a class="dropdown-item" href="#">Action</a>
+																	<a class="dropdown-item" href="#">Another action</a>
+																	<a class="dropdown-item" href="#">Something else here</a>
+																</div>
 															</div>
 														</li>
 														
@@ -119,11 +137,19 @@
 															</div>
 
 															<div style="float: right;"> 
-																<button type="button"
-																	class="btn btn-info btn-circle btn-sm"
-																	data-toggle="modal" data-target="#categoryModal">
-																	<i class="fas fa-user" aria-hidden="true"></i>
-																</button>
+																<button
+																	class="btn btn-sm btn-danger dropdown-toggle"
+																	type="button"
+																	data-toggle="dropdown" aria-expanded="false">
+																	Role</button>
+
+																<div id="dropdown-category-items"
+																	class="dropdown-menu"
+																	aria-labelledby="btn-dropdown-category">
+																	<a class="dropdown-item" href="#">Action</a>
+																	<a class="dropdown-item" href="#">Another action</a>
+																	<a class="dropdown-item" href="#">Something else here</a>
+																</div>
 															</div>
 														</li>
 													  </ul>

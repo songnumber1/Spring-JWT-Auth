@@ -1,4 +1,11 @@
-$(document).ready(function() {
+$(document).ready(function() {  
+    var categoryListShow = false;
+    
+    $('#collapse-categorymenu').on('show.bs.collapse', function () {
+        categoryListShow = !categoryListShow;
+        console.log(categoryListShow);
+    });
+
     $('#btn-category-switch').click(function() {
         $(this).find('.btn').toggleClass('active');  
         
