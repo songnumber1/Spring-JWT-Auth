@@ -24,6 +24,7 @@
 													</button>
 
 													<button type="button"
+														id="btn-category-toggle"
 														class="btn btn-info btn-circle btn-sm"
 														data-toggle="collapse" data-target="#collapse-categorymenu">
 														<i class="fas fas fa-arrow-down" aria-hidden="true"></i>
@@ -73,86 +74,9 @@
 									<div class="container-fluid">
 										<div id="collapse-categorymenu" class="collapse">
 											<hr>
-														
+
 											<div class="card-body">
-												<div class="container">
-
-													<ul class="list-group">
-														<li class="list-group-item">
-															First item
-
-															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;margin-left: 10px;"> 
-																<button class="btn btn-sm btn-default">ON</button>
-																<button class="btn btn-sm btn-info active">OFF</button>
-															</div>
-
-															<div style="float: right;"> 
-																<button
-																	class="btn btn-sm btn-danger dropdown-toggle"
-																	type="button"
-																	data-toggle="dropdown" aria-expanded="false">
-																	Role</button>
-
-																<div id="dropdown-category-items"
-																	class="dropdown-menu"
-																	aria-labelledby="btn-dropdown-category">
-																	<a class="dropdown-item" href="#">Action</a>
-																	<a class="dropdown-item" href="#">Another action</a>
-																	<a class="dropdown-item" href="#">Something else here</a>
-																</div>
-															</div>
-														</li>
-
-														<li class="list-group-item">
-															Second item
-
-															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;margin-left: 10px;"> 
-																<button class="btn btn-sm btn-default">ON</button>
-																<button class="btn btn-sm btn-info active">OFF</button>
-															</div>
-
-															<div style="float: right;"> 
-																<button
-																	class="btn btn-sm btn-danger dropdown-toggle"
-																	type="button"
-																	data-toggle="dropdown" aria-expanded="false">
-																	Role</button>
-
-																<div id="dropdown-category-items"
-																	class="dropdown-menu"
-																	aria-labelledby="btn-dropdown-category">
-																	<a class="dropdown-item" href="#">Action</a>
-																	<a class="dropdown-item" href="#">Another action</a>
-																	<a class="dropdown-item" href="#">Something else here</a>
-																</div>
-															</div>
-														</li>
-														
-														<li class="list-group-item">
-															Third item
-															
-															<div class="btn-group btn-toggle" id="btn-category-switch" style="float: right;margin-left: 10px;"> 
-																<button class="btn btn-sm btn-default">ON</button>
-																<button class="btn btn-sm btn-info active">OFF</button>
-															</div>
-
-															<div style="float: right;"> 
-																<button
-																	class="btn btn-sm btn-danger dropdown-toggle"
-																	type="button"
-																	data-toggle="dropdown" aria-expanded="false">
-																	Role</button>
-
-																<div id="dropdown-category-items"
-																	class="dropdown-menu"
-																	aria-labelledby="btn-dropdown-category">
-																	<a class="dropdown-item" href="#">Action</a>
-																	<a class="dropdown-item" href="#">Another action</a>
-																	<a class="dropdown-item" href="#">Something else here</a>
-																</div>
-															</div>
-														</li>
-													  </ul>
+												<div class="container" id="category-menu-detail-setting-container">
 												</div>
 											</div>
 										</div>
@@ -178,6 +102,13 @@
 														class="btn btn-primary btn-circle btn-sm"
 														data-toggle="modal" data-target="#rootModal">
 														<i class="fas fa-cog" aria-hidden="true"></i>
+													</button>
+
+													<button type="button"
+														id="btn-root-toggle"
+														class="btn btn-info btn-circle btn-sm"
+														data-toggle="collapse" data-target="#collapse-rootmenu">
+														<i class="fas fas fa-arrow-down" aria-hidden="true"></i>
 													</button>
 
 													<div class="modal fade" id="rootModal" role="dialog">
@@ -208,11 +139,6 @@
 																				<div id="dropdown-category-items"
 																					class="dropdown-menu col-sm-12"
 																					aria-labelledby="btn-dropdown-category">
-																					<!-- 
-																				  <a class="dropdown-item" href="#">Action</a>
-																				  <a class="dropdown-item" href="#">Another action</a>
-																				  <a class="dropdown-item" href="#">Something else here</a>
-																				   -->
 																				</div>
 
 																				<div id="category-invalid-feedback"
@@ -259,6 +185,16 @@
 											</div>
 										</div>
 									</div>
+
+									<div class="container-fluid">
+										<div id="collapse-rootmenu" class="collapse">
+											<hr>
+											<div class="card-body">
+												<div class="container" id="root-menu-detail-setting-container">
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 
@@ -280,6 +216,13 @@
 															class="btn btn-primary btn-circle btn-sm"
 															data-toggle="modal" data-target="#subModal">
 															<i class="fas fa-cog" aria-hidden="true"></i>
+														</button>
+
+														<button type="button"
+															id="btn-sub-toggle"
+															class="btn btn-info btn-circle btn-sm"
+															data-toggle="collapse" data-target="#collapse-submenu">
+															<i class="fas fas fa-arrow-down" aria-hidden="true"></i>
 														</button>
 
 														<div class="modal fade" id="subModal" role="dialog">
@@ -357,6 +300,16 @@
 											</div>
 										</div>
 									</div>
+
+									<div class="container-fluid">
+										<div id="collapse-submenu" class="collapse">
+											<hr>
+											<div class="card-body">
+												<div class="container" id="sub-menu-detail-setting-container">
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 
@@ -378,6 +331,13 @@
 															class="btn btn-primary btn-circle btn-sm"
 															data-toggle="modal" data-target="#lastModal">
 															<i class="fas fa-cog" aria-hidden="true"></i>
+														</button>
+
+														<button type="button"
+															id="btn-last-toggle"
+															class="btn btn-info btn-circle btn-sm"
+															data-toggle="collapse" data-target="#collapse-lastmenu">
+															<i class="fas fas fa-arrow-down" aria-hidden="true"></i>
 														</button>
 
 														<div class="modal fade" id="lastModal" role="dialog">
@@ -456,6 +416,16 @@
 													</div>
 												</div>
 												<!-- /.panel-body -->
+											</div>
+										</div>
+									</div>
+
+									<div class="container-fluid">
+										<div id="collapse-lastmenu" class="collapse">
+											<hr>
+											<div class="card-body">
+												<div class="container" id="last-menu-detail-setting-container">
+												</div>
 											</div>
 										</div>
 									</div>

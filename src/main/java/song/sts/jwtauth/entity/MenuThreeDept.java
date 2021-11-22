@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.hibernate.annotations.ColumnDefault;
 
@@ -42,7 +41,7 @@ public class MenuThreeDept {
 	private MenuTwoDept menuTwoDept;
 
 	@OneToOne
-	@JsonIgnore
+	// @JsonIgnore
 	@JoinColumn(name = "userRoleid", nullable = false)
 	private UserRole userRole;
 }

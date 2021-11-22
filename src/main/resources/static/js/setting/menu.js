@@ -1,18 +1,246 @@
 $(document).ready(function() {  
     var categoryListShow = false;
-    
-    $('#collapse-categorymenu').on('show.bs.collapse', function () {
-        categoryListShow = !categoryListShow;
-        console.log(categoryListShow);
+
+    $('#btn-category-toggle').click(function() {
+        $.ajax({
+            type: "GET",
+            url: "/jwtauth/menu/category/select",
+            contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
+            dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
+            // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
+        }).done(function(res) {
+            if (res.status === 500) {
+                alert("카테고리 메뉴를 불러오지 못했습니다.");
+                console.log(res);
+            } else {
+                var dropDownItemsHtml = `<ul class="list-group">`;
+
+                var jsonData = JSON.parse(res.data);
+
+                for (key in jsonData) {
+                    dropDownItemsHtml = dropDownItemsHtml +
+                        `
+                            <li class="list-group-item">
+                                <span style="display:none;">` + jsonData[key].categoryId + `</span>
+                                <span>` + jsonData[key].categoryTitle + `</span>`;
+            
+                                dropDownItemsHtml = dropDownItemsHtml + `<div style="float: right;">
+                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        Role</button>
+            
+                                    <div id="dropdown-category-user-items-"` + jsonData[key].categoryTitle + ` class="dropdown-menu" aria-labelledby="btn-dropdown-category">
+                                        <a class="dropdown-item" href="#">Admin</a>
+                                        <a class="dropdown-item" href="#">Manager</a>
+                                        <a class="dropdown-item" href="#">User</a>
+                                    </div>
+                                </div>
+                            
+                        `;
+
+                        if(jsonData[key].active === true) {
+                            console.log('1');
+                            dropDownItemsHtml = dropDownItemsHtml +`
+                                <button type="button" class="btn btn-sm btn-toggle active" id="btn-category-switch" data-toggle="button" aria-pressed="false" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
+                                <div class="handle"></div>
+                            </button> `;
+                        }
+                        else { 
+                            dropDownItemsHtml = dropDownItemsHtml +`
+                                <button type="button" class="btn btn-sm btn-toggle" id="btn-category-switch" data-toggle="button" aria-pressed="false" autocomplete="off" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
+                                <div class="handle"></div>
+                            </button> `;
+                        }
+                }
+                dropDownItemsHtml = dropDownItemsHtml + `</li></ul>`;
+
+                var elm = document.getElementById('category-menu-detail-setting-container');
+                elm.innerHTML = dropDownItemsHtml;
+            }
+        }).fail(function(error) {
+            alert(JSON.stringify(error));
+        });
     });
 
-    $('#btn-category-switch').click(function() {
-        $(this).find('.btn').toggleClass('active');  
-        
-        if ($(this).find('.btn-info').length > 0) {
-            $(this).find('.btn').toggleClass('btn-info');
-        }
+    $('#btn-root-toggle').click(function() {
+        $.ajax({
+            type: "GET",
+            url: "/jwtauth/menu/onedept/select",
+            contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
+            dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
+            // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
+        }).done(function(res) {
+            if (res.status === 500) {
+                alert("루트 메뉴를 불러오지 못했습니다.");
+                console.log(res);
+            } else {
+                var dropDownItemsHtml = `<ul class="list-group">`;
+
+                var jsonData = JSON.parse(res.data);
+
+                for (key in jsonData) {
+                    dropDownItemsHtml = dropDownItemsHtml +
+                        `
+                            <li class="list-group-item">
+                                <span style="display:none;">` + jsonData[key].menuOneDeptid + `</span>
+                                <span>` + jsonData[key].menuOneDeptTitle + `</span>`;
+            
+                                dropDownItemsHtml = dropDownItemsHtml + `<div style="float: right;">
+                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        Role</button>
+            
+                                    <div id="dropdown-root-user-items-"` + jsonData[key].menuOneDeptTitle + ` class="dropdown-menu" aria-labelledby="btn-dropdown-root">
+                                        <a class="dropdown-item" href="#">Admin</a>
+                                        <a class="dropdown-item" href="#">Manager</a>
+                                        <a class="dropdown-item" href="#">User</a>
+                                    </div>
+                                </div>
+                            
+                        `;
+
+                        if(jsonData[key].active === true) {
+                            console.log('1');
+                            dropDownItemsHtml = dropDownItemsHtml +`
+                                <button type="button" class="btn btn-sm btn-toggle active" id="btn-root-switch" data-toggle="button" aria-pressed="false" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
+                                <div class="handle"></div>
+                            </button> `;
+                        }
+                        else { 
+                            dropDownItemsHtml = dropDownItemsHtml +`
+                                <button type="button" class="btn btn-sm btn-toggle" id="btn-root-switch" data-toggle="button" aria-pressed="false" autocomplete="off" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
+                                <div class="handle"></div>
+                            </button> `;
+                        }
+                }
+                dropDownItemsHtml = dropDownItemsHtml + `</li></ul>`;
+
+                var elm = document.getElementById('root-menu-detail-setting-container');
+                elm.innerHTML = dropDownItemsHtml;
+            }
+        }).fail(function(error) {
+            alert(JSON.stringify(error));
+        });
     });
+
+    $('#btn-sub-toggle').click(function() {
+        $.ajax({
+            type: "GET",
+            url: "/jwtauth/menu/twodept/select",
+            contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
+            dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
+            // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
+        }).done(function(res) {
+            if (res.status === 500) {
+                alert("루트 메뉴를 불러오지 못했습니다.");
+                console.log(res);
+            } else {
+                var dropDownItemsHtml = `<ul class="list-group">`;
+
+                var jsonData = JSON.parse(res.data);
+
+                for (key in jsonData) {
+                    dropDownItemsHtml = dropDownItemsHtml +
+                        `
+                            <li class="list-group-item">
+                                <span style="display:none;">` + jsonData[key].menuTwoDeptid + `</span>
+                                <span>` + jsonData[key].menuTwoDeptTitle + `</span>`;
+            
+                                dropDownItemsHtml = dropDownItemsHtml + `<div style="float: right;">
+                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        Role</button>
+            
+                                    <div id="dropdown-sub-user-items-"` + jsonData[key].menuTwoDeptTitle + ` class="dropdown-menu" aria-labelledby="btn-dropdown-sub">
+                                        <a class="dropdown-item" href="#">Admin</a>
+                                        <a class="dropdown-item" href="#">Manager</a>
+                                        <a class="dropdown-item" href="#">User</a>
+                                    </div>
+                                </div>
+                            
+                        `;
+
+                        if(jsonData[key].active === true) {
+                            console.log('1');
+                            dropDownItemsHtml = dropDownItemsHtml +`
+                                <button type="button" class="btn btn-sm btn-toggle active" id="btn-sub-switch" data-toggle="button" aria-pressed="false" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
+                                <div class="handle"></div>
+                            </button> `;
+                        }
+                        else { 
+                            dropDownItemsHtml = dropDownItemsHtml +`
+                                <button type="button" class="btn btn-sm btn-toggle" id="btn-sub-switch" data-toggle="button" aria-pressed="false" autocomplete="off" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
+                                <div class="handle"></div>
+                            </button> `;
+                        }
+                }
+                dropDownItemsHtml = dropDownItemsHtml + `</li></ul>`;
+
+                var elm = document.getElementById('sub-menu-detail-setting-container');
+                elm.innerHTML = dropDownItemsHtml;
+            }
+        }).fail(function(error) {
+            alert(JSON.stringify(error));
+        });
+    });
+
+    $('#btn-last-toggle').click(function() {
+        $.ajax({
+            type: "GET",
+            url: "/jwtauth/menu/threedept/select",
+            contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
+            dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
+            // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
+        }).done(function(res) {
+            if (res.status === 500) {
+                alert("루트 메뉴를 불러오지 못했습니다.");
+                console.log(res);
+            } else {
+                var dropDownItemsHtml = `<ul class="list-group">`;
+
+                var jsonData = JSON.parse(res.data);
+
+                for (key in jsonData) {
+                    dropDownItemsHtml = dropDownItemsHtml +
+                        `
+                            <li class="list-group-item">
+                                <span style="display:none;">` + jsonData[key].menuThreeDeptid + `</span>
+                                <span>` + jsonData[key].menuThreeDeptTitle + `</span>`;
+            
+                                dropDownItemsHtml = dropDownItemsHtml + `<div style="float: right;">
+                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        Role</button>
+            
+                                    <div id="dropdown-last-user-items-"` + jsonData[key].menuThreeDeptTitle + ` class="dropdown-menu" aria-labelledby="btn-dropdown-last">
+                                        <a class="dropdown-item" href="#">Admin</a>
+                                        <a class="dropdown-item" href="#">Manager</a>
+                                        <a class="dropdown-item" href="#">User</a>
+                                    </div>
+                                </div>
+                            
+                        `;
+
+                        if(jsonData[key].active === true) {
+                            console.log('1');
+                            dropDownItemsHtml = dropDownItemsHtml +`
+                                <button type="button" class="btn btn-sm btn-toggle active" id="btn-last-switch" data-toggle="button" aria-pressed="false" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
+                                <div class="handle"></div>
+                            </button> `;
+                        }
+                        else { 
+                            dropDownItemsHtml = dropDownItemsHtml +`
+                                <button type="button" class="btn btn-sm btn-toggle" id="btn-last-switch" data-toggle="button" aria-pressed="false" autocomplete="off" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
+                                <div class="handle"></div>
+                            </button> `;
+                        }
+                }
+                dropDownItemsHtml = dropDownItemsHtml + `</li></ul>`;
+
+                var elm = document.getElementById('last-menu-detail-setting-container');
+                elm.innerHTML = dropDownItemsHtml;
+            }
+        }).fail(function(error) {
+            alert(JSON.stringify(error));
+        });
+    })
+
     
     $('form').submit(function(){
         alert($(this["options"]).val());
@@ -315,3 +543,12 @@ $(document).ready(function() {
         });
     });
 });
+
+
+// $(document).on("click", "#btn-category-switch", function() {
+// 	$(this).find('.btn').toggleClass('active');  
+    
+//     if ($(this).find('.btn-info').length > 0) {
+//         $(this).find('.btn').toggleClass('btn-info');
+//     }
+// });

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -124,6 +126,17 @@ public class MenuRestController {
 			return null;
 		}
 
+		System.out.println("=================================");
+
+		Iterator<? extends GrantedAuthority> iter = userDetails.getAuthorities().iterator();
+
+		while (iter.hasNext()) {
+			GrantedAuthority auth = iter.next();
+			System.out.println(auth.getAuthority());
+		}
+
+		System.out.println("=================================");
+
 		List<MenuCategory> result = menuCategoryRepository.findAll();
 
 		final StringWriter sw = new StringWriter();
@@ -144,7 +157,7 @@ public class MenuRestController {
 		return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", resultToString, null);
 	}
 
-	// @PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/menu/onedept/select")
 	public ResponseEntity<?> oneDeptSelect(HttpServletRequest request, HttpServletResponse response) {
 		if (!request.isUserInRole("ROLE_ADMIN")) {
@@ -197,6 +210,43 @@ public class MenuRestController {
 		}
 
 		List<MenuTwoDept> result = menuTwoDeptRepository.findAll();
+
+		final StringWriter sw = new StringWriter();
+		final ObjectMapper mapper = new ObjectMapper();
+		String resultToString = null;
+
+		try {
+			mapper.writeValue(sw, result);
+			resultToString = sw.toString();
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+		return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", resultToString, null);
+	}
+
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping("/menu/threedept/select")
+	public ResponseEntity<?> threeDeptSelect(HttpServletRequest request, HttpServletResponse response) {
+		if (!request.isUserInRole("ROLE_ADMIN")) {
+			authWorkHandler.logoutDataDelete(request, response);
+			return null;
+		}
+
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		UserDetails userDetails = (UserDetails) principal;
+
+		if (userDetails == null) {
+			authWorkHandler.logoutDataDelete(request, response);
+			return null;
+		}
+
+		List<MenuThreeDept> result = menuThreeDeptRepository.findAll();
 
 		final StringWriter sw = new StringWriter();
 		final ObjectMapper mapper = new ObjectMapper();

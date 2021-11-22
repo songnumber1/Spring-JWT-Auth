@@ -4,6 +4,8 @@
 <%@include file="../layout/left.jsp"%>
 
 <link rel="stylesheet" href="/jwtauth/css/setting.css" />
+<link rel="stylesheet" href="/jwtauth/css/switch.css" />
+
 
 <div class="container">
 	<div class="row justify-content-center">
