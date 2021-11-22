@@ -31,7 +31,7 @@ public class MenuTwoDept {
 
 	private String menuTwoDeptUrl;
 
-	private boolean isActive;
+	private boolean active;
 
 	private String menuTwoDeptIcon;
 

@@ -60,8 +60,6 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 	crossorigin="anonymous"></script>
 
-<script src="/jwtauth/js/setting/menu.js"></script>
-
 </body>
 </html>
 

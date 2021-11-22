@@ -27,7 +27,7 @@ public class MenuCategory {
 
 	private String categoryTitle;
 
-	private boolean isActive;
+	private boolean active;
 
 	private String categoryIcon;
 

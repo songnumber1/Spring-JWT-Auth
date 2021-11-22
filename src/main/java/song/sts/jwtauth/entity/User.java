@@ -22,7 +22,7 @@ public class User {
 	private String roles;
 	private String token;
 	private String tokenExpired;
-	private boolean isActive;
+	private boolean active;
 	private String remark;
 
 	public List<String> GetRoleList() {

@@ -26,7 +26,7 @@ public class MenuThreeDept {
 
 	private String menuThreeDeptUrl;
 
-	private boolean isActive;
+	private boolean active;
 
 	private String menuThreeDeptIcon;
 

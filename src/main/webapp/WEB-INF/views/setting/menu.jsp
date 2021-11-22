@@ -432,3 +432,7 @@
 								</div>
 							</div>
 						</div>
+
+
+
+						<script src="/jwtauth/js/setting/menu.js"></script>

@@ -10,6 +10,6 @@ import song.sts.jwtauth.entity.MenuCategory;
 
 @Repository
 public interface MenuCategoryRepository extends JpaRepository<MenuCategory, Long> {
-    @Query(value = "select menucategory from MenuCategory menucategory where menucategory.isActive = 1")
+    @Query(value = "select menucategory from MenuCategory menucategory where menucategory.active = 1")
     List<MenuCategory> findActiveAll();
 }
