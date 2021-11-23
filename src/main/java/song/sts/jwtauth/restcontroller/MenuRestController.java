@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -126,16 +124,17 @@ public class MenuRestController {
 			return null;
 		}
 
-		System.out.println("=================================");
+		// System.out.println("=================================");
 
-		Iterator<? extends GrantedAuthority> iter = userDetails.getAuthorities().iterator();
+		// Iterator<? extends GrantedAuthority> iter =
+		// userDetails.getAuthorities().iterator();
 
-		while (iter.hasNext()) {
-			GrantedAuthority auth = iter.next();
-			System.out.println(auth.getAuthority());
-		}
+		// while (iter.hasNext()) {
+		// GrantedAuthority auth = iter.next();
+		// System.out.println(auth.getAuthority());
+		// }
 
-		System.out.println("=================================");
+		// System.out.println("=================================");
 
 		List<MenuCategory> result = menuCategoryRepository.findAll();
 

@@ -1,7 +1,16 @@
 package song.sts.jwtauth.restcontroller;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +29,11 @@ import song.sts.jwtauth.exception.AccountExceptionType;
 import song.sts.jwtauth.repository.UserRepository;
 import song.sts.jwtauth.security.handler.AuthWorkHandler;
 import song.sts.jwtauth.util.ResponseData;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
-public class UserRestController {
+public class UserAccountRestController {
     @Autowired
     private UserRepository userRepository;
 
@@ -33,7 +44,7 @@ public class UserRestController {
     private AuthWorkHandler authWorkHandler;
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping("/userAccount/join/AdminProc")
+    @PostMapping("/userAccount/join/Proc")
     public ResponseEntity<?> joinAdminSave(HttpServletRequest request, HttpServletResponse response,
             @RequestBody User user) {
         if (!request.isUserInRole("ROLE_ADMIN")) {
@@ -65,5 +76,45 @@ public class UserRestController {
         userRepository.save(user);
 
         return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", null, null);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping(value = "/useraccount/{account}/select")
+    public ResponseEntity<?> adminAccountSelect(HttpServletRequest request, HttpServletResponse response,
+            @PathVariable(value = "account") String account) {
+        if (!request.isUserInRole("ROLE_ADMIN")) {
+            authWorkHandler.logoutDataDelete(request, response);
+            return null;
+        }
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = (UserDetails) principal;
+
+        if (userDetails == null) {
+            authWorkHandler.logoutDataDelete(request, response);
+            return null;
+        }
+
+        String filterRole = "ROLE_" + account.toUpperCase();
+
+        List<User> result = userRepository.findAll().stream().filter(x -> x.GetRoleList().contains(filterRole))
+                .collect(Collectors.toList());
+
+        final StringWriter sw = new StringWriter();
+        final ObjectMapper mapper = new ObjectMapper();
+        String resultToString = null;
+
+        try {
+            mapper.writeValue(sw, result);
+            resultToString = sw.toString();
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", resultToString, null);
     }
 }

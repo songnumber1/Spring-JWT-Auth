@@ -22,23 +22,26 @@ $(document).ready(function() {
                         `
                             <li class="list-group-item">
                                 <span style="display:none;">` + jsonData[key].categoryId + `</span>
-                                <span>` + jsonData[key].categoryTitle + `</span>`;
-            
-                                dropDownItemsHtml = dropDownItemsHtml + `<div style="float: right;">
-                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        Role</button>
-            
-                                    <div id="dropdown-category-user-items-"` + jsonData[key].categoryTitle + ` class="dropdown-menu" aria-labelledby="btn-dropdown-category">
-                                        <a class="dropdown-item" href="#">Admin</a>
-                                        <a class="dropdown-item" href="#">Manager</a>
-                                        <a class="dropdown-item" href="#">User</a>
-                                    </div>
-                                </div>
-                            
+                                <span>` + jsonData[key].categoryTitle + `</span>
                         `;
+            
+                                dropDownItemsHtml = dropDownItemsHtml + `
+                                    <div style="float: right;">
+                                        <button type="button" id="btn-category-setting-save" class="btn btn-warning btn-sm" style="float:right;margin-left:10px;"><i class="fas fa-save" aria-hidden="true"></i></button>
+                
+                                        <div id="div-category-role" style="float:right;">
+                                            <button type="button" id="btn-category-role" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" style="min-width: 90px;">
+                                                Admin
+                                            </button>
+                                            <div class="dropdown-menu" id="div-category-dropdown-menu">
+                                                <a class="dropdown-item" href="javascript:void(0)">Admin</a>
+                                                <a class="dropdown-item" href="javascript:void(0)">Manager</a>
+                                                <a class="dropdown-item" href="javascript:void(0)">User</a>
+                                            </div>
+                                        </div>  
+                        `;                        
 
                         if(jsonData[key].active === true) {
-                            console.log('1');
                             dropDownItemsHtml = dropDownItemsHtml +`
                                 <button type="button" class="btn btn-sm btn-toggle active" id="btn-category-switch" data-toggle="button" aria-pressed="false" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
                                 <div class="handle"></div>
@@ -85,8 +88,8 @@ $(document).ready(function() {
                                 <span>` + jsonData[key].menuOneDeptTitle + `</span>`;
             
                                 dropDownItemsHtml = dropDownItemsHtml + `<div style="float: right;">
-                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        Role</button>
+                                    <button type="button" id="btn-root-setting-role" class="btn btn-sm btn-primary dropdown-toggle"  data-toggle="dropdown" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i></button>
+                                    <button type="button" id="btn-root-setting-save" class="btn btn-warning btn-sm" style="float:right;margin-left:10px;"><i class="fas fa-save" aria-hidden="true"></i></button>
             
                                     <div id="dropdown-root-user-items-"` + jsonData[key].menuOneDeptTitle + ` class="dropdown-menu" aria-labelledby="btn-dropdown-root">
                                         <a class="dropdown-item" href="#">Admin</a>
@@ -145,8 +148,8 @@ $(document).ready(function() {
                                 <span>` + jsonData[key].menuTwoDeptTitle + `</span>`;
             
                                 dropDownItemsHtml = dropDownItemsHtml + `<div style="float: right;">
-                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        Role</button>
+                                    <button type="button" id="btn-sub-setting-role" class="btn btn-sm btn-primary dropdown-toggle"  data-toggle="dropdown" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i></button>
+                                    <button type="button" id="btn-sub-setting-save" class="btn btn-warning btn-sm" style="float:right;margin-left:10px;"><i class="fas fa-save" aria-hidden="true"></i></button>
             
                                     <div id="dropdown-sub-user-items-"` + jsonData[key].menuTwoDeptTitle + ` class="dropdown-menu" aria-labelledby="btn-dropdown-sub">
                                         <a class="dropdown-item" href="#">Admin</a>
@@ -205,8 +208,8 @@ $(document).ready(function() {
                                 <span>` + jsonData[key].menuThreeDeptTitle + `</span>`;
             
                                 dropDownItemsHtml = dropDownItemsHtml + `<div style="float: right;">
-                                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                        Role</button>
+                                    <button type="button" id="btn-last-setting-role" class="btn btn-sm btn-primary dropdown-toggle"  data-toggle="dropdown" aria-expanded="false"><i class="fas fa-user" aria-hidden="true"></i></button>
+                                    <button type="button" id="btn-last-setting-save" class="btn btn-warning btn-sm" style="float:right;margin-left:10px;"><i class="fas fa-save" aria-hidden="true"></i></button>
             
                                     <div id="dropdown-last-user-items-"` + jsonData[key].menuThreeDeptTitle + ` class="dropdown-menu" aria-labelledby="btn-dropdown-last">
                                         <a class="dropdown-item" href="#">Admin</a>
@@ -218,7 +221,6 @@ $(document).ready(function() {
                         `;
 
                         if(jsonData[key].active === true) {
-                            console.log('1');
                             dropDownItemsHtml = dropDownItemsHtml +`
                                 <button type="button" class="btn btn-sm btn-toggle active" id="btn-last-switch" data-toggle="button" aria-pressed="false" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
                                 <div class="handle"></div>
@@ -240,13 +242,6 @@ $(document).ready(function() {
             alert(JSON.stringify(error));
         });
     })
-
-    
-    $('form').submit(function(){
-        alert($(this["options"]).val());
-        return false;
-    });
-
 
     /* Category */
     $('#categoryModal').on('hidden.bs.modal', function() {
@@ -283,7 +278,6 @@ $(document).ready(function() {
             alert(JSON.stringify(error));
         }).always(function() {});
     });
-
 
     /* Root Menu */
     $("#btn-dropdown-category").on('click', function() {
@@ -544,11 +538,22 @@ $(document).ready(function() {
     });
 });
 
+$(document).on("click", "#btn-category-setting-save", function() {
+	let parentDiv = $(this).parent();
 
-// $(document).on("click", "#btn-category-switch", function() {
-// 	$(this).find('.btn').toggleClass('active');  
+    if(parentDiv === undefined ||
+       parentDiv === null)
+       return;
     
-//     if ($(this).find('.btn-info').length > 0) {
-//         $(this).find('.btn').toggleClass('btn-info');
-//     }
-// });
+    console.log(parentDiv.find('#dropdown-category-user-items').innerHTML);
+});
+
+$(document).on("click", "#div-category-role #div-category-dropdown-menu a", function() { 
+    let div_dropdown_menu = $(this).parent();
+    let div_category_role = div_dropdown_menu.parent();
+
+    let btn_category_role = div_category_role.find('#btn-category-role')
+
+    var text = $(this).text();
+    btn_category_role.text(text + " ");
+});
