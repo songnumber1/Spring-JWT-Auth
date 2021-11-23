@@ -39,7 +39,6 @@ public class AuthRestController {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setRoles("ROLE_USER");
 		userRepository.save(user);
-		// return "회원가입완료";
 
 		return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", null, null);
 	}

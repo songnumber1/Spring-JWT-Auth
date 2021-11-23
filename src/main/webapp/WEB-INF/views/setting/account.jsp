@@ -55,6 +55,19 @@
                                             </div>
 
                                             <div class="form-group was-validated">
+                                                <label class="control-label col-sm-12">* Email</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control"
+                                                        id="admin-email" placeholder="Enter admin email"
+                                                        name="admin-email" required>
+
+                                                    <div class="valid-feedback"></div>
+                                                    <div class="invalid-feedback">Please fill out
+                                                        this field.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group was-validated">
                                                 <label class="control-label col-sm-12">* Password (minimum length : 10)</label>
                                                 <div class="col-sm-12">
                                                     <input type="password" class="form-control" id="admin-password" minlength="10"
@@ -67,7 +80,7 @@
                                             </div>
 
                                             <div class="form-group was-validated">
-                                                <label class="control-label col-sm-12">* Password confirm(minimum length : 10)</label>
+                                                <label class="control-label col-sm-12">* Password confirm</label>
                                                 <div class="col-sm-12">
                                                     <input type="password" class="form-control" id="admin-password-confirm" minlength="10"
                                                         placeholder="Enter password" name="admin-password" required>
@@ -155,8 +168,21 @@
                                                 <label class="control-label col-sm-12">* Name</label>
                                                 <div class="col-sm-12">
                                                     <input type="text" class="form-control"
-                                                        id="manager-name" placeholder="Enter admin name"
+                                                        id="manager-name" placeholder="Enter manager name"
                                                         name="manager-name" required>
+
+                                                    <div class="valid-feedback"></div>
+                                                    <div class="invalid-feedback">Please fill out
+                                                        this field.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group was-validated">
+                                                <label class="control-label col-sm-12">* Email</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control"
+                                                        id="manager-email" placeholder="Enter manager email"
+                                                        name="manager-email" required>
 
                                                     <div class="valid-feedback"></div>
                                                     <div class="invalid-feedback">Please fill out
@@ -177,7 +203,7 @@
                                             </div>
 
                                             <div class="form-group was-validated">
-                                                <label class="control-label col-sm-12">* Password confirm(minimum length : 10)</label>
+                                                <label class="control-label col-sm-12">* Password confirm</label>
                                                 <div class="col-sm-12">
                                                     <input type="password" class="form-control" id="manager-password-confirm" minlength="10"
                                                         placeholder="Enter password" name="manager-password" required>
@@ -265,8 +291,21 @@
                                                 <label class="control-label col-sm-12">* Name</label>
                                                 <div class="col-sm-12">
                                                     <input type="text" class="form-control"
-                                                        id="userguest-name" placeholder="Enter admin name"
+                                                        id="userguest-name" placeholder="Enter user name"
                                                         name="userguest-name" required>
+
+                                                    <div class="valid-feedback"></div>
+                                                    <div class="invalid-feedback">Please fill out
+                                                        this field.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group was-validated">
+                                                <label class="control-label col-sm-12">* Email</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control"
+                                                        id="userguest-email" placeholder="Enter user email"
+                                                        name="userguest-email" required>
 
                                                     <div class="valid-feedback"></div>
                                                     <div class="invalid-feedback">Please fill out
@@ -287,7 +326,7 @@
                                             </div>
 
                                             <div class="form-group was-validated">
-                                                <label class="control-label col-sm-12">* Password confirm(minimum length : 10)</label>
+                                                <label class="control-label col-sm-12">* Password confirm</label>
                                                 <div class="col-sm-12">
                                                     <input type="password" class="form-control" id="userguest-password-confirm" minlength="10"
                                                         placeholder="Enter password" name="userguest-password" required>

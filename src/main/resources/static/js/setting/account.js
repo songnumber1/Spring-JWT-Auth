@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $("#btn-admin-add").click(function() {
         let name = $('#admin-name').val();
+        let email = $('#admin-email').val();
         let password = $('#admin-password').val();
         let password_confirm = $('#admin-password-confirm').val();
         let active = false;
@@ -14,11 +15,12 @@ $(document).ready(function() {
             return;
         }
 
-        userAdd(name, password, password_confirm, active, "ROLE_ADMIN");
+        userAdd(name, email, password, password_confirm, active, "ROLE_ADMIN");
     });
 
     $("#btn-manager-add").click(function() {
         let name = $('#manager-name').val();
+        let email = $('#manager-email').val();
         let password = $('#manager-password').val();
         let password_confirm = $('#manager-password-confirm').val();
         let active = false;
@@ -32,11 +34,12 @@ $(document).ready(function() {
             return;
         }
 
-        userAdd(name, password, password_confirm, active, "ROLE_MANAGER");
+        userAdd(name, email, password, password_confirm, active, "ROLE_MANAGER");
     });
 
     $("#btn-userguest-add").click(function() {
         let name = $('#userguest-name').val();
+        let email = $('#userguest-email').val();
         let password = $('#userguest-password').val();
         let password_confirm = $('#userguest-password-confirm').val();
         let active = false;
@@ -50,13 +53,16 @@ $(document).ready(function() {
             return;
         }
 
-        userAdd(name, password, password_confirm, active, "ROLE_USER");
+        userAdd(name, email, password, password_confirm, active, "ROLE_USER");
     });
 
-    function userAdd(name, password, password_confirm, active, role) { 
+    function userAdd(name, email, password, password_confirm, active, role) { 
         if(name === null || 
             name === undefined || 
             name.trim() === '' || 
+            email === null || 
+            email === undefined || 
+            email.trim() === '' || 
             password === null || 
             password === undefined || 
             password.trim() === '' || 
@@ -71,6 +77,7 @@ $(document).ready(function() {
 
         const user = {
             username : name,
+            email: email,
             password : password,
             active : active,
             roles : role
@@ -97,4 +104,26 @@ $(document).ready(function() {
             alert(JSON.stringify(error));
         }).always(function() {});
     }
+
+
+    $('#adminModal').on('hidden.bs.modal', function() {
+        $(this).find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
+        if($('#btn-admin-active-switch').hasClass('active') == true) { 
+            $('#btn-admin-active-switch').removeClass('active')   
+        }
+    });
+
+    $('#managerModal').on('hidden.bs.modal', function() {
+        $(this).find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
+        if($('#btn-manager-active-switch').hasClass('active') == true) { 
+            $('#btn-manager-active-switch').removeClass('active')   
+        }
+    });
+
+    $('#userguestModal').on('hidden.bs.modal', function() {
+        $(this).find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
+        if($('#btn-userguest-active-switch').hasClass('active') == true) { 
+            $('#btn-userguest-active-switch').removeClass('active')   
+        }
+    });
 });

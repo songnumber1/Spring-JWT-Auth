@@ -9,15 +9,35 @@ let index= {
         $("#btn-login").on("click", ()=> {
 			this.login();
 		});
-        
     },
+
     save: function () {
-       // alert('user의 save함수 호출됨');
+        var username = $("#username").val();
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var password_confirm = $("#password-confirm").val();
+
+        if(username === null || username === undefined || username.trim() === '' || 
+            email === null || email === undefined || email.trim() === '' || 
+            password === null || password === undefined || password.trim() === '') {
+            return;
+        }
+
+        if(password.length < 10) {
+            alert('비밀번호는 최소 10자리를 입력하여야 합니다.')
+            return;
+        }
+
+        if(password !== password_confirm) {
+            alert('비밀번호를 확인 후 다시 시도하십시요.')
+            return;
+        }
+
+        // alert('user의 save함수 호출됨');
         let data={
-            username:$("#username").val(),
-            nickName:$("#nickName").val(),
-            password:$("#password").val(),
+            username:username,
             email:$("#email").val(),
+            password:$("#password").val()
         };
         
         // ajax 호출시 default가 비동기 호출

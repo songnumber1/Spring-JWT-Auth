@@ -27,27 +27,26 @@
 		<div class="login_box">
 			<div class="left">
 				<div class="top_link">
-					<a href="/storage/auth/loginForm"><img
+					<a href="/jwtauth/auth/loginForm"><img
 						src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download"
 						alt="">Login</a>
 				</div>
 				<div class="contact">
 					<div>
 						<h3>SIGN UP</h3>
-
+						
 						<input type="text" 
-							placeholder="Enter username" id="username" > 
+							placeholder="Username" id="username" > 
 							
-						<input
-							type="text"placeholder="Enter nickname"
-							id="nickName"> 
-							
-						<input type="password"
-							placeholder="Enter password" id="password">
-
-						<input type="email" placeholder="Enter email"
+						<input type="email" placeholder="Email"
 							id="email">
 							
+						<input type="password"
+							placeholder="Password" id="password">
+
+						<input type="password"
+							placeholder="Password confirm" id="password-confirm">
+
 						<button id="btn-save" class="submit">회원가입</button>
 					</div>
 				</div>

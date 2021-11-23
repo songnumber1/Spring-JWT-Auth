@@ -12,9 +12,9 @@ import song.sts.jwtauth.entity.User;
 @Data
 public class PrincipalDetails implements UserDetails {
 	private static final long serialVersionUID = 1L;
-	
+
 	private User user;
-	
+
 	public PrincipalDetails(User user) {
 		this.user = user;
 	}
@@ -22,11 +22,11 @@ public class PrincipalDetails implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<GrantedAuthority> authorities = new ArrayList<>();
-		
-		user.GetRoleList().forEach(r-> {
+
+		user.GetRoleList().forEach(r -> {
 			authorities.add(() -> r);
 		});
-		
+
 		return authorities;
 	}
 
@@ -59,8 +59,12 @@ public class PrincipalDetails implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-	
+
 	public boolean isActive() {
 		return user.isActive();
+	}
+
+	public String getEmail() {
+		return user.getEmail();
 	}
 }
