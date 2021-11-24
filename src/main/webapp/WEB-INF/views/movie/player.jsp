@@ -11,10 +11,6 @@
 				<h1 class="mt-4">Movie Player</h1>
 
                 <ol class="breadcrumb mb-4">
-					<form action="/jwtauth/movie/" method="get">
-						<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-arrow-left"></i></button>
-					</form>
-
                     <li class="breadcrumb-item active" id="li-fileName" style="margin-top: 5px;margin-left: 10px;">${fileName}</li> &nbsp;&nbsp;&nbsp;
 				</ol>
 			</div>

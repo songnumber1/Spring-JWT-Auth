@@ -1,4 +1,4 @@
-package song.sts.jwtauth.controller;
+package song.sts.jwtauth.controller.summary;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -16,6 +16,7 @@ import com.google.gson.GsonBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,10 +25,11 @@ import song.sts.jwtauth.model.response.MovieTreeItemModel;
 import song.sts.jwtauth.service.MultipartFileService;
 
 @Controller
-@RequestMapping("/movie")
-public class MovieController {
-    @GetMapping({ "/", "" })
-    public String movie(Model menuModel, Model model) {
+@RequestMapping("/summary")
+public class SummaryController {
+    @GetMapping("/movie/{menuid}/{menudept}")
+    public String movie(Model menuModel, Model model, @PathVariable(value = "menuid") String menuid,
+            @PathVariable(value = "menudept") String menudept) {
         File[] files = new File(FinalVariable.MOVIE_PATH).listFiles();
 
         List<File> fileList = Arrays.asList(files);
@@ -78,8 +80,9 @@ public class MovieController {
         }
     }
 
-    @GetMapping("/player")
-    public String player(@RequestParam(value = "absolutePath", required = true) String absolutePath, Model model)
+    @GetMapping("/movie/player")
+    public String player(Model menuModel, Model model,
+            @RequestParam(value = "absolutePath", required = true) String absolutePath)
             throws UnsupportedEncodingException {
         File file = new File(absolutePath);
 
@@ -91,8 +94,8 @@ public class MovieController {
         return "movie/player";
     }
 
-    @GetMapping("/play")
-    public void play(@RequestParam(value = "absolutePath", required = true) String absolutePath,
+    @GetMapping("/movie/play")
+    public void play(Model menuModel, @RequestParam(value = "absolutePath", required = true) String absolutePath,
             HttpServletResponse response, HttpServletRequest request) {
         File file = new File(absolutePath);
 

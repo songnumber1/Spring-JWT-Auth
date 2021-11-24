@@ -1,9 +1,8 @@
-package song.sts.jwtauth.restcontroller;
+package song.sts.jwtauth.restcontroller.setting;
 
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,9 +20,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import song.sts.jwtauth.entity.User;
+import song.sts.jwtauth.entity.setting.User;
 import song.sts.jwtauth.exception.AccountException;
 import song.sts.jwtauth.exception.AccountExceptionType;
 import song.sts.jwtauth.repository.UserRepository;
@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
+@RequestMapping("/setting/api/userAccount")
 public class UserAccountRestController {
     @Autowired
     private UserRepository userRepository;
@@ -44,7 +45,7 @@ public class UserAccountRestController {
     private AuthWorkHandler authWorkHandler;
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @PostMapping("/userAccount/join/Proc")
+    @PostMapping("/join/Proc")
     public ResponseEntity<?> joinAdminSave(HttpServletRequest request, HttpServletResponse response,
             @RequestBody User user) {
         if (!request.isUserInRole("ROLE_ADMIN")) {
@@ -79,7 +80,7 @@ public class UserAccountRestController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping(value = "/useraccount/{account}/select")
+    @GetMapping(value = "/{account}/select")
     public ResponseEntity<?> adminAccountSelect(HttpServletRequest request, HttpServletResponse response,
             @PathVariable(value = "account") String account) {
         if (!request.isUserInRole("ROLE_ADMIN")) {
@@ -95,10 +96,15 @@ public class UserAccountRestController {
             return null;
         }
 
-        String filterRole = "ROLE_" + account.toUpperCase();
+        String role = "ROLE_" + account.toUpperCase();
 
-        List<User> result = userRepository.findAll().stream().filter(x -> x.GetRoleList().contains(filterRole))
-                .collect(Collectors.toList());
+        // List<User> result = userRepository.findAll().stream().filter(x ->
+        // x.GetRoleList().contains(filterRole))
+        // .collect(Collectors.toList());
+
+        List<User> result = userRepository.findAccountList(role);
+
+        System.out.println(result);
 
         final StringWriter sw = new StringWriter();
         final ObjectMapper mapper = new ObjectMapper();

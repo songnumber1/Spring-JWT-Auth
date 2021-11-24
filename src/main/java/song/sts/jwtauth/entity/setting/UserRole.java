@@ -1,4 +1,4 @@
-package song.sts.jwtauth.entity;
+package song.sts.jwtauth.entity.setting;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

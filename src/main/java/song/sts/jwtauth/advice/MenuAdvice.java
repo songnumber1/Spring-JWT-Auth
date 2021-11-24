@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
-import song.sts.jwtauth.entity.MenuCategory;
+import song.sts.jwtauth.entity.menu.MenuCategory;
 import song.sts.jwtauth.repository.MenuCategoryRepository;
 
 @Component
@@ -28,6 +28,8 @@ public class MenuAdvice {
 
     @Around("execution(* song.sts.jwtauth.controller..*Controller.*(..))")
     public Object getMenuList(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("getMenuList");
+
         try {
             MethodSignature signature = (MethodSignature) joinPoint.getSignature();
             Method method = signature.getMethod();

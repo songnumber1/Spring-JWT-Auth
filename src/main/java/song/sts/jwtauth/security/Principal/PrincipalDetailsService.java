@@ -5,10 +5,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import song.sts.jwtauth.entity.User;
+import song.sts.jwtauth.entity.setting.User;
 import song.sts.jwtauth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-
 
 // http://localhost:8089/login
 @Service
@@ -16,21 +15,21 @@ import lombok.RequiredArgsConstructor;
 public class PrincipalDetailsService implements UserDetailsService {
 
 	private final UserRepository userRepository;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		System.out.println("PrincipalDetailsService의 loadUserByUsername입니다.");
-		
+
 		User userEntity = userRepository.findByUsername(username);
-		
-		if(userEntity == null)
+
+		if (userEntity == null)
 			return null;
 		else {
-			if(userEntity.isActive())
+			if (userEntity.isActive())
 				return new PrincipalDetails(userEntity);
 			else
 				return null;
 		}
 	}
-	
+
 }

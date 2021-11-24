@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Data;
-import song.sts.jwtauth.entity.User;
+import song.sts.jwtauth.entity.setting.User;
 
 @Data
 public class PrincipalDetails implements UserDetails {

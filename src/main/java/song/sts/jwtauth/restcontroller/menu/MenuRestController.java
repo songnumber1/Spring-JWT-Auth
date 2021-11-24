@@ -1,4 +1,4 @@
-package song.sts.jwtauth.restcontroller;
+package song.sts.jwtauth.restcontroller.menu;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,16 +17,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import song.sts.jwtauth.entity.MenuCategory;
-import song.sts.jwtauth.entity.MenuOneDept;
-import song.sts.jwtauth.entity.MenuThreeDept;
-import song.sts.jwtauth.entity.MenuTwoDept;
+import song.sts.jwtauth.entity.menu.MenuCategory;
+import song.sts.jwtauth.entity.menu.MenuOneDept;
+import song.sts.jwtauth.entity.menu.MenuThreeDept;
+import song.sts.jwtauth.entity.menu.MenuTwoDept;
 import song.sts.jwtauth.repository.MenuCategoryRepository;
 import song.sts.jwtauth.repository.MenuOneDeptRepository;
 import song.sts.jwtauth.repository.MenuThreeDeptRepository;
@@ -36,6 +37,7 @@ import song.sts.jwtauth.security.handler.AuthWorkHandler;
 import song.sts.jwtauth.util.ResponseData;
 
 @RestController
+@RequestMapping("/menu/api")
 public class MenuRestController {
 	@Autowired
 	private MenuCategoryRepository menuCategoryRepository;
@@ -55,7 +57,7 @@ public class MenuRestController {
 	@Autowired
 	private AuthWorkHandler authWorkHandler;
 
-	@PostMapping("/menu/category/add")
+	@PostMapping("/category/add")
 	public ResponseEntity<?> CategorySave(@RequestBody MenuCategory menuCategory) {
 		menuCategory.setUserRole(userRoleRepository.findAdmin());
 		menuCategoryRepository.save(menuCategory);
@@ -63,7 +65,7 @@ public class MenuRestController {
 		return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", null, null);
 	}
 
-	@PostMapping("/menu/onedept/add")
+	@PostMapping("/onedept/add")
 	public ResponseEntity<?> MemuOneDeptSave(@RequestBody MenuOneDept menuOneDept) {
 		MenuCategory menuCategory = menuCategoryRepository.findById(menuOneDept.getMenuCategory().getCategoryId())
 				.orElseThrow(() -> new NoSuchElementException());
@@ -79,7 +81,7 @@ public class MenuRestController {
 		return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", null, null);
 	}
 
-	@PostMapping("/menu/twodept/add")
+	@PostMapping("/twodept/add")
 	public ResponseEntity<?> MenuTwoDeptSave(@RequestBody MenuTwoDept menuTwoDept) {
 		MenuOneDept menuOneDept = menuOneDeptRepository.findById(menuTwoDept.getMenuOneDept().getMenuOneDeptid())
 				.orElseThrow(() -> new NoSuchElementException());
@@ -93,7 +95,7 @@ public class MenuRestController {
 		return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", null, null);
 	}
 
-	@PostMapping("/menu/threedept/add")
+	@PostMapping("/threedept/add")
 	public ResponseEntity<?> save(@RequestBody MenuThreeDept menuThreeDept) {
 		MenuTwoDept menuTwoDept = menuTwoDeptRepository.findById(menuThreeDept.getMenuTwoDept().getMenuTwoDeptid())
 				.orElseThrow(() -> new NoSuchElementException());
@@ -109,7 +111,7 @@ public class MenuRestController {
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/menu/category/select")
+	@GetMapping("/category/select")
 	public ResponseEntity<?> categorySelect(HttpServletRequest request, HttpServletResponse response) {
 		if (!request.isUserInRole("ROLE_ADMIN")) {
 			authWorkHandler.logoutDataDelete(request, response);
@@ -157,7 +159,7 @@ public class MenuRestController {
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/menu/onedept/select")
+	@GetMapping("/onedept/select")
 	public ResponseEntity<?> oneDeptSelect(HttpServletRequest request, HttpServletResponse response) {
 		if (!request.isUserInRole("ROLE_ADMIN")) {
 			authWorkHandler.logoutDataDelete(request, response);
@@ -193,7 +195,7 @@ public class MenuRestController {
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/menu/twodept/select")
+	@GetMapping("/twodept/select")
 	public ResponseEntity<?> twoDeptSelect(HttpServletRequest request, HttpServletResponse response) {
 		if (!request.isUserInRole("ROLE_ADMIN")) {
 			authWorkHandler.logoutDataDelete(request, response);
@@ -230,7 +232,7 @@ public class MenuRestController {
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/menu/threedept/select")
+	@GetMapping("/threedept/select")
 	public ResponseEntity<?> threeDeptSelect(HttpServletRequest request, HttpServletResponse response) {
 		if (!request.isUserInRole("ROLE_ADMIN")) {
 			authWorkHandler.logoutDataDelete(request, response);

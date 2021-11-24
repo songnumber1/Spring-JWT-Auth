@@ -1,4 +1,4 @@
-package song.sts.jwtauth.controller;
+package song.sts.jwtauth.controller.home;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

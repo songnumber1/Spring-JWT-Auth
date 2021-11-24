@@ -1,4 +1,4 @@
-package song.sts.jwtauth.controller;
+package song.sts.jwtauth.controller.auth;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

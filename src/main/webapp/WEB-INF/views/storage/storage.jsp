@@ -11,9 +11,6 @@
 	<main>
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">Storage</h1>
-			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item active">C#</li>
-			</ol>
 
 			<hr />
 

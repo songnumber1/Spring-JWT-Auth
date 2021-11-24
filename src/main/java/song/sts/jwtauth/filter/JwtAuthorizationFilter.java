@@ -15,7 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import io.jsonwebtoken.ExpiredJwtException;
-import song.sts.jwtauth.entity.User;
+import song.sts.jwtauth.entity.setting.User;
 import song.sts.jwtauth.repository.UserRepository;
 import song.sts.jwtauth.security.handler.AuthWorkHandler;
 import song.sts.jwtauth.token.JwtTokenProvider;
@@ -85,7 +85,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 						String newAccessToken = jwtTokenProvider
 								.createToken(jwtTokenProvider.getClaims(refreshToken, "sub")).getAccessToken();
 						jwtTokenProvider.createCookie(response, newAccessToken);
-						
+
 						if (authWorkHandler.beforeIsLoginValication(request, response)) {
 							return;
 						}

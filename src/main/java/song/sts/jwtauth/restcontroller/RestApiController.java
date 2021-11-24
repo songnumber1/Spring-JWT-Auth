@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import song.sts.jwtauth.entity.User;
 import song.sts.jwtauth.exception.AccountExceptionType;
 import song.sts.jwtauth.repository.UserRepository;
 import song.sts.jwtauth.util.ResponseData;
+import song.sts.jwtauth.entity.setting.User;
 import song.sts.jwtauth.exception.AccountException;
 
 @RestController
@@ -21,41 +21,38 @@ import song.sts.jwtauth.exception.AccountException;
 public class RestApiController {
 	private final UserRepository userRepository;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+
 	@GetMapping("home")
 	public @ResponseBody String home() {
 		return "<H1>Home</H1>";
 	}
-	
+
 	@PostMapping("token")
 	public @ResponseBody String token() {
 		return "<H1>token</H1>";
 	}
-	
+
 	@PostMapping("join")
 	public ResponseEntity<?> join(@RequestBody User user) {
-		if(user.getUsername() == null 
-			|| user.getUsername().isEmpty()
-			|| user.getPassword() == null 
-			|| user.getPassword().isEmpty())
-		{
+		if (user.getUsername() == null || user.getUsername().isEmpty() || user.getPassword() == null
+				|| user.getPassword().isEmpty()) {
 			throw new AccountException(AccountExceptionType.REUQIRED_PARAMETER_ERROR);
 		}
-		
+
 		User userEntity = userRepository.findByUsername(user.getUsername());
-				
-        if (userEntity != null){
-            throw new AccountException(AccountExceptionType.DUPLICATED_USER);
-        }
-        
+
+		if (userEntity != null) {
+			throw new AccountException(AccountExceptionType.DUPLICATED_USER);
+		}
+
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setRoles("ROLE_USER");
 		userRepository.save(user);
-		//return "회원가입완료";
-		
+		// return "회원가입완료";
+
 		return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", null, null);
 	}
-	
+
 	// user, manager, admin 권한만 접근 가능
 	@PostMapping("/api/v1/user")
 	public @ResponseBody String user() {
@@ -67,7 +64,7 @@ public class RestApiController {
 	public @ResponseBody String manager() {
 		return "manager";
 	}
-	
+
 	// admin 권한만 접근 가능
 	@PostMapping("/api/v1/admin")
 	public @ResponseBody String admin() {

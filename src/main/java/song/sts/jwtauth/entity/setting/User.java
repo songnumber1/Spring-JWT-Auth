@@ -1,4 +1,4 @@
-package song.sts.jwtauth.entity;
+package song.sts.jwtauth.entity.setting;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,10 +11,14 @@ import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +26,6 @@ public class User {
 
 	private String username;
 
-	@JsonIgnore
 	private String password;
 
 	private String roles;
@@ -45,5 +48,13 @@ public class User {
 		}
 
 		return new ArrayList<>();
+	}
+
+	public User(long id, String username, String roles, boolean active, String email) {
+		this.id = id;
+		this.username = username;
+		this.roles = roles;
+		this.active = active;
+		this.email = email;
 	}
 }

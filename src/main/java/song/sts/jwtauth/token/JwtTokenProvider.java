@@ -1,7 +1,7 @@
 package song.sts.jwtauth.token;
 
 import io.jsonwebtoken.*;
-import song.sts.jwtauth.entity.User;
+import song.sts.jwtauth.entity.setting.User;
 import song.sts.jwtauth.model.JwtModel;
 import song.sts.jwtauth.repository.UserRepository;
 import song.sts.jwtauth.security.Principal.PrincipalDetails;

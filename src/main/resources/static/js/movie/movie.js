@@ -117,7 +117,7 @@ let pathMoveFunc = function pathMove(absolutePath) {
 	console.log(absolutePath);
 
 	$.ajax({
-		url: "/jwtauth/movie/getdirinfo",
+		url: "/jwtauth/summary/api/movie/getdirinfo",
 		type: "POST",
 		data: { absolutePath: absolutePath },
 		success: function(res) {
@@ -192,7 +192,7 @@ $(document).on("click", "#btn-view", function() {
 		return;
 	}
 
-	location.href = "/jwtauth/movie/player?absolutePath=" + encodeURI(absolutePath);
+	location.href = "/jwtauth/summary/movie/player?absolutePath=" + encodeURI(absolutePath);
 });
 
 $(document).on("click", "#btn-download", function() {

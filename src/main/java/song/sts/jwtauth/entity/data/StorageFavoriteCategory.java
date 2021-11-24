@@ -1,4 +1,4 @@
-package song.sts.jwtauth.entity;
+package song.sts.jwtauth.entity.data;
 
 import lombok.Data;
 

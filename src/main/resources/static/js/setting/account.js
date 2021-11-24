@@ -88,7 +88,7 @@ $(document).ready(function() {
         // ajax가 통신을 성공하고 json을 리턴해주면 서버가 자동으로 자바 오브젝트로 변환
         $.ajax({
             type: "POST",
-            url: "/jwtauth/userAccount/join/Proc",
+            url: "/jwtauth/setting/api/userAccount/join/Proc",
             data: JSON.stringify(user), // http body 데이터
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
@@ -130,7 +130,7 @@ $(document).ready(function() {
     $('#btn-admin-toggle').click(function() {
         $.ajax({
             type: "GET",
-            url: "/jwtauth/useraccount/admin/select",
+            url: "/jwtauth/setting/api/userAccount/admin/select",
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
             // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
@@ -164,7 +164,6 @@ $(document).ready(function() {
                         `;
 
                         if(jsonData[key].active === true) {
-                            console.log('1');
                             dropDownItemsHtml = dropDownItemsHtml +`
                                 <button type="button" class="btn btn-sm btn-toggle active" id="btn-admin-detail-switch" data-toggle="button" aria-pressed="false" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
                                 <div class="handle"></div>
@@ -190,7 +189,7 @@ $(document).ready(function() {
     $('#btn-manager-toggle').click(function() {
         $.ajax({
             type: "GET",
-            url: "/jwtauth/useraccount/manager/select",
+            url: "/jwtauth/setting/api/userAccount/manager/select",
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
             // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
@@ -224,7 +223,6 @@ $(document).ready(function() {
                         `;
 
                         if(jsonData[key].active === true) {
-                            console.log('1');
                             dropDownItemsHtml = dropDownItemsHtml +`
                                 <button type="button" class="btn btn-sm btn-toggle active" id="btn-manager-detail-switch" data-toggle="button" aria-pressed="false" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
                                 <div class="handle"></div>
@@ -251,7 +249,7 @@ $(document).ready(function() {
     $('#btn-userguest-toggle').click(function() {
         $.ajax({
             type: "GET",
-            url: "/jwtauth/useraccount/user/select",
+            url: "/jwtauth/setting/api/userAccount/user/select",
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
             // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
@@ -285,7 +283,6 @@ $(document).ready(function() {
                         `;
 
                         if(jsonData[key].active === true) {
-                            console.log('1');
                             dropDownItemsHtml = dropDownItemsHtml +`
                                 <button type="button" class="btn btn-sm btn-toggle active" id="btn-userguest-detail-switch" data-toggle="button" aria-pressed="false" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
                                 <div class="handle"></div>

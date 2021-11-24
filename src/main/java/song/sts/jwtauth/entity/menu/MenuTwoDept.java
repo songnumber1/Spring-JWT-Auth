@@ -1,4 +1,4 @@
-package song.sts.jwtauth.entity;
+package song.sts.jwtauth.entity.menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.ColumnDefault;
 
 import lombok.Data;
+import song.sts.jwtauth.entity.setting.UserRole;
 
 @Data
 @Entity

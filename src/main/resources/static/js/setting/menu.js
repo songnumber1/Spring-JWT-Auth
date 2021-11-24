@@ -4,7 +4,7 @@ $(document).ready(function() {
     $('#btn-category-toggle').click(function() {
         $.ajax({
             type: "GET",
-            url: "/jwtauth/menu/category/select",
+            url: "/jwtauth/menu/api/category/select",
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
             // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
@@ -67,7 +67,7 @@ $(document).ready(function() {
     $('#btn-root-toggle').click(function() {
         $.ajax({
             type: "GET",
-            url: "/jwtauth/menu/onedept/select",
+            url: "/jwtauth/menu/api/onedept/select",
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
             // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
@@ -101,7 +101,6 @@ $(document).ready(function() {
                         `;
 
                         if(jsonData[key].active === true) {
-                            console.log('1');
                             dropDownItemsHtml = dropDownItemsHtml +`
                                 <button type="button" class="btn btn-sm btn-toggle active" id="btn-root-switch" data-toggle="button" aria-pressed="false" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
                                 <div class="handle"></div>
@@ -127,7 +126,7 @@ $(document).ready(function() {
     $('#btn-sub-toggle').click(function() {
         $.ajax({
             type: "GET",
-            url: "/jwtauth/menu/twodept/select",
+            url: "/jwtauth/menu/api/twodept/select",
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
             // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
@@ -161,7 +160,6 @@ $(document).ready(function() {
                         `;
 
                         if(jsonData[key].active === true) {
-                            console.log('1');
                             dropDownItemsHtml = dropDownItemsHtml +`
                                 <button type="button" class="btn btn-sm btn-toggle active" id="btn-sub-switch" data-toggle="button" aria-pressed="false" style="float: right;margin-rigth: 20px;margin-top:3px;"> 
                                 <div class="handle"></div>
@@ -187,7 +185,7 @@ $(document).ready(function() {
     $('#btn-last-toggle').click(function() {
         $.ajax({
             type: "GET",
-            url: "/jwtauth/menu/threedept/select",
+            url: "/jwtauth/menu/api/threedept/select",
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
             // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
@@ -262,7 +260,7 @@ $(document).ready(function() {
         // ajax가 통신을 성공하고 json을 리턴해주면 서버가 자동으로 자바 오브젝트로 변환
         $.ajax({
             type: "POST",
-            url: "/jwtauth/menu/category/add",
+            url: "/jwtauth/menu/api/category/add",
             data: JSON.stringify(categoryMenu), // http body 데이터
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
@@ -283,7 +281,7 @@ $(document).ready(function() {
     $("#btn-dropdown-category").on('click', function() {
         $.ajax({
             type: "GET",
-            url: "/jwtauth/menu/category/select",
+            url: "/jwtauth/menu/api/category/select",
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
             // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
@@ -346,7 +344,7 @@ $(document).ready(function() {
         // ajax가 통신을 성공하고 json을 리턴해주면 서버가 자동으로 자바 오브젝트로 변환
         $.ajax({
             type: "POST",
-            url: "/jwtauth/menu/onedept/add",
+            url: "/jwtauth/menu/api/onedept/add",
             data: JSON.stringify(rootMenu), // http body 데이터
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
@@ -369,7 +367,7 @@ $(document).ready(function() {
     $("#btn-dropdown-root").on('click', function() {
         $.ajax({
             type: "GET",
-            url: "/jwtauth/menu/onedept/select",
+            url: "/jwtauth/menu/api/onedept/select",
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
             // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
@@ -432,7 +430,7 @@ $(document).ready(function() {
         // ajax가 통신을 성공하고 json을 리턴해주면 서버가 자동으로 자바 오브젝트로 변환
         $.ajax({
             type: "POST",
-            url: "/jwtauth/menu/twodept/add",
+            url: "/jwtauth/menu/api/twodept/add",
             data: JSON.stringify(subMenu), // http body 데이터
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
@@ -455,7 +453,7 @@ $(document).ready(function() {
     $("#btn-dropdown-sub").on('click', function() {
         $.ajax({
             type: "GET",
-            url: "/jwtauth/menu/twodept/select",
+            url: "/jwtauth/menu/api/twodept/select",
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데
             // 생긴게 json이라면 => javascript 오브젝트로 변경 해줌
@@ -518,7 +516,7 @@ $(document).ready(function() {
         // ajax가 통신을 성공하고 json을 리턴해주면 서버가 자동으로 자바 오브젝트로 변환
         $.ajax({
             type: "POST",
-            url: "/jwtauth/menu/threedept/add",
+            url: "/jwtauth/menu/api/threedept/add",
             data: JSON.stringify(lastMenu), // http body 데이터
             contentType: "application/json; charset=utf-8", // body데이터가 어떤 타입인지(MIME)
             dataType: "json" // 요청을 서버로해서 응답이 왔을때 기본적으로 모든것이 문자열로오는데

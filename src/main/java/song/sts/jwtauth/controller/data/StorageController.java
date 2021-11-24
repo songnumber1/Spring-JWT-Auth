@@ -1,4 +1,4 @@
-package song.sts.jwtauth.controller;
+package song.sts.jwtauth.controller.data;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import song.sts.jwtauth.model.response.StorageItemModel;
@@ -16,8 +17,9 @@ import song.sts.jwtauth.model.response.StorageItemModel;
 @Controller
 @RequestMapping("/storage")
 public class StorageController {
-    @GetMapping("/")
-    public String storage(Model menuModel, Model model) {
+    @GetMapping("/{menuid}/{menudept}")
+    public String storage(Model menuModel, Model model, @PathVariable(value = "menuid") String menuid,
+            @PathVariable(value = "menudept") String menudept) {
         String drive, id, absolutePath;
 
         double totalSize, freeSize, useSize;

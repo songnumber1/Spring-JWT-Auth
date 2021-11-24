@@ -31,12 +31,11 @@ let setPathFunc = function setPath(path, action) {
 
 let pathMoveFunc = function pathMove(path, absolutePath, action) {
 	$.ajax({
-		url: "/jwtauth/storage/getdirinfo",
+		url: "/jwtauth/data/api/storage/getdirinfo",
 		type: "POST",
 		data: { parentId: path, path: absolutePath },
 		success: function(res) {
 			if (res.status === 200) {
-				//console.log(res.data);
 				datatable.destroy();
 
 				var html = `<thead>
@@ -157,7 +156,7 @@ function createTable(action) {
 	for (key in tc) {
 		html += '<tr>';
 		html += '<td style="display:none;">' + tc[key].absolutePath + '</td>';
-		html += '<td><a id="path" href="javascript:void(0); style="vertical-align : middle; ">' + tc[key].text + '</a></td>';
+		html += '<td><a id="path" href="javascript:void(0);" style="vertical-align : middle; ">' + tc[key].text + '</a></td>';
 		html += '<td style="vertical-align : middle;">' + tc[key].useSize + ' / ' + tc[key].totalSize + '</td>';
 		html += '<td style="vertical-align : middle; text-align: center;width: 5%;"><i class="fas fa-database" aria-hidden="true"></i></td>';
 		html += '</tr>';
@@ -267,3 +266,27 @@ let logFunc = function log(functionName) {
 	let logData = 'Function : ' + functionName + ' / pathHistory : ' + pathHistory + ' / pathHistory.Length : ' + pathHistory.length + ' / pathHistoryIndex : ' + pathHistoryIndex;
 	console.log(logData);
 }
+
+$(document).on("click", "#path", function() {
+	// 현재 클릭된 Row(<tr>)
+	var tr = $(this).parent().parent()
+	var td = tr.children();
+
+	// tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
+	//console.log("클릭한 Row의 모든 데이터 : " + tr.text());
+
+	// td.eq(index)를 통해 값을 가져올 수도 있다.
+	var absolutePath = td.eq(0).text();
+
+	//console.log(absolutePath);
+
+	let path = $(this).text();
+
+	if (path === undefined ||
+		path === null ||
+		path === "") {
+		return;
+	}
+	
+	pathMoveFunc(path, absolutePath, false);
+});

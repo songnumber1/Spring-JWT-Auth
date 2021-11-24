@@ -14,7 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import song.sts.jwtauth.common.StaticVariable;
-import song.sts.jwtauth.entity.User;
+import song.sts.jwtauth.entity.setting.User;
 import song.sts.jwtauth.repository.UserRepository;
 import song.sts.jwtauth.service.UserService;
 import song.sts.jwtauth.token.JwtTokenProvider;
@@ -102,14 +102,13 @@ public class AuthWorkHandler {
 
 		SecurityContextHolder.clearContext();
 
-		try
-		{
+		try {
 			response.sendRedirect(StaticVariable.CONTEXT_PATH);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public boolean beforeIsLoginValication(HttpServletRequest request, HttpServletResponse response) {
 		if (request.getRequestURI().equals(StaticVariable.LOGIN_URI)) {
 			try {
@@ -120,7 +119,7 @@ public class AuthWorkHandler {
 				return false;
 			}
 		}
-		
+
 		return false;
 	}
 }

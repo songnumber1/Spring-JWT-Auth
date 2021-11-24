@@ -28,8 +28,14 @@ $(document).ready(function() {
             var oneDeptMenuAria = oneDeptMenuTitle + '_' + oneDeptMenuId;
            
             if(twoDeptMenus.length === 0) {
+                let oneMenuUrl = 'javascript:void(0)';
+
+                if(oneDeptMenuUrl.trim() !== '') {
+                    oneMenuUrl = oneDeptMenuUrl + "/" + oneDeptMenuId + "/1";
+                }
+
                 html = html + 
-                    `<a class="nav-link" href="` + oneDeptMenuUrl + `">
+                    `<a class="nav-link" href="` + oneMenuUrl + `">
                         <div class="sb-nav-link-icon">
                             <i class="` + oneDeptMenuIcon + `"></i>
                         </div> 
@@ -60,10 +66,16 @@ $(document).ready(function() {
                 var twoDeptMenuAria = twoDeptMenuTitle + '_' + twoDeptMenuId;
 
                 if(threeDeptMenus.length === 0) {
+                    let twoMenuUrl = 'javascript:void(0)';
+
+                    if(twoDeptMenuUrl.trim() !== '') {
+                        twoMenuUrl = twoDeptMenuUrl + "/" + twoDeptMenuId + "/2";
+                    }
+
                     html = html + 
                         `<div class="collapse" id="` + oneDeptMenuAria + `" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="` +  twoDeptMenuUrl + `">
+                                <a class="nav-link" href="` +  twoMenuUrl + `">
                                     ` +  twoDeptMenuTitle + `
                                 </a> 
                             </nav>
@@ -73,9 +85,15 @@ $(document).ready(function() {
                     var threeHtml = '';
                     isThreeDeptMenuExist = true;
 
-                    for(threeDeptkey in threeDeptMenus) {                        
+                    for(threeDeptkey in threeDeptMenus) {
+                        let threeMenuUrl = 'javascript:void(0)';
+
+                        if(threeDeptMenus[threeDeptkey].menuThreeDeptUrl.trim() !== '') {
+                            threeMenuUrl = threeDeptMenus[threeDeptkey].menuThreeDeptUrl + "/" + threeDeptMenus[threeDeptkey].menuThreeDeptid + "/3";
+                        }
+
                         threeHtml = threeHtml + 
-                            `<a class="nav-link" href="` + threeDeptMenus[threeDeptkey].menuThreeDeptUrl + `">` + 
+                            `<a class="nav-link" href="` + threeMenuUrl + `">` + 
                                 threeDeptMenus[threeDeptkey].menuThreeDeptTitle + 
                             `</a>`;
                     }

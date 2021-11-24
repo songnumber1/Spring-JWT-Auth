@@ -11,8 +11,8 @@
 				<h1 class="mt-4">Skills</h1>
 				
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item active" style="padding-top: 5px;">C#</li> &nbsp;&nbsp;&nbsp;
-					<form action="/jwtauth/skill/add" method="get">
+					<li class="breadcrumb-item active" style="padding-top: 5px;">${name}</li> &nbsp;&nbsp;&nbsp;
+					<form action="/jwtauth/software/add" method="get">
 						<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
 					</form>
 				</ol>
