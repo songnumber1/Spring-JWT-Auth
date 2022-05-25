@@ -86,7 +86,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/", "/home", "/index", "/main")
 				.access("hasRole('ROLE_USER') or hasRole('ROLE_GUEST') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
 				.antMatchers("/api/v1/manager/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
-				.antMatchers("/api/v1/admin/**", "/swagger*/**", "/webjars/**", "/swagger-resources/**")
+				.antMatchers("/api/v1/admin/**")
+				// 아래 role_admin인 일 때만 허용
+				//.antMatchers("/api/v1/admin/**", "/swagger-ui.html", "/swagger*/**", "/webjars/**", "/swagger-resources/**")
 				.access("hasRole('ROLE_ADMIN')").anyRequest().permitAll().and().logout()
 				.logoutUrl(FinalVariable.SECURITY_LOGOUT_URL).logoutSuccessUrl(FinalVariable.LOGIN_SUFFIX_URI)
 				.invalidateHttpSession(true).clearAuthentication(true).deleteCookies("JSESSIONID", HEADER_NAME)
