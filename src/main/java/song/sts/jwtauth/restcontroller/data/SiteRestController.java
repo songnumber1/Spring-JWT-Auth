@@ -24,7 +24,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import song.sts.jwtauth.common.FinalVariable;
 import song.sts.jwtauth.entity.data.SiteItem;
+import song.sts.jwtauth.entity.data.SiteItem.SiteType;
 import song.sts.jwtauth.repository.SiteRepository;
 import song.sts.jwtauth.security.handler.AuthWorkHandler;
 import song.sts.jwtauth.util.ResponseData;
@@ -41,6 +43,8 @@ public class SiteRestController {
 
     @PostMapping("/add")
     public ResponseEntity<?> SiteSave(HttpServletRequest request, HttpServletResponse response, @RequestBody SiteItem siteItem) {
+		System.out.println(siteItem);
+		
         if (!request.isUserInRole("ROLE_ADMIN")) {
 			authWorkHandler.logoutDataDelete(request, response);
 			return null;
@@ -53,6 +57,9 @@ public class SiteRestController {
 			authWorkHandler.logoutDataDelete(request, response);
 			return null;
 		}
+
+		if(siteItem.getSiteType() == null)
+			siteItem.setSiteType(SiteType.bg_primary);
 
         siteRepository.save(siteItem);
         return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", null, null);
@@ -87,6 +94,10 @@ public class SiteRestController {
 		findSiteItem.setSiteUrl(siteItem.getSiteUrl());
 		findSiteItem.setWriteDate(findSiteItem.getWriteDate());
 		findSiteItem.setRemark(siteItem.getRemark());
+		findSiteItem.setSiteType(siteItem.getSiteType());
+		
+		if(findSiteItem.getSiteType() == null)
+		 	findSiteItem.setSiteType(SiteType.bg_primary);
 
 		siteRepository.save(findSiteItem);
         return ResponseData.CreateReponse(HttpStatus.OK.value(), "OK", null, null);

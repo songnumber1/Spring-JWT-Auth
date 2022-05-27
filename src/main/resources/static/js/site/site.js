@@ -1,19 +1,25 @@
 var isEdit = false;
 var id = null;
+var InitSiteType = null;
 
 $(document).ready(function() {
     console.log("site page ready");
     
     $('#site-content').html('');
 
+    InitSiteType = $("#btn-dropdown-category").text();
+
     SiteOpen();
 
     $('#siteModal').on('hidden.bs.modal', function() {
         console.log("siteModal hidden.bs.modal");
         $(this).find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
+
+        $("#btn-dropdown-category").text("");
     });
 
     $('#btn-site-add-modal-show').click(function() {
+        $("#btn-dropdown-category").text(InitSiteType);
         isEdit = false;
         $("#siteModal").modal("show");
     });
@@ -50,8 +56,11 @@ $(document).ready(function() {
             siteId: $('#site-id').val(),
             sitePw: $('#site-pw').val(),
             siteUrl: $('#site-url').val(),
+            siteType: $("#btn-dropdown-category").text() == InitSiteType ? null : $("#btn-dropdown-category").text(),
             remark: $('#site-remark').val()
         };
+
+        console.log(siteInfo);
 
         $.ajax({
             type: "POST",
@@ -92,7 +101,7 @@ function SiteOpen() {
             alert("카테고리 메뉴를 불러오지 못했습니다.");
             console.log(res);
         } else {
-            var sitesItemsCardDeckHtml = `<div class="row" style="margin-top: 10px;">`;
+            var sitesItemsCardDeckHtml = `<div class="row" style="margin-top: 10px; margin-bottom:10px;">`;
             var sitesItemsHtml = sitesItemsCardDeckHtml;
             var siteItemHtml = '';
             var jsonData = JSON.parse(res.data);
@@ -105,12 +114,25 @@ function SiteOpen() {
                     sitesItemsHtml = sitesItemsHtml + '</div>' + sitesItemsCardDeckHtml;
                 }
 
+                var siteType = "bg-primary";
+
+                if(jsonData[key].siteType === null ||
+                    jsonData[key].siteType === undefined ||
+                    jsonData[key].siteType.trim() === "")
+                    siteType = "bg-primary";
+                else
+                    siteType = jsonData[key].siteType.replace("_", "-");
+
+                if(siteType !== "bg-light")
+                    siteType = 'text-white ' + siteType
+
                 siteItemHtml = `
                     <div class="col-md-3 col-lg-3 column">
-                        <div class="card-header text-white bg-primary">
-                            <div class="d-flex align-items-center">
-                                <p class="mr-auto" style="margin-top: 20px; font-weight: bold;">` + jsonData[key].siteName + `</p>
-                                <div class="btn-group" role="group">`
+							<div class="card gr-1">
+								<div class="card-header ` + siteType  + `">
+                                    <div class="d-flex align-items-center">
+                                        <p class="mr-auto" style="margin-top: 20px;margin-bottom:20px; font-weight: bold;">` + jsonData[key].siteName + `</p>
+                                        <div class="btn-group" role="group">`
 
                                 if(jsonData[key].siteUrl)
                                     siteItemHtml = siteItemHtml + `<button class="btn btn-info btn-circle btn-sm btn-site-connect" value='` + jsonData[key].id + `' id="btn-site-connect" name="btn-site-connect"><i class="fas fa-share"></i></button>`;
@@ -132,18 +154,19 @@ function SiteOpen() {
                         }
 
                         siteItemHtml = siteItemHtml + `</div>
-                            <div class="card-footer">
-                                <small class="text-muted">` + 
-                                jsonData[key].writeDate[0] + `-` + 
-                                jsonData[key].writeDate[1].toString().padStart(2,'0') + `-` + 
-                                jsonData[key].writeDate[2].toString().padStart(2,'0') + 
-                                ` ` +
-                                jsonData[key].writeDate[3].toString().padStart(2,'0') + 
-                                `:` +
-                                jsonData[key].writeDate[4].toString().padStart(2,'0') + 
-                                `:` +
-                                jsonData[key].writeDate[5].toString().padStart(2,'0') + 
-                                `</small>
+                                <div class="card-footer">
+                                    <small class="text-muted">` + 
+                                    jsonData[key].writeDate[0] + `-` + 
+                                    jsonData[key].writeDate[1].toString().padStart(2,'0') + `-` + 
+                                    jsonData[key].writeDate[2].toString().padStart(2,'0') + 
+                                    ` ` +
+                                    jsonData[key].writeDate[3].toString().padStart(2,'0') + 
+                                    `:` +
+                                    jsonData[key].writeDate[4].toString().padStart(2,'0') + 
+                                    `:` +
+                                    jsonData[key].writeDate[5].toString().padStart(2,'0') + 
+                                    `</small>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -209,6 +232,7 @@ $(document).on("click", "#btn-site-edit", function() {
             $("#site-pw").val(jsonData.sitePw);
             $("#site-url").val(jsonData.siteUrl);
             $("#site-remark").val(jsonData.remark);
+            $("#btn-dropdown-category").text(jsonData.siteType === null ? InitSiteType : jsonData.siteType);
         }
     })
     .fail(function(error) {
@@ -247,4 +271,8 @@ $(document).on("click", "#btn-site-delete", function() {
     })
     .always(function() {
     });
+});
+
+$(document).on("click", "#div-category-dropdown-menu a", function() { 
+    $("#btn-dropdown-category").text($(this).text());
 });

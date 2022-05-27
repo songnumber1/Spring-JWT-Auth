@@ -71,7 +71,8 @@
 																this field.</div>
 														</div>
 													</div>
-
+											   
+											   </div> 
 													<label class="control-label col-sm-12">Url</label>
 														<div class="col-sm-12">
 															<input type="text" class="form-control"
@@ -83,7 +84,32 @@
 														<div class="col-sm-12">
 															<textarea class="form-control" id="site-remark" name="site-remark" rows="3"></textarea>
 														</div>
-												</div>
+
+													<div class="col-sm-12" style="margin-top: 10px; margin-bottom: 10px;">
+														<div class="dropdown" id="dropdown-category">
+															<button
+																class="btn btn-secondary dropdown-toggle col-sm-12"
+																type="button" id="btn-dropdown-category"
+																data-toggle="dropdown" aria-expanded="false">
+																Select Type</button>
+
+															<input id="input-hidden-select-category"
+																type="hidden" value='-1' />
+
+															<div id="div-category-dropdown-menu"
+																class="dropdown-menu col-sm-12"
+																aria-labelledby="btn-dropdown-category">
+																<a class="dropdown-item" href="#">bg_primary</a>
+																<a class="dropdown-item" href="#">bg_secondary</a>
+																<a class="dropdown-item" href="#">bg_success</a>
+																<a class="dropdown-item" href="#">bg_danger</a>
+																<a class="dropdown-item" href="#">bg_warning</a>
+																<a class="dropdown-item" href="#">bg_info</a>
+																<a class="dropdown-item" href="#">bg_light</a>
+																<a class="dropdown-item" href="#">bg_dark</a>
+															</div>
+														</div>
+													</div>
 
 												<div class="modal-footer">
 													<button type="button" class="btn btn-primary"
