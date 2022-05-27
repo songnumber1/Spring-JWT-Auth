@@ -9,6 +9,10 @@ SELECT * FROM USER;
 
 UPDATE user SET roles='ROLE_ADMIN', active = 1;
 
+SELECT * FROM siteitem;
+
+UPDATE menuonedept SET menuonedepttitle = 'Site', menuonedepturl = '/jwtauth/site', menuonedepticon = 'fas fa-address-card' WHERE menuonedepttitle = 'Site';
+
 -- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- 사용자 권한 --
@@ -32,6 +36,7 @@ INSERT INTO menuonedept (menuOneDeptTitle, menuOneDeptUrl, active, menuOneDeptIc
 -- ONE DEPT (DATA)--
 INSERT INTO menuonedept (menuOneDeptTitle, menuOneDeptUrl, active, menuOneDeptIcon, menuOneDeptSort, categoryId, userRoleid) SELECT 'Program', '',  1, 'fas fa-th-list', 0, categoryId, (SELECT userroleid FROM user_role WHERE UPPER(role) = 'ADMIN') AS userroleid  FROM menucategory WHERE categoryTitle = 'DATA';
 INSERT INTO menuonedept (menuOneDeptTitle, menuOneDeptUrl, active, menuOneDeptIcon, menuOneDeptSort, categoryId, userRoleid) SELECT 'Storage', '/jwtauth/storage',  1, 'fas fa-database', 1, categoryId, (SELECT userroleid FROM user_role WHERE UPPER(role) = 'ADMIN') AS userroleid  FROM menucategory WHERE categoryTitle = 'DATA';
+INSERT INTO menuonedept (menuOneDeptTitle, menuOneDeptUrl, active, menuOneDeptIcon, menuOneDeptSort, categoryId, userRoleid) SELECT 'Site', '/jwtauth/site',  1, 'fas fa-address-card', 2, categoryId, (SELECT userroleid FROM user_role WHERE UPPER(role) = 'ADMIN') AS userroleid  FROM menucategory WHERE categoryTitle = 'DATA';
 
 -- ONE DEPT (SUMMARY)--
 INSERT INTO menuonedept (menuOneDeptTitle, menuOneDeptUrl, active, menuOneDeptIcon, menuOneDeptSort, categoryId, userRoleid) SELECT 'Oddment', '/jwtauth/summary/oddment',  1, 'fa fa-bars', 0, categoryId, (SELECT userroleid FROM user_role WHERE UPPER(role) = 'ADMIN') AS userroleid  FROM menucategory WHERE categoryTitle = 'SUMMARY';  
