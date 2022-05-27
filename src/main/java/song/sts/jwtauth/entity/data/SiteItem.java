@@ -24,6 +24,8 @@ public class SiteItem {
 
     private String sitePw;
 
+    private String siteUrl;
+
     private String siteThumbnail;
 
     @CreationTimestamp

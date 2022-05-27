@@ -86,6 +86,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 								.createToken(jwtTokenProvider.getClaims(refreshToken, "sub")).getAccessToken();
 						jwtTokenProvider.createCookie(response, newAccessToken);
 
+						System.out.println(newAccessToken);
+
 						if (authWorkHandler.beforeIsLoginValication(request, response)) {
 							return;
 						}

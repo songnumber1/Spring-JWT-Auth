@@ -19,11 +19,13 @@
 										<span class="glyphicon glyphicon-search"></span>
 									</button>
 
-									<button type="button"
-														class="btn btn-outline-secondary"
-														data-toggle="modal" data-target="#siteModal">
-														<i class="fas fa-plus" aria-hidden="true"></i>
-													</button>
+									<button class="btn btn-outline-secondary" id="btn-site-refresh" type="button">
+										<span class="glyphicon glyphicon-refresh"></span>
+									</button>
+
+									<button type="button" class="btn btn-outline-secondary" id="btn-site-add-modal-show">
+										<i class="fas fa-plus" aria-hidden="true"></i>
+									</button>
 
 									<div class="modal fade" id="siteModal" role="dialog">
 										<div class="modal-dialog modal-dialog-centered">
@@ -68,18 +70,14 @@
 															<div class="invalid-feedback">Please fill out
 																this field.</div>
 														</div>
+													</div>
 
-														<label class="control-label col-sm-12">* Url</label>
+													<label class="control-label col-sm-12">Url</label>
 														<div class="col-sm-12">
 															<input type="text" class="form-control"
 																id="site-url" placeholder="Enter account url"
-																name="site-url" required>
-
-															<div class="valid-feedback"></div>
-															<div class="invalid-feedback">Please fill out
-																this field.</div>
+																name="site-url">
 														</div>
-													</div>
 
 													<label class="control-label col-sm-12">Remark</label>
 														<div class="col-sm-12">
@@ -91,7 +89,8 @@
 													<button type="button" class="btn btn-primary"
 														id="btn-site-add">Save</button>
 
-													<button type="button" class="btn btn-success"
+													<button type="button" class="btn btn-success" 
+														id="btn-site-close"
 														data-dismiss="modal">Close</button>
 												</div>
 											</div>
@@ -106,143 +105,107 @@
 			</div>
 						
 			<hr/>
-			<div class="row">
-				<div class="col-xl-12">
-					<div class="card-deck">
-						<div class="card">
-							<div class="card-header text-white bg-primary">
-								<div class="d-flex align-items-center">
-								  <p class="mr-auto" style="margin-top: 20px; font-weight: bold;">Naver</p>
-								  <div class="btn-group" role="group">
-									<!-- <button class="btn btn-sm btn-primary">Add</button>
-									<button class="btn btn-sm btn-primary" style="margin-left: 1em">Edit</button> -->
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-share"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
-								  </div>
-								</div>
-							  </div>
-							<div class="card-body">
-								<p class="card-title">ID : songnumber1@naver.com</p>
-								<p class="card-title">PW : Apassword!1</p>
-								<hr>
-      							<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">WriteDate : 2022-05-27 11:43:10</small>
-							</div>
-						</div>
+			<div id="site-content">
 
-						<div class="card">
-							<div class="card-header text-white bg-primary">
-								<div class="d-flex align-items-center">
-								  <p class="mr-auto" style="margin-top: 20px; font-weight: bold;">Naver</p>
-								  <div class="btn-group" role="group">
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-home"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+				<div class="row" style="margin-top: 10px;">
+					
+						<div class="col-md-3 col-lg-3 column">
+							<div class="card gr-1">
+								<div class="card-header text-white bg-primary">
+									<div class="d-flex align-items-center">
+									  <p class="mr-auto" style="margin-top: 20px; font-weight: bold;">Naver</p>
+									  <div class="btn-group" role="group">
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+									  </div>
+									</div>
 								  </div>
+								<div class="card-body">
+									  <p class="card-text">ID : songnumber1@naver.com</p>
+									<p class="card-text">PW : Apassword!1</p>
 								</div>
-							  </div>
-							<div class="card-body">
-      							<p class="card-text">ID : songnumber1@naver.com</p>
-								<p class="card-text">PW : Apassword!1</p>
-								<p class="card-text">ID : songnumber1@naver.com</p>
-								<p class="card-text">PW : Apassword!1</p>
-								<p class="card-text">ID : songnumber1@naver.com</p>
-								<p class="card-text">PW : Apassword!1</p>
-								<p class="card-text">ID : songnumber1@naver.com</p>
-								<p class="card-text">PW : Apassword!1</p>
-								<p class="card-text">ID : songnumber1@naver.com</p>
-								<p class="card-text">PW : Apassword!1</p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">WriteDate : 2022-05-27 11:43:10</small>
+								<div class="card-footer">
+									<small class="text-muted">WriteDate : 2022-05-27 11:43:10</small>
+								</div>
 							</div>
 						</div>
-
-						<div class="card">
-							<div class="card-header text-white bg-primary">
-								<div class="d-flex align-items-center">
-								  <p class="mr-auto" style="margin-top: 20px; font-weight: bold;">Naver</p>
-								  <div class="btn-group" role="group">
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+	
+	
+						<div class="col-md-3 col-lg-3 column">
+							<div class="card gr-1">
+								<div class="card-header text-white bg-primary">
+									<div class="d-flex align-items-center">
+									  <p class="mr-auto" style="margin-top: 20px; font-weight: bold;">Naver</p>
+									  <div class="btn-group" role="group">
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+									  </div>
+									</div>
 								  </div>
+								<div class="card-body">
+									  <p class="card-text">ID : songnumber1@naver.com</p>
+									<p class="card-text">PW : Apassword!1</p>
 								</div>
-							  </div>
-							<div class="card-body">
-      							<p class="card-text">ID : songnumber1@naver.com</p>
-								<p class="card-text">PW : Apassword!1</p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">WriteDate : 2022-05-27 11:43:10</small>
+								<div class="card-footer">
+									<small class="text-muted">WriteDate : 2022-05-27 11:43:10</small>
+								</div>
 							</div>
 						</div>
-
-						<div class="card">
-							<div class="card-header text-white bg-primary">
-								<div class="d-flex align-items-center">
-								  <p class="mr-auto" style="margin-top: 20px; font-weight: bold;">Naver</p>
-								  <div class="btn-group" role="group">
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+	
+	
+						<div class="col-md-3 col-lg-3 column">
+							<div class="card gr-1">
+								<div class="card-header text-white bg-primary">
+									<div class="d-flex align-items-center">
+									  <p class="mr-auto" style="margin-top: 20px; font-weight: bold;">Naver</p>
+									  <div class="btn-group" role="group">
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+									  </div>
+									</div>
 								  </div>
+								<div class="card-body">
+									  <p class="card-text">ID : songnumber1@naver.com</p>
+									<p class="card-text">PW : Apassword!1</p>
 								</div>
-							  </div>
-							<div class="card-body">
-      							<p class="card-text">ID : songnumber1@naver.com</p>
-								<p class="card-text">PW : Apassword!1</p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">WriteDate : 2022-05-27 11:43:10</small>
+								<div class="card-footer">
+									<small class="text-muted">WriteDate : 2022-05-27 11:43:10</small>
+								</div>
 							</div>
 						</div>
-
-						<div class="card">
-							<div class="card-header text-white bg-primary">
-								<div class="d-flex align-items-center">
-								  <p class="mr-auto" style="margin-top: 20px; font-weight: bold;">Naver</p>
-								  <div class="btn-group" role="group">
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+	
+						<div class="col-md-3 col-lg-3 column">
+							<div class="card gr-1">
+								<div class="card-header text-white bg-primary">
+									<div class="d-flex align-items-center">
+									  <p class="mr-auto" style="margin-top: 20px; font-weight: bold;">Naver</p>
+									  <div class="btn-group" role="group">
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
+										<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+									  </div>
+									</div>
 								  </div>
+								<div class="card-body">
+									  <p class="card-text">ID : songnumber1@naver.com</p>
+									<p class="card-text">PW : Apassword!1</p>
 								</div>
-							  </div>
-							<div class="card-body">
-      							<p class="card-text">ID : songnumber1@naver.com</p>
-								<p class="card-text">PW : Apassword!1</p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">WriteDate : 2022-05-27 11:43:10</small>
+								<div class="card-footer">
+									<small class="text-muted">WriteDate : 2022-05-27 11:43:10</small>
+								</div>
 							</div>
 						</div>
-
-						<div class="card">
-							<div class="card-header text-white bg-primary">
-								<div class="d-flex align-items-center">
-								  <p class="mr-auto" style="margin-top: 20px; font-weight: bold;">Naver</p>
-								  <div class="btn-group" role="group">
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
-									<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
-								  </div>
-								</div>
-							  </div>
-							<div class="card-body">
-      							<p class="card-text">ID : songnumber1@naver.com</p>
-								<p class="card-text">PW : Apassword!1</p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted">WriteDate : 2022-05-27 11:43:10</small>
-							</div>
-						</div>
-					</div>
+	
 				</div>
+				
+	
+	
+
 			</div>
+			
 		</div>
 	</main>
 

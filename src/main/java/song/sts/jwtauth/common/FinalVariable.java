@@ -23,5 +23,5 @@ public class FinalVariable {
 
 	public final static String SECURITY_LOGOUT_SUCCESSURL = "/auth/loginForm";
 
-	public final static String MOVIE_PATH = "J:\\자료\\맛있는 녀석들";// "C:\\Program Files (x86)";
+	public final static String MOVIE_PATH = "G:\\movie";// "C:\\Program Files (x86)";
 }
