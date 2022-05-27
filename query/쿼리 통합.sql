@@ -7,9 +7,16 @@ USE jwtauth;
 
 SELECT * FROM USER;
 
+UPDATE user SET roles='ROLE_MANAGER', active = 1;
 UPDATE user SET roles='ROLE_ADMIN', active = 1;
 
 SELECT * FROM siteitem;
+
+DELETE FROM siteitem WHERE siteName = '';
+
+UPDATE siteitem SET writeDate = NOW() WHERE siteName = '네이트온';
+
+
 
 UPDATE menuonedept SET menuonedepttitle = 'Site', menuonedepturl = '/jwtauth/site', menuonedepticon = 'fas fa-address-card' WHERE menuonedepttitle = 'Site';
 
