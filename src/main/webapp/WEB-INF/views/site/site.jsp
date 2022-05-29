@@ -13,10 +13,14 @@
 				<div class="row">
 					<div class="col-md-12">
 						<form action="" class="search-form">
-							<div class = "input-group" > <input type="text" class="form-control" placeholder="Search">
+							<div class = "input-group" > <input type="text" class="form-control" placeholder="Search" id="input-site_search">
 								<div class="input-group-append">
-									<button class="btn btn-outline-secondary" type="button">
+									<button class="btn btn-outline-secondary" id="btn-site-search" type="button">
 										<span class="glyphicon glyphicon-search"></span>
+									</button>
+
+									<button class="btn btn-outline-secondary" id="btn-site-search-reset" type="button">
+										<span class="glyphicon glyphicon-remove"></span>
 									</button>
 
 									<button class="btn btn-outline-secondary" id="btn-site-refresh" type="button">
