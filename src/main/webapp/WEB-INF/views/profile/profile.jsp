@@ -1,131 +1,336 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@include file="../layout/header.jsp"%>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link href="/jwtauth/css/profile.css" rel="stylesheet" />
+<%@include file="../layout/left.jsp"%>
 
-<!-- Main Content-->
-<div class="container">
-	<div class="row">
-		<div class="col-12">
-			<div class="card" style="border: none;">
-				<div class="card-body">
-					<ul class="timeline timeline-left">
-						<li class="timeline-inverted timeline-item">
-						<div class="timeline-badge success">
-							<span class="material-icons">explore</span>
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4 class="timeline-title">Genelia</h4>
-								<p>
-									<small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small>
-								</p>
-							</div>
-							<div class="timeline-body">
-								<p>
-									 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam dolor perspiciatis omnis exercitationem. Beatae, officia pariatur? Est cum veniam excepturi. Maiores praesentium, porro voluptas suscipit facere rem dicta, debitis.
-								</p>
-							</div>
-						</div>
-						</li>
-						<li class="timeline-inverted timeline-item">
-						<div class="timeline-badge warning">
-							<img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="img" class="img-fluid"/>
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4 class="timeline-title">Ritesh Deshmukh</h4>
-							</div>
-							<div class="timeline-body">
-								<p>
-									<img src="https://via.placeholder.com/600x300/FFB6C1/000000" alt="img" class="img-fluid"/>
-								</p>
-								<p>
-									 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere.
-								</p>
-							</div>
-						</div>
-						</li>
-						<li class="timeline-inverted timeline-item">
-						<div class="timeline-badge danger">
-							<span class="font-12">2018</span>
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4 class="timeline-title">Lorem ipsum dolor</h4>
-							</div>
-							<div class="timeline-body">
-								<p>
-									 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus numquam facilis enim eaque, tenetur nam id qui vel velit similique nihil iure molestias aliquam, voluptatem totam quaerat, magni commodi quisquam.
-								</p>
-							</div>
-						</div>
-						</li>
-						<li class="timeline-inverted timeline-item">
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4 class="timeline-title">Lorem ipsum dolor</h4>
-							</div>
-							<div class="timeline-body">
-								<p>
-									 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates est quaerat asperiores sapiente, eligendi, nihil. Itaque quos, alias sapiente rerum quas odit! Aperiam officiis quidem delectus libero, omnis ut debitis!
-								</p>
-							</div>
-						</div>
-						</li>
-						<li class="timeline-inverted timeline-item">
-						<div class="timeline-badge info">
-							<i class="fa fa-save"></i>
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4 class="timeline-title">Lorem ipsum dolor</h4>
-							</div>
-							<div class="timeline-body">
-								<p>
-									 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis minus modi quam ipsum alias at est molestiae excepturi delectus nesciunt, quibusdam debitis amet, beatae consequuntur impedit nulla qui! Laborum, atque.
-								</p>
-								<hr/>
-								<div class="btn-group">
-									<button type="button" data-toggle="dropdown" class="btn btn-primary btn-sm dropdown-toggle"><i class="fa fa-cog"></i><span class="caret"></span></button>
-									<div class="dropdown-menu">
-										<a href="javascript:void(0)" class="dropdown-item">Action</a><a href="javascript:void(0)" class="dropdown-item">Another action</a>
-										<a href="javascript:void(0)" class="dropdown-item">Something else here</a>
-										<div class="dropdown-divider">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<!-- <link href="/jwtauth/css/profile.css" rel="stylesheet" /> -->
+
+<div id="layoutSidenav_content">
+	<main>
+		<div class="container-fluid px-4">
+			<div class="col-12">
+				<h1 class="mt-4">Profile</h1>
+			</div>
+						
+			<hr/>
+			<div id="profile-content">
+					<div class="main-body">					
+						  <div class="row gutters-sm">
+							<div class="col-md-4 mb-3">
+							  <div class="card">
+								<div class="card-body">
+								  <div class="d-flex flex-column align-items-center text-center">
+									<img src="../../assets/img/about-bg.jpg" alt="Admin" class="rounded-circle" width="150" height="150">
+
+									<div class="row" style="margin-top: -35px;margin-left: 100px;">
+										<div class="btn-group float-right" role="group">
+											<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
 										</div>
-										<a href="javascript:void(0)" class="dropdown-item">Separated link</a>
+									  </div>
+									<div class="mt-3">
+									  <h4>송민우</h4>
+									  <p class="text-secondary mb-1">Developer</p>
+									  <p class="text-muted font-size-sm">경기도 화성시</p>
+									</div>
+								  </div>
+								</div>
+							  </div>
+							  <div class="card mt-3">
+								<div class="card-header">
+									<div class="row">
+										<div class="col-md-9">
+											<p class="card-title" style="margin-top: 7px;font-weight: bold;">스킬</p>
+										</div>
+										<div class="col-md-3">
+											<div class="btn-group float-right" role="group">
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+											</div>
+										</div>
+									  </div>
+								</div>
+
+								<div class="card-body">
+									
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="">
+										<label class="form-check-label">
+											<small>Android</small>
+										</label>
+									</div>
+
+									<div class="progress mb-3" style="height: 5px">
+									  <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="">
+										<label class="form-check-label">
+											<small>C#</small>
+										</label>
+									</div>
+									<div class="progress mb-3" style="height: 5px">
+									  <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+									
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="">
+										<label class="form-check-label">
+											<small>DB</small>
+										</label>
+									</div>
+
+									<div class="progress mb-3" style="height: 5px">
+									  <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="">
+										<label class="form-check-label">
+											<small>Java</small>
+										</label>
+									</div>
+
+									<div class="progress mb-3" style="height: 5px">
+									  <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+									
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="">
+										<label class="form-check-label">
+											<small>Javascript</small>
+										</label>
+									</div>
+
+									<div class="progress mb-3" style="height: 5px">
+									  <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+								  </div>
+							  </div>
+							</div>
+							<div class="col-md-8">
+							  <div class="card mb-3">
+								<div class="card-header">
+									
+									<div class="row">
+										<div class="col-md-9">
+											<p class="card-title" style="margin-top: 7px;font-weight: bold;">기본</p>
+										</div>
+										<div class="col-md-3">
+											<div class="btn-group float-right" role="group">
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+											</div>
+										</div>
+									  </div>
+
+								</div>
+								<div class="card-body">
+								  <div class="row">
+									<div class="col-sm-1">
+									  <h6 class="mb-0" style="font-weight: bold;">이름</h6>
+									</div>
+									<div class="col-sm-11 text-secondary">
+									  송민우
+									</div>
+								  </div>
+								  <hr>
+								  <div class="row">
+									<div class="col-sm-1">
+										<h6 class="mb-0" style="font-weight: bold;">메일</h6>
+									  </div>
+									  <div class="col-sm-11 text-secondary">
+										songnumber1@naver.com
+									  </div>
+								  </div>
+								  <hr>
+								  <div class="row">
+									<div class="col-sm-1">
+									  <h6 class="mb-0" style="font-weight: bold;">전화</h6>
+									</div>
+									<div class="col-sm-11 text-secondary">
+									  010-9494-2998
+									</div>
+								  </div>
+								  <hr>
+								  <div class="row">
+									<div class="col-sm-1">
+									  <h6 class="mb-0" style="font-weight: bold;">주소</h6>
+									</div>
+									<div class="col-sm-11 text-secondary">
+									  경기도 화성시 병점동
+									</div>
+								  </div>
+								  <!--<hr>
+								   <div class="row">
+									<div class="col-sm-12">
+									  <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+									</div>
+								  </div> -->
+								</div>
+							  </div>
+				
+								<div class="card mb-3">
+									<div class="card-header">
+										<div class="row">
+											<div class="col-md-9">
+												<p class="card-title" style="margin-top: 7px;font-weight: bold;">경력</p>
+											</div>
+											<div class="col-md-3">
+
+												<div class="btn-group float-right" role="group">
+													<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+													<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
+													<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+												</div>
+											</div>
+										  </div>
+									</div>
+									<div class="card-body">							
+										<div class="row">
+											<div class="col-sm-2">
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+													<label class="form-check-label" for="flexCheckDefault">
+														<p class="text-secondary mb-1" style="font-weight: bold;">단감소프트</p>
+													</label>
+												</div>
+												<small>2021.11 ~ 2022.05</small>
+											</div>
+							
+											<div class="col-sm-10">
+												<h6 style="font-weight: bold; margin-bottom: 30px;">TCS 개발</h6>
+							
+												<p>- 역할
+												</p>
+												<p>- 프로그램 개발
+												</p>
+												<p>- 관련기술
+												</p>
+												<p>- Mendix
+												</p>
+											</div>
+
+											<div class="card-footer" style="display: flex;">
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">Java</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">Java</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">Java</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary mr-2">Java</span></h6>
+											</div>
+										</div>
+
+										<div class="row" style="margin-top: 10px;">
+											<div class="col-sm-2">
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+													<label class="form-check-label" for="flexCheckDefault">
+														<p class="text-secondary mb-1" style="font-weight: bold;">단감소프트</p>
+													</label>
+												</div>
+												<small>2021.11 ~ 2022.05</small>
+											</div>
+							
+											<div class="col-sm-10">
+												<h6 class="mb-5" style="font-weight: bold;">TCS 개발</h6>
+							
+												<p>- 역할
+												</p>
+												<p>- 프로그램 개발
+												</p>
+												<p>- 관련기술
+												</p>
+												<p>- Mendix
+												</p>
+							
+											</div>
+
+											<div class="card-footer" style="display: flex;">
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">Java</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">Java</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">Java</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary mr-2">Java</span></h6>
+											</div>
+										</div>
+
+										
+
+										<div class="row" style="margin-top: 10px;">
+											<div class="col-sm-2">
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+													<label class="form-check-label" for="flexCheckDefault">
+														<p class="text-secondary mb-1" style="font-weight: bold;">단감소프트</p>
+													</label>
+												</div>
+												<small>2021.11 ~ 2022.05</small>
+											</div>
+							
+											<div class="col-sm-10">
+												<h6 class="mb-5" style="font-weight: bold;">TCS 개발</h6>
+							
+												<p>- 역할
+												</p>
+												<p>- 프로그램 개발
+												</p>
+												<p>- 관련기술
+												</p>
+												<p>- Mendix
+												</p>
+							
+											</div>
+
+											<div class="card-footer" style="display: flex;">
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">Java</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">Java</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">Java</span></h6>
+												<h6><span class="badge badge-primary float-right mr-2">C#</span></h6>
+												<h6><span class="badge badge-primary mr-2">Java</span></h6>
+											</div>
+										</div>
+
+
+										
 									</div>
 								</div>
+				
+				
 							</div>
+						  </div>
+				
 						</div>
-						</li>
-						<li class="timeline-inverted timeline-item">
-						<div class="timeline-badge success">
-							<i class="fa fa-graduation-cap"></i>
-						</div>
-						<div class="timeline-panel">
-							<div class="timeline-heading">
-								<h4 class="timeline-title">Lorem ipsum dolor</h4>
-							</div>
-							<div class="timeline-body">
-								<p>
-									 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt obcaecati, quaerat tempore officia voluptas debitis consectetur culpa amet, accusamus dolorum fugiat, animi dicta aperiam, enim incidunt quisquam maxime neque eaque.
-								</p>
-							</div>
-						</div>
-						</li>
-					</ul>
 				</div>
+				
 			</div>
-		</div>
-	</div>
+	</main>
+
+	<%@include file="../layout/footer.jsp"%>
 </div>
 
-<%@include file="../layout/footer.jsp"%>
+
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="/jwtauth/js/index.js"></script>
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
+<script src="/jwtauth/js/scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+<script src="/jwtauth/js/site/site.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="/jwtauth/js/datatables-simple-demo.js"></script>
+
 </body>
 </html>

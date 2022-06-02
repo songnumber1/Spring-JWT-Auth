@@ -10,16 +10,12 @@ SELECT * FROM USER;
 UPDATE user SET roles='ROLE_MANAGER', active = 1;
 UPDATE user SET roles='ROLE_ADMIN', active = 1;
 
+SELECT m.* from SiteItem m where m.siteName IN('Naver');
+
+
 SELECT * FROM siteitem;
 
-DELETE FROM siteitem WHERE siteName = '';
-
-UPDATE siteitem SET writeDate = NOW() WHERE siteName = '네이트온';
-
-
-
-UPDATE menuonedept SET menuonedepttitle = 'Site', menuonedepturl = '/jwtauth/site', menuonedepticon = 'fas fa-address-card' WHERE menuonedepttitle = 'Site';
-
+SELECT u FROM siteitem u WHERE Trim(u.siteName) LIKE '%Naver%'
 -- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- 사용자 권한 --
@@ -54,7 +50,7 @@ INSERT INTO menuonedept (menuOneDeptTitle, menuOneDeptUrl, active, menuOneDeptIc
 -- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- TWO DEPT (PROFILE)--
-INSERT INTO menutwodept (menuTwoDeptTitle, menuTwoDeptUrl, active, menuTwoDeptIcon, menuTwoDeptSort, menuonedeptId, userRoleid) SELECT 'Info', '/jwtauth/profile/',  1, '', 0, menuonedeptId, (SELECT userroleid FROM user_role WHERE UPPER(role) = 'ADMIN') AS userroleid  FROM menuonedept WHERE menuOneDeptTitle = 'Personal';
+INSERT INTO menutwodept (menuTwoDeptTitle, menuTwoDeptUrl, active, menuTwoDeptIcon, menuTwoDeptSort, menuonedeptId, userRoleid) SELECT 'Info', '/jwtauth/profile',  1, '', 0, menuonedeptId, (SELECT userroleid FROM user_role WHERE UPPER(role) = 'ADMIN') AS userroleid  FROM menuonedept WHERE menuOneDeptTitle = 'Personal';
 
 -- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
