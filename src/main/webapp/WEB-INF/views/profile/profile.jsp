@@ -4,7 +4,6 @@
 <%@include file="../layout/left.jsp"%>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<!-- <link href="/jwtauth/css/profile.css" rel="stylesheet" /> -->
 
 <div id="layoutSidenav_content">
 	<main>
@@ -40,7 +39,92 @@
 								<div class="card-header">
 									<div class="row">
 										<div class="col-md-9">
-											<p class="card-title" style="margin-top: 7px;font-weight: bold;">스킬</p>
+											
+											<div style="display: flex;">
+												<a class "btn" style="margin-top: 5px;margin-right: 10px;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+													<i class="fas fa-angle-down"></i>
+												</a>
+
+												<p class="card-title" style="margin-top: 7px;font-weight: bold;">스킬</p>
+											</div>
+
+											
+										</div>
+										<div class="col-md-3">
+											<div class="btn-group float-right" role="group">
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+											</div>
+										</div>
+									  </div>
+								</div>
+
+								<div class="collapse" id="collapseExample">
+									<div class="card-body">
+										
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" value="">
+											<label class="form-check-label">
+												<small>Android</small>
+											</label>
+										</div>
+
+										<div class="progress mb-3" style="height: 5px">
+										<div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" value="">
+											<label class="form-check-label">
+												<small>C#</small>
+											</label>
+										</div>
+										<div class="progress mb-3" style="height: 5px">
+										<div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+										
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" value="">
+											<label class="form-check-label">
+												<small>DB</small>
+											</label>
+										</div>
+
+										<div class="progress mb-3" style="height: 5px">
+										<div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" value="">
+											<label class="form-check-label">
+												<small>Java</small>
+											</label>
+										</div>
+
+										<div class="progress mb-3" style="height: 5px">
+										<div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+										
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" value="">
+											<label class="form-check-label">
+												<small>Javascript</small>
+											</label>
+										</div>
+
+										<div class="progress mb-3" style="height: 5px">
+										<div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+									</div>
+								</div>
+							  </div>
+
+							  <div class="card mt-3">
+								<div class="card-header">
+									<div class="row">
+										<div class="col-md-9">
+											<p class="card-title" style="margin-top: 7px;font-weight: bold;">학력</p>
 										</div>
 										<div class="col-md-3">
 											<div class="btn-group float-right" role="group">
@@ -54,66 +138,83 @@
 
 								<div class="card-body">
 									
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="">
-										<label class="form-check-label">
-											<small>Android</small>
-										</label>
+									<div class="form-check mb-3">
+										<div class="hstack gap-3">
+											<input class="form-check-input" type="checkbox" value="">
+											<label class="form-check-label">
+												<small>장안대학교</small>
+											</label>
+											
+											<div class="ms-auto">2010.01.01</div>
+										</div>
 									</div>
 
-									<div class="progress mb-3" style="height: 5px">
-									  <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="">
-										<label class="form-check-label">
-											<small>C#</small>
-										</label>
-									</div>
-									<div class="progress mb-3" style="height: 5px">
-									  <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+									<div class="form-check mb-3">
+										<div class="hstack gap-3">
+											<input class="form-check-input" type="checkbox" value="">
+											<label class="form-check-label">
+												<small>수원고등학교</small>
+											</label>
+											
+											<div class="ms-auto">2010.01.01</div>
+										</div>
 									</div>
 									
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="">
-										<label class="form-check-label">
-											<small>DB</small>
-										</label>
+								  </div>
+							  </div>
+
+
+
+
+
+
+
+							  <div class="card mt-3">
+								<div class="card-header">
+									<div class="row">
+										<div class="col-md-9">
+											<p class="card-title" style="margin-top: 7px;font-weight: bold;">자격증</p>
+										</div>
+										<div class="col-md-3">
+											<div class="btn-group float-right" role="group">
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-plus"></i></button>
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
+												<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-times"></i></button>
+											</div>
+										</div>
+									  </div>
+								</div>
+
+								<div class="card-body">
+									
+									<div class="form-check mb-3">
+										<div class="hstack gap-3">
+											<input class="form-check-input" type="checkbox" value="">
+											<label class="form-check-label">
+												<small>정보처리기사</small>
+											</label>
+											
+											<div class="ms-auto">2010.01.01</div>
+										</div>
 									</div>
 
-									<div class="progress mb-3" style="height: 5px">
-									  <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
-
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="">
-										<label class="form-check-label">
-											<small>Java</small>
-										</label>
-									</div>
-
-									<div class="progress mb-3" style="height: 5px">
-									  <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+									<div class="form-check mb-3">
+										<div class="hstack gap-3">
+											<input class="form-check-input" type="checkbox" value="">
+											<label class="form-check-label">
+												<small>CCNA</small>
+											</label>
+											
+											<div class="ms-auto">2010.01.01</div>
+										</div>
 									</div>
 									
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="">
-										<label class="form-check-label">
-											<small>Javascript</small>
-										</label>
-									</div>
-
-									<div class="progress mb-3" style="height: 5px">
-									  <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-									</div>
 								  </div>
 							  </div>
 							</div>
 							<div class="col-md-8">
 							  <div class="card mb-3">
 								<div class="card-header">
-									
 									<div class="row">
 										<div class="col-md-9">
 											<p class="card-title" style="margin-top: 7px;font-weight: bold;">기본</p>
@@ -126,50 +227,53 @@
 											</div>
 										</div>
 									  </div>
-
 								</div>
 								<div class="card-body">
-								  <div class="row">
-									<div class="col-sm-1">
-									  <h6 class="mb-0" style="font-weight: bold;">이름</h6>
+									<div class="row">
+										<div class="col-sm-1">
+										<h6 class="mb-0" style="font-weight: bold;">이름</h6>
+										</div>
+										<div class="col-sm-11 text-secondary">
+										송민우
+										</div>
 									</div>
-									<div class="col-sm-11 text-secondary">
-									  송민우
+									<hr>
+									<div class="row">
+										<div class="col-sm-1">
+										<h6 class="mb-0" style="font-weight: bold;">생년월일</h6>
+										</div>
+										<div class="col-sm-11 text-secondary">
+										1983.11.21
+										</div>
 									</div>
-								  </div>
-								  <hr>
-								  <div class="row">
-									<div class="col-sm-1">
-										<h6 class="mb-0" style="font-weight: bold;">메일</h6>
-									  </div>
-									  <div class="col-sm-11 text-secondary">
-										songnumber1@naver.com
-									  </div>
-								  </div>
-								  <hr>
-								  <div class="row">
-									<div class="col-sm-1">
-									  <h6 class="mb-0" style="font-weight: bold;">전화</h6>
+									<hr>
+									<div class="row">
+										<div class="col-sm-1">
+											<h6 class="mb-0" style="font-weight: bold;">메일</h6>
+										</div>
+										<div class="col-sm-11 text-secondary">
+											songnumber1@naver.com
+										</div>
 									</div>
-									<div class="col-sm-11 text-secondary">
-									  010-9494-2998
+									<hr>
+									<div class="row">
+										<div class="col-sm-1">
+										<h6 class="mb-0" style="font-weight: bold;">전화</h6>
+										</div>
+										<div class="col-sm-11 text-secondary">
+										010-9494-2998
+										</div>
 									</div>
-								  </div>
-								  <hr>
-								  <div class="row">
-									<div class="col-sm-1">
-									  <h6 class="mb-0" style="font-weight: bold;">주소</h6>
+									<hr>
+									<div class="row">
+										<div class="col-sm-1">
+										<h6 class="mb-0" style="font-weight: bold;">주소</h6>
+										</div>
+										<div class="col-sm-11 text-secondary">
+										경기도 화성시 병점동
+										</div>
 									</div>
-									<div class="col-sm-11 text-secondary">
-									  경기도 화성시 병점동
-									</div>
-								  </div>
-								  <!--<hr>
-								   <div class="row">
-									<div class="col-sm-12">
-									  <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-									</div>
-								  </div> -->
+									
 								</div>
 							  </div>
 				
@@ -238,7 +342,7 @@
 											</div>
 							
 											<div class="col-sm-10">
-												<h6 class="mb-5" style="font-weight: bold;">TCS 개발</h6>
+												<h6 style="font-weight: bold; margin-bottom: 30px;">TCS 개발</h6>
 							
 												<p>- 역할
 												</p>
@@ -277,7 +381,7 @@
 											</div>
 							
 											<div class="col-sm-10">
-												<h6 class="mb-5" style="font-weight: bold;">TCS 개발</h6>
+												<h6 style="font-weight: bold; margin-bottom: 30px;">TCS 개발</h6>
 							
 												<p>- 역할
 												</p>
@@ -328,7 +432,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-<script src="/jwtauth/js/site/site.js"></script>
+<script src="/jwtauth/js/profile/profile.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="/jwtauth/js/datatables-simple-demo.js"></script>
 

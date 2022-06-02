@@ -10,12 +10,8 @@ SELECT * FROM USER;
 UPDATE user SET roles='ROLE_MANAGER', active = 1;
 UPDATE user SET roles='ROLE_ADMIN', active = 1;
 
-SELECT m.* from SiteItem m where m.siteName IN('Naver');
 
-
-SELECT * FROM siteitem;
-
-SELECT u FROM siteitem u WHERE Trim(u.siteName) LIKE '%Naver%'
+SELECT * FROM profile;
 -- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- 사용자 권한 --
@@ -73,3 +69,9 @@ INSERT INTO menuthreedept (menuThreeDeptTitle, menuThreeDeptUrl, active, menuThr
 INSERT INTO menuthreedept (menuThreeDeptTitle, menuThreeDeptUrl, active, menuThreeDeptIcon, menuThreeDeptSort, menuTwodeptId, userRoleid) SELECT 'Vue', '/jwtauth/software/Vue',  1, '', 6, menuTwodeptId, (SELECT userroleid FROM user_role WHERE UPPER(role) = 'ADMIN') AS userroleid  FROM menutwodept WHERE menuTwoDeptTitle = 'Software';
 INSERT INTO menuthreedept (menuThreeDeptTitle, menuThreeDeptUrl, active, menuThreeDeptIcon, menuThreeDeptSort, menuTwodeptId, userRoleid) SELECT 'WPF', '/jwtauth/software/WPF',  1, '', 7, menuTwodeptId, (SELECT userroleid FROM user_role WHERE UPPER(role) = 'ADMIN') AS userroleid  FROM menutwodept WHERE menuTwoDeptTitle = 'Software';
 INSERT INTO menuthreedept (menuThreeDeptTitle, menuThreeDeptUrl, active, menuThreeDeptIcon, menuThreeDeptSort, menuTwodeptId, userRoleid) SELECT 'Xamarin', '/jwtauth/software/Xamarin',  1, '', 8, menuTwodeptId, (SELECT userroleid FROM user_role WHERE UPPER(role) = 'ADMIN') AS userroleid  FROM menutwodept WHERE menuTwoDeptTitle = 'Software';
+
+
+-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Profile --
+INSERT INTO profile (name, job, address, full_Addrees, mail, tel) VALUES ('송민우', 'Developer', '경기도 화성시', '경기도 화성시 병점동' , 'songnumber1@naver.com', '010-9494-2998');
