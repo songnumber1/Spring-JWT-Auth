@@ -41,7 +41,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("doFilterInternal : " + request.getRequestURI());
 
 		String accessToken = jwtTokenProvider.resolveCookie(request);
 		String refreshToken = null;
@@ -86,8 +85,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 								.createToken(jwtTokenProvider.getClaims(refreshToken, "sub")).getAccessToken();
 						jwtTokenProvider.createCookie(response, newAccessToken);
 
-						System.out.println(newAccessToken);
-
 						if (authWorkHandler.beforeIsLoginValication(request, response)) {
 							return;
 						}
@@ -106,6 +103,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 				return;
 			}
 		}
+
+		// if(accessToken == null) {
+		// 	response.sendRedirect(StaticVariable.CONTEXT_PATH);
+		// 	return;
+		// }
 
 		chain.doFilter(request, response);
 	}

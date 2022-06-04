@@ -7,11 +7,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
 import song.sts.jwtauth.responseEntity.BaseResponseMessage;
 
-
-public class ResponseData {
+public class ResponseData {    
 	public static ResponseEntity<?> CreateReponse(int httpStatus, String message, Object data, Map<String, String> headerData) {
 		BaseResponseMessage responseMessage = new BaseResponseMessage();
         HttpHeaders headers= new HttpHeaders();
