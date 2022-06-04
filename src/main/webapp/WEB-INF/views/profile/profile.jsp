@@ -24,7 +24,7 @@
 
 									<div class="row" style="margin-top: -35px;margin-left: 100px;">
 										<div class="btn-group float-right" role="group">
-											<button type="submit" class="btn btn-info btn-circle btn-sm"><i class="fas fa-pen"></i></button>
+											<button type="submit" class="btn btn-info btn-circle btn-sm" id="btn-img-profile"><i class="fas fa-pen"></i></button>
 										</div>
 									  </div>
 									<div class="mt-3">
@@ -33,6 +33,114 @@
 									  <p class="text-muted font-size-sm">경기도 화성시</p>
 									</div>
 								  </div>
+
+
+
+
+
+
+
+								  <div class="modal fade" id="profileModal" role="dialog">
+									<div class="modal-dialog modal-dialog-centered">
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">Profile Add & Edit</h5>
+												<button type="button" class="close" id="btn-profileModal-close"
+													data-dismiss="modal">&times;</button>
+											</div>
+											<div class="modal-body">
+												<div class="form-group was-validated">
+													<label class="control-label col-sm-12">* Name</label>
+													<div class="col-sm-12">
+														<input type="text" class="form-control"
+															id="profile-name" placeholder="Enter profile name"
+															name="profile-name" required>
+														
+															<div class="valid-feedback"></div>
+															<div class="invalid-feedback">Please fill out
+																this field.</div>
+													</div>
+
+													<label class="control-label col-sm-12">* ID</label>
+													<div class="col-sm-12">
+														<input type="text" class="form-control"
+															id="profile-id" placeholder="Enter account id"
+															name="profile-id" required>
+
+														<div class="valid-feedback"></div>
+														<div class="invalid-feedback">Please fill out
+															this field.</div>
+													</div>
+
+													<label class="control-label col-sm-12">* PW</label>
+													<div class="col-sm-12">
+														<input type="text" class="form-control"
+															id="profile-pw" placeholder="Enter account pw"
+															name="profile-pw" required>
+
+														<div class="valid-feedback"></div>
+														<div class="invalid-feedback">Please fill out
+															this field.</div>
+													</div>
+												</div>
+										   
+										   </div> 
+												<label class="control-label col-sm-12">Url</label>
+													<div class="col-sm-12">
+														<input type="text" class="form-control"
+															id="profile-url" placeholder="Enter account url"
+															name="profile-url">
+													</div>
+
+												<label class="control-label col-sm-12">Remark</label>
+													<div class="col-sm-12">
+														<textarea class="form-control" id="profile-remark" name="profile-remark" rows="3"></textarea>
+													</div>
+
+												<div class="col-sm-12" style="margin-top: 10px; margin-bottom: 10px;">
+													<div class="dropdown" id="dropdown-category">
+														<button
+															class="btn btn-secondary dropdown-toggle col-sm-12"
+															type="button" id="btn-dropdown-category"
+															data-toggle="dropdown" aria-expanded="false">
+															Select Type</button>
+
+														<input id="input-hidden-select-category"
+															type="hidden" value='-1' />
+
+														<div id="div-category-dropdown-menu"
+															class="dropdown-menu col-sm-12"
+															aria-labelledby="btn-dropdown-category">
+															<a class="dropdown-item" href="#">bg_primary</a>
+															<a class="dropdown-item" href="#">bg_secondary</a>
+															<a class="dropdown-item" href="#">bg_success</a>
+															<a class="dropdown-item" href="#">bg_danger</a>
+															<a class="dropdown-item" href="#">bg_warning</a>
+															<a class="dropdown-item" href="#">bg_info</a>
+															<a class="dropdown-item" href="#">bg_light</a>
+															<a class="dropdown-item" href="#">bg_dark</a>
+														</div>
+													</div>
+												</div>
+
+											<div class="modal-footer">
+												<button type="button" class="btn btn-primary"
+													id="btn-profile-add">Save</button>
+
+												<button type="button" class="btn btn-success" 
+													id="btn-profile-close"
+													data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								  
+
+
+
+
+
 								</div>
 							  </div>
 							  <div class="card mt-3">
@@ -63,12 +171,18 @@
 								<div class="collapse" id="collapseExample">
 									<div class="card-body">
 										
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="">
-											<label class="form-check-label">
-												<small>Android</small>
-											</label>
-										</div>
+										<sec:authorize access="hasRole('ADMIN')">
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="">
+												<label class="form-check-label">
+													<small>Android</small>
+												</label>
+											</div>
+										</sec:authorize>
+
+										<sec:authorize access="hasRole('USER')">
+											<small>Android</small>
+										</sec:authorize>
 
 										<div class="progress mb-3" style="height: 5px">
 										<div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>

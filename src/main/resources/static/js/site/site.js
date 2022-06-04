@@ -2,9 +2,7 @@ var isEdit = false;
 var id = null;
 var InitSiteType = null;
 
-$(document).ready(function() {
-    console.log("site page ready");
-    
+$(document).ready(function() {    
     $('#site-content').html('');
 
     InitSiteType = $("#btn-dropdown-category").text();
@@ -26,6 +24,10 @@ $(document).ready(function() {
 
     $('#btn-site-close').click(function() {
         $("#siteModal").modal("hide");    
+    });
+
+    $('#btn-siteModal-close').click(function() {
+        $("#siteModal").modal("hide");
     });
 
     $('#btn-site-add').click(function() {
@@ -104,15 +106,16 @@ $(document).ready(function() {
                                             <p class="mr-auto" style="margin-top: 20px;margin-bottom:20px; font-weight: bold;">` + jsonData[key].siteName + `</p>
                                             <div class="btn-group" role="group">`
     
-                                    if(jsonData[key].siteUrl)
-                                        siteItemHtml = siteItemHtml + `<button class="btn btn-info btn-circle btn-sm btn-site-connect" value='` + jsonData[key].id + `' id="btn-site-connect" name="btn-site-connect"><i class="fas fa-share"></i></button>`;
-    
-                                    siteItemHtml = siteItemHtml + `<button class="btn btn-info btn-circle btn-sm btn-site-edit" value='` + jsonData[key].id + `' id="btn-site-edit" name="btn-site-edit"><i class="fas fa-pen"></i></button>
+                                if(isAdmin) {
+                                    siteItemHtml = siteItemHtml + `<div class="btn-group" role="group"><button class="btn btn-info btn-circle btn-sm btn-site-connect" value='` + jsonData[key].id + `' id="btn-site-connect" name="btn-site-connect"><i class="fas fa-share"></i></button>
+
+                                    <button class="btn btn-info btn-circle btn-sm btn-site-edit" value='` + jsonData[key].id + `' id="btn-site-edit" name="btn-site-edit"><i class="fas fa-pen"></i></button>
                                     <button class="btn btn-info btn-circle btn-sm btn-site-delete" value='` + jsonData[key].id + `' id="btn-site-delete" name="btn-site-delete"><i class="fas fa-times"></i></button>
                                     </div>
-    
-                                    <input type="hidden" id="id_` + jsonData[key].id + `" name=id="id_` + jsonData[key].id + `" value="` + jsonData[key].id + `">
-                                </div>
+                                    <input type="hidden" id="id_` + jsonData[key].id + `" name=id="id_` + jsonData[key].id + `" value="` + jsonData[key].id + `">`;
+                                }
+
+                                siteItemHtml = siteItemHtml + `</div>
                                 </div>
                             <div class="card-body">
                                 <p class="card-title" id="siteId_` + jsonData[key].id + `" name="siteId_` + jsonData[key].id + `" >ID : ` + jsonData[key].siteId + `</p>
@@ -258,18 +261,19 @@ function SiteOpen() {
 							<div class="card gr-1">
 								<div class="card-header ` + siteType  + `">
                                     <div class="d-flex align-items-center">
-                                        <p class="mr-auto" style="margin-top: 20px;margin-bottom:20px; font-weight: bold;">` + jsonData[key].siteName + `</p>
-                                        <div class="btn-group" role="group">`
+                                        <p class="mr-auto" style="margin-top: 20px;margin-bottom:20px; font-weight: bold;">` + jsonData[key].siteName + `</p>`
 
-                                if(jsonData[key].siteUrl)
-                                    siteItemHtml = siteItemHtml + `<button class="btn btn-info btn-circle btn-sm btn-site-connect" value='` + jsonData[key].id + `' id="btn-site-connect" name="btn-site-connect"><i class="fas fa-share"></i></button>`;
 
-                                siteItemHtml = siteItemHtml + `<button class="btn btn-info btn-circle btn-sm btn-site-edit" value='` + jsonData[key].id + `' id="btn-site-edit" name="btn-site-edit"><i class="fas fa-pen"></i></button>
-                                <button class="btn btn-info btn-circle btn-sm btn-site-delete" value='` + jsonData[key].id + `' id="btn-site-delete" name="btn-site-delete"><i class="fas fa-times"></i></button>
-                                </div>
+                                if(isAdmin) {
+                                    siteItemHtml = siteItemHtml + `<div class="btn-group" role="group"><button class="btn btn-info btn-circle btn-sm btn-site-connect" value='` + jsonData[key].id + `' id="btn-site-connect" name="btn-site-connect"><i class="fas fa-share"></i></button>
 
-                                <input type="hidden" id="id_` + jsonData[key].id + `" name=id="id_` + jsonData[key].id + `" value="` + jsonData[key].id + `">
-                            </div>
+                                    <button class="btn btn-info btn-circle btn-sm btn-site-edit" value='` + jsonData[key].id + `' id="btn-site-edit" name="btn-site-edit"><i class="fas fa-pen"></i></button>
+                                    <button class="btn btn-info btn-circle btn-sm btn-site-delete" value='` + jsonData[key].id + `' id="btn-site-delete" name="btn-site-delete"><i class="fas fa-times"></i></button>
+                                    </div>
+                                    <input type="hidden" id="id_` + jsonData[key].id + `" name=id="id_` + jsonData[key].id + `" value="` + jsonData[key].id + `">`;
+                                }
+
+                            siteItemHtml = siteItemHtml + `</div>
                             </div>
                         <div class="card-body">
                             <p class="card-title" id="siteId_` + jsonData[key].id + `" name="siteId_` + jsonData[key].id + `" >ID : ` + jsonData[key].siteId + `</p>

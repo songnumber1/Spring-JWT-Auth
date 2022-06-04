@@ -35,7 +35,7 @@ import song.sts.jwtauth.util.ResponseData;
 
 @RestController
 @RequestMapping("/site/api")
-@PreAuthorize("hasRole('ROLE_ADMIN')")
+// @PreAuthorize("hasRole('ROLE_ADMIN')")
 public class SiteRestController {
     @Autowired
     private SiteRepository siteRepository;
@@ -142,12 +142,6 @@ public class SiteRestController {
 
     @GetMapping("/select")
     public ResponseEntity<?> SiteSelect(HttpServletRequest request, HttpServletResponse response) {
-
-        if (!request.isUserInRole("ROLE_ADMIN")) {
-			authWorkHandler.logoutDataDelete(request, response);
-			return null;
-		}
-
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = (UserDetails) principal;
 

@@ -4,6 +4,15 @@ var InitSiteType = null;
 
 $(document).ready(function() {
     ProfileOpen();
+
+    $('#btn-img-profile').click(function() {
+        $("#profileModal").modal("show");
+    });
+
+    $('#btn-profileModal-close').click(function() {
+        $("#profileModal").modal("hide");
+    });
+    
 });
 
 function ProfileOpen() {
