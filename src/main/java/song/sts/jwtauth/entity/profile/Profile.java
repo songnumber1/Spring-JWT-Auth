@@ -15,10 +15,16 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,18 +50,22 @@ public class Profile {
     private LocalDateTime writeDate;
 
     @JsonManagedReference
+    @Builder.Default
 	@OneToMany(mappedBy = "profile", fetch = FetchType.LAZY)
     private List<Experience> experiences = new ArrayList<>();
 
     @JsonManagedReference
+    @Builder.Default
     @OneToMany(mappedBy = "profile", fetch = FetchType.LAZY)
     private List<Skill> skills = new ArrayList<>();
 
     @JsonManagedReference
+    @Builder.Default
 	@OneToMany(mappedBy = "profile", fetch = FetchType.LAZY)
     private List<Education> educations = new ArrayList<>();
 
     @JsonManagedReference
+    @Builder.Default
     @OneToMany(mappedBy = "profile", fetch = FetchType.LAZY)
     private List<Certificate> certificates = new ArrayList<>();
 

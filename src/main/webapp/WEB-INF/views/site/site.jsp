@@ -3,14 +3,6 @@
 
         <%@include file="../layout/left.jsp"%>
 
-		<script>
-			var isAdmin = false;
-
-			<sec:authorize access="hasRole('ADMIN')">
-				isAdmin = true;
-			</sec:authorize>
-		</script>
-
 
             <link
                 rel="stylesheet"

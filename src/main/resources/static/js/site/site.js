@@ -10,7 +10,6 @@ $(document).ready(function() {
     SiteOpen();
 
     $('#siteModal').on('hidden.bs.modal', function() {
-        console.log("siteModal hidden.bs.modal");
         $(this).find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
 
         $("#btn-dropdown-category").text("");

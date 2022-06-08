@@ -48,6 +48,13 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<script>
+	var isAdmin = false;
+
+	<sec:authorize access="hasRole('ADMIN')">
+		isAdmin = true;
+	</sec:authorize>
+</script>
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" id="navbar-main">

@@ -21,7 +21,7 @@ public class FinalVariable {
 
 	public final static String SECURITY_LOGOUT_URL = "/auth/logout";
 
-	public final static String SECURITY_LOGOUT_SUCCESSURL = "/auth/loginForm";
+	public final static String SECURITY_LOGIN_URL = "http://localhost:8089/jwtauth/auth/loginForm";
 
 	public final static String MOVIE_PATH = "G:\\movie";// "C:\\Program Files (x86)";
 

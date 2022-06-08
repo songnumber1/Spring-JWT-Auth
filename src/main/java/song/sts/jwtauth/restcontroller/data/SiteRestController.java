@@ -17,7 +17,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -192,20 +192,6 @@ public class SiteRestController {
 
 	@PostMapping("/getInfo")
     public ResponseEntity<?> SiteGetInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody SiteItem siteItem){
-
-        if (!request.isUserInRole("ROLE_ADMIN")) {
-			authWorkHandler.logoutDataDelete(request, response);
-			return null;
-		}
-
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		UserDetails userDetails = (UserDetails) principal;
-
-		if (userDetails == null) {
-			authWorkHandler.logoutDataDelete(request, response);
-			return null;
-		}
-
         SiteItem result = siteRepository.findById(siteItem.getId()).get();
 
         final StringWriter sw = new StringWriter();

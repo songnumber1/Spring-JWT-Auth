@@ -5,10 +5,14 @@ USE jwtauth;
 
 -- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-SELECT * FROM USER;
+SELECT * FROM user;
+SELECT * FROM profile;
+
+DELETE FROM profile;
 
 UPDATE user SET roles='ROLE_MANAGER', active = 1;
 UPDATE user SET roles='ROLE_ADMIN', active = 1;
+UPDATE user SET roles='ROLE_USER', active = 1;
 
 
 SELECT * FROM profile;

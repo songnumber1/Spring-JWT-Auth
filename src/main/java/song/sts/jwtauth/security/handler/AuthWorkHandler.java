@@ -32,6 +32,7 @@ public class AuthWorkHandler {
 
 	public void logoutDataDelete(HttpServletRequest request, HttpServletResponse response, User user) {
 		Cookie[] cookies = request.getCookies(); // 모든 쿠키의 정보를 cookies에 저장
+
 		if (cookies != null) {
 			Stream<Cookie> cookieStream = Arrays.stream(cookies);
 
@@ -39,7 +40,7 @@ public class AuthWorkHandler {
 				return item.getName().equals(StaticVariable.COOKIE_HEADER_NAME);
 			}).findFirst();
 
-			if (tokenCookien != null) {
+			if (tokenCookien.isPresent()) {
 				tokenCookien.get().setMaxAge(0); // 유효시간을 0으로 설정
 				tokenCookien.get().setPath("/"); // 이거 안하면 안된다.
 				response.addCookie(tokenCookien.get()); // 응답 헤더에 추가
@@ -47,8 +48,9 @@ public class AuthWorkHandler {
 			}
 		}
 
-		if (user != null)
+		if (user != null){
 			userService.setRefreshTokenEmpty(user);
+		}
 
 		SecurityContextHolder.clearContext();
 
@@ -71,7 +73,7 @@ public class AuthWorkHandler {
 			}).findFirst();
 
 			try {
-				if (tokenCookien != null) {
+				if (tokenCookien.isPresent()) {
 					String accessToken = tokenCookien.get().getValue();
 
 					if (StringUtils.isNotBlank(accessToken) && jwtTokenProvider.validateToken(accessToken)) {
@@ -97,8 +99,9 @@ public class AuthWorkHandler {
 			response.addHeader("Set-Cookie", null);
 		}
 
-		if (user != null)
+		if (user != null){
 			userService.setRefreshTokenEmpty(user);
+		}
 
 		SecurityContextHolder.clearContext();
 
